@@ -1,0 +1,21 @@
+/*
+      Mobile Menu, off canvas adding correct has-form
+*/
+ul.off-canvas-list li.has-form {
+  height: 37px;
+}
+ul.off-canvas-list li.has-form .button {
+  height: 37px;
+  border-bottom: 0;
+}
+html, body, .off-canvas-wrap, .inner-wrap, .site-content, .main-content {
+	height: 100%;
+}
+.searchResults {
+	height: calc(100% - 250px);
+	overflow-y: auto;
+	overflow-x: hidden;
+}
+.grey-line {
+	border: 1px solid gray;
+}

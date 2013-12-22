@@ -1,0 +1,20 @@
+{
+        schedules : {
+          selected : {
+            semester : 'Fall',
+            year : 2013,
+            name : "Colin's Schedule"
+          },
+          others : [
+            {name: "Temp", year : 2013, semester : 'Spring' },
+            {name: "Temp2", year : 2013, semester : 'Spring' },
+          ]
+        },
+        departments : [
+          {url : '/Course/math', name: "Mathamatics"},
+          {url : '/Course/ece', name: "Electrical and Computer Engineering"}
+        ],
+        user : {
+          name : 'Colin'
+        }
+}

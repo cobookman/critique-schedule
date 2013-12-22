@@ -1,0 +1,21 @@
+{
+  "schedules" : {
+    "selected" : {
+      "semester" : "Fall",
+      "year" : "2013",
+      "name" : "Colin's Schedule",
+      "id" : "colinsschedule"
+    },
+    "others" : [
+      {"name": "Temp", "year" : "2013", "semester" : "Spring", "id": "temp"},
+      {"name" : "Temp2", "year" : "2013", "semester" : "Spring", "id": "temp2" }
+    ]
+  },
+  "departments" : [
+    {"code" : "math", "name": "Mathamatics"},
+    {"code" : "ece", "name": "Electrical and Computer Engineering"}
+  ],
+  "user" : {
+    "name" : "cbookman3"
+  }
+}
