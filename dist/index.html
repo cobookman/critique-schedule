@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+
+  <title>Course Scheduler</title>
+
+  <!-- Application styles. -->
+  <link rel="stylesheet" href="/styles.min.css">
+</head>
+
+<body>
+  <!-- Application container. -->
+  <div class="off-canvas-wrap">
+    <!-- If no javascript give warning -->
+    <noscript>Please enable javascript</noscript>
+    <div class="inner-wrap">
+      <!-- Full Screen Navbar -->
+      <nav class="top-bar hide-for-small hide-for-medium NavView" data-topbar=""></nav>
+      <!-- Mobile Side Menu (top bar) -->
+      <nav class="tab-bar show-for-small-up hide-for-large-up NavView">
+        <section class="left-small">
+          <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
+        </section>
+        <section class="middle tab-bar-section">
+          <h1 class="title">Course Scheduler</h1>
+        </section>
+      </nav>
+      <!--Mobile side menu content (left pane which slides) -->
+      <aside class="left-off-canvas-menu NavView"></aside>
+      <!-- Main site content -->
+      <main class="site-content row" role="main" >
+      </main>
+      <a class="exit-off-canvas"></a>
+    </div>
+  </div>
+  <!--
+    These templates are inline as they are required for
+    global styling
+  -->
+  <script type="text/template" id="template/top-bar">
+    <ul class="title-area">
+      <li class="name">
+        <h1><a href="/">Course Scheduler</a></h1>
+      </li>
+    </ul>
+    <section class="top-bar-section"> 
+      <ul class="right">
+        <li class="divider"></li>
+        <li class="has-dropdown not-click">
+          <a href="/schedule/{{schedules.selected.id}}">{{schedules.selected.name}}</a>
+          <ul class="dropdown">
+            {{#each schedules.others}}
+            <li><a href="/schedule/{{id}}">{{name}}</a></li>
+            {{/each}}
+          </ul>
+        </li>
+
+        <li class="divider"></li>
+        <li><a href="/watchedcourses/{{user.name}}">Watched Courses</a></li>
+
+        <li class="divider"></li>
+        <li><a href="/calendar/{{user.name}}/{{schedules.selected.id}}">Calendar</a></li>
+
+        <li class="divider"></li>
+        <li class="has-dropdown not-click">
+          <a href="/course">Departments</a>
+          <ul class="dropdown">
+            {{#each departments}}
+              <li><a href="{{this.url}}">{{name}}</a></li>
+            {{/each}}
+          </ul>
+        </li>
+
+        <li class="active"><a href="/help">Login</a></li>
+      </ul> <!-- Left Nav Section --> 
+      <ul class="left">
+      </ul>
+    </section>
+  </script>
+
+  <script type="text/template" id="template/left-off-canvas-menu">
+    <ul class="off-canvas-list">
+      <li><label>{{schedules.selected.name}}</label></li>
+      <li class="has-form" style="">
+        <div class="row collapse">
+          <div class="small-9 columns">
+            <input type="text" placeholder="Search"></input>
+          </div>
+          <div class="small-3 columns">
+            <a href="#" class="small-2 button expand" style="">Search</a>
+          </div>
+        </div>
+      </li>
+      <li><a href="/watchedcourses/{{user.name}}">Watched Courses</a></li>
+      <li><a href="/calendar/{{user.name}}/{{schedules.selected.id}}">Calendar</a></li>
+      <li><a href="/course">Course List</a></li>
+
+      <li><label>Settings</label></li>
+      <li><a href="/login">Login</a></li>
+      <li><a href="/schedule">Change Schedule</a></li>
+      <li><a href="/contact">Contact Us</a></li>
+      <li><a href="/about">About Us</a></li>
+    </ul>
+  </script>
+
+  <script type="text/template" id="template/schedule">
+    <table class="schedule-data small-12 columns">
+      <thead>
+        <tr>
+          <th></th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>7 am</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>8 am</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>9 am</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>10 am</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>11 am</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>12 pm</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>1 pm</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>2 pm</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>3 pm</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>4 pm</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>5 pm</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>6 pm</td><td></td><td></td><td></td><td></td><td></td></tr>
+      </tbody>
+    </table>
+  </script>
+
+  <script type="text/template" id="template/search">
+    <div class="large-8 columns main-content">
+      <div class="row">
+        <h3>What kind of class are you looking for</h3>
+        <form action="search" method="get" class="searchbar">
+          <div class="row collapse">
+            <div class="small-10 medium-11 columns">
+              <input name="query" type="text" placeholder="E.g: Differential Equations" tabindex="1" autofocus>
+            </div>
+            <div class="small-2 medium-1 columns">
+              <button type="submit" class="button postfix">Search</button>
+            </div>
+          </div>
+        </form>
+      </div>
+      <div class="row searchResults"></div>
+    </div>
+    <div class="large-4 columns hide-for-small-up show-for-large-up">
+        <h3>Current Schedule</h3>
+        <div class="row collapse schedule">
+        </div>
+    </div>
+  </script>
+  <script type="text/template" id="template/searchResult">
+    <div>
+      
+    </div>
+  </script>
+  <script>
+    //place to store rendered templates
+    var templates = {};
+  </script>
+
+  <!-- Application source. -->
+  <script data-main="/app/main" src="/source.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,29 @@
+{
+  "name": "mout",
+  "version": "0.8.0",
+  "main": "src/",
+  "ignore": [
+    "_build",
+    "doc",
+    "tests",
+    ".editorconfig",
+    ".jshintrc",
+    ".npmignore",
+    ".travis.yml",
+    "CHANGELOG.md",
+    "CONTRIBUTING.md",
+    "build.js",
+    "package.json"
+  ],
+  "homepage": "https://github.com/mout/mout",
+  "_release": "0.8.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.8.0",
+    "commit": "1ba0b99dc2b041578201678d17d094ae46237b27"
+  },
+  "_source": "git://github.com/mout/mout.git",
+  "_target": "~0.8.0",
+  "_originalSource": "mout",
+  "_direct": true
+}
