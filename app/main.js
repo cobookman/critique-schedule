@@ -21,6 +21,14 @@ require(["config"], function() {
     var search = new SearchView();
     app.router.on('route:search', function() {
         search.render();
+        /*
+            On a search query event, add GET params
+        */
+        $('.searchbar').on('submit', function(ev) {
+            search.runQuery(ev);
+            var query = search.getQueryString();
+            app.router.navigate('search'+query, {trigger: false});
+        });
     });
     app.router.on('route:login', function(username, password) {
         alert("In login");

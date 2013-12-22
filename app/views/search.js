@@ -3,7 +3,6 @@ function($,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
   var SearchView = Backbone.View.extend({
     el : '.site-content',
     events : {
-      'submit .searchbar' : 'runQuery'
     },
     render : function() {
       //TODO - Remove this if, and pre-cache
@@ -19,7 +18,6 @@ function($,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
       event.preventDefault();
       var query = this.getQuery();
       if(query.length > 1) {
-        history.pushState({}, "", 'search?query='+query);
         this.removeOldResults();
         this.searchResults = new SearchResults([], {query : 'math'});
         this.searchResults.render();
@@ -35,6 +33,9 @@ function($,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
         query = urlParams.query.trim();
       }
       return query;
+    },
+    getQueryString : function() {
+      return queryString.stringify({query : this.getQuery() });
     },
     removeOldResults : function() {
       if(typeof this.searchResults !== 'undefined') {

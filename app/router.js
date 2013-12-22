@@ -7,7 +7,8 @@ define(function(require, exports, module) {
   module.exports = Backbone.Router.extend({
     routes: {
       'login' : 'login',
-      '' : 'search',
+      '(/)' : 'search',
+      'search' : 'search',
       'contact(/)' : 'contact',
       'about(/)' : 'about',
       
