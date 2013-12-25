@@ -4,44 +4,52 @@ function($,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
     el : '.site-content',
     events : {
     },
-    render : function() {
-      //TODO - Remove this if, and pre-cache
-      if(typeof templates.search === 'undefined') {
+    initialize : function(models, options) {
+      this.loadTemplates();
+      this.year = options.year;
+      this.semester = options.semester;
+    },
+    remove : function() {
+      this.scheduleView.remove();
+      this.$el.empty();
+      this.stopListening();
+      return this;
+    },
+    //TODO - Remove this once pre-cache of templates done
+    loadTemplates : function() {
+       if(typeof templates.search === 'undefined') {
         templates.search = document.getElementById('template/search').innerHTML;
       }
-      //Load Search Template, and the search view has a schedule view on right hand side
-      this.$el.html(templates.search);
-      var scheduleView = new ScheduleView();
-      scheduleView.render();
     },
-    runQuery : function(event) {
-      event.preventDefault();
-      var query = this.getQuery();
-      if(query.length > 1) {
+    render : function() {
+      //Load Search Template (schedule view attached on left hand side)
+      this.$el.html(templates.search);
+      this.scheduleView = new ScheduleView();
+      this.scheduleView.render();
+    },
+    runQuery : function(query) {
+      if(query.length > 0) {
         this.removeOldResults();
-        this.searchResults = new SearchResults([], {query : 'math'});
+        this.query = query;
+        this.searchResults = new SearchResults([], { query: query, year: this.year, semester : this.semester});
         this.searchResults.render();
       }
     },
     getQuery : function() {
-      var query = '';
-      var searchBarQuery = document.querySelector('.searchbar input').value.trim();
-      var urlParams = queryString.parse();
-      if(searchBarQuery.length > 1) {
-        query = searchBarQuery;
-      } else if(urlParams.hasOwnProperty('query') && urlParams.query.trim().length > 1) {
-        query = urlParams.query.trim();
+      var queries = document.getElementsByClassName('search');
+      for(var i = 0; i < queries.length; ++i) {
+        if(queries[i].value.trim().length > 0) {
+          return queries[i].value.trim();
+        }
       }
-      return query;
     },
-    getQueryString : function() {
-      return queryString.stringify({query : this.getQuery() });
+    urlString : function(query) {
+      return encodeURIComponent(query);
     },
     removeOldResults : function() {
       if(typeof this.searchResults !== 'undefined') {
-        alert("this isn't triggering...right?");
-        this.searchResults.destroy();
-        this.searchResults.unbind();
+        this.searchResults.remove();
+        this.searchResults = null;
       }
     }
   });

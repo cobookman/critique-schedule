@@ -20,9 +20,12 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
         $(that.el).html(temp);
       }
     },
-    initialize : function() {
+    initialize : function(models, options) {
+      this.year = options.year;
+      this.semester = options.semester;
       this.isLoading = false;
-      this.searchQuery = new SearchQuery();
+      this.query = options.query;
+      this.searchQuery = new SearchQuery([], { query :  this.query, year : this.year, semester: this.semester});
     },
     render : function() {
       this.loadResults();
@@ -43,11 +46,20 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
           for(var i = 0; i < results.length; ++i) {
             that.resultModels.push(results.models[i]);
             var id =results.models[i].attributes._id;
-            //html += '<div class="row collapse">'+ id + '<br><br><br></div>';
+            //attach the year/semester)
+            results.models[i].attributes._source.year = that.year;
+            results.models[i].attributes._source.semester = that.semester;
+            //render template
             html += that.resultTemplate(results.models[i].attributes._source);
           }
           $(that.el).append(html);
           that.isLoading = false;
+        },
+        /*
+          TODO - Better Error Handling
+        */
+        error : function() {
+          alert("404, could not run your query of: " + that.query);
         }
       });
     },
@@ -57,6 +69,15 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
           this.searchQuery.page += 1; // Load next page
           this.loadResults();
       }
+    },
+    /* 
+      @OVERRIDE of backbone,
+      just want to empty, not remove el
+    */
+    remove : function() {
+      this.$el.empty();
+      this.stopListening();
+      return this;
     }
   });
   return SearchResults;

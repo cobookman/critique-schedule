@@ -1,13 +1,17 @@
 define(['jquery', 'underscore', 'backbone'],
 function($, _, Backbone) {
   var SearchQuery = Backbone.Collection.extend({
+    initialize: function(models, options) {
+      this.query = options.query;
+      this.year = options.year;
+      this.semester = options.semester;
+    },
     page : 1,
-    query : 'math',
     /*
       FOR GRUNT TESTING /app/api/ is used over /api (static files stored in /app/api/...)
     */
     url : function() {
-      return '/app/api/search/2013/query.' + this.query +'.page.' +this.page; // + this.query + '&from=' + this.page + '&number=' + this.number;
+      return '/app/api/search/'+this.year+'/query.' + this.query +'.page.' +this.page; // + this.query + '&from=' + this.page + '&number=' + this.number;
     },
     parse : function(res, xhr) {
       this.took = res.took;

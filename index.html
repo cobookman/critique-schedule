@@ -77,7 +77,7 @@
           </ul>
         </li>
 
-        <li class="active"><a href="/login">Login</a></li>
+        <li class="active"><a href="https://login.gatech.edu/cas/login">Login</a></li>
       </ul> <!-- Left Nav Section --> 
       <ul class="left">
       </ul>
@@ -126,7 +126,7 @@
       <li class="has-form" style="">
         <div class="row collapse">
           <div class="small-9 columns">
-            <input type="text" placeholder="Search"></input>
+            <input type="text" placeholder="Search" class="search" name="query"></input>
           </div>
           <div class="small-3 columns">
             <a href="#" class="small-2 button expand" style="">Search</a>
@@ -138,7 +138,7 @@
       <li><a href="/{{schedules.selected.year}}/{{schedules.selected.semester}}">Course List</a></li>
 
       <li><label>Settings</label></li>
-      <li><a href="/login">Login</a></li>
+      <li><a href="https://login.gatech.edu/cas/login">Login</a></li>
       <li><a href="#changeSchedule">Change Schedule</a></li>
       <li><a href="/contact">Contact Us</a></li>
       <li><a href="/about">About Us</a></li>
@@ -181,7 +181,7 @@
         <form action="search" method="get" class="searchbar">
           <div class="row collapse">
             <div class="small-10 medium-11 columns">
-              <input name="query" type="text" placeholder="E.g: Differential Equations" tabindex="1" autofocus>
+              <input name="query" type="text" placeholder="E.g: Differential Equations" tabindex="1" class="search" autofocus>
             </div>
             <div class="small-2 medium-1 columns">
               <button type="submit" class="button postfix">Search</button>
@@ -213,7 +213,7 @@
         </p>
       </div>
       <div class="small-4 columns">
-        <button class="small secondary viewSections" data-id="{{department.code}}{{number}}">View Sections</button>
+        <a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}" class="small button secondary viewSections">View Sections</a>
       </div>
     </div>
     <div class="row grey-line"></div>
@@ -223,9 +223,6 @@
       <h5>{{department.code}} {{number}} - {{name}}</h5><span class="right">X</span>
       <p>{{description}}</p>
     </div>
-  </script>
-  <script type="text/template" id="template/section">
-
   </script>
   <script>
     //place to store rendered templates
