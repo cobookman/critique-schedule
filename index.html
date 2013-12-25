@@ -189,7 +189,7 @@
           </div>
         </form>
       </div>
-      <div class="row collapse searchResults"></div>
+      <div class="row collapse searchResults scrollable"></div>
     </div>
     <div class="large-4 columns hide-for-small-up show-for-large-up">
         <h3>Current Schedule</h3>
@@ -199,17 +199,23 @@
   </script>
   <script type="text/template" id="template/searchResult">
     <div class="row collapse">
-      <h5>{{department.code}} {{number}} - {{name}}</h5>
+      <h5><b>{{department.code}} {{number}} - {{name}}</b></h5>
       <p>{{description}}</p>
       <div class="small-8 columns">
-        <p>
-          μ: {{ grade.gpa.mean }}
-          σ: {{grade.gpa.stddev}}
-          Q<sub>1</sub>: {{grade.gpa.q1}} 
-          Q<sub>2</sub>: {{grade.gpa.q2}}
-          Q<sub>3</sub>: {{grade.gpa.q3}}<br/>
-          Credit Hours: {{#each creditHours}} {{this}} {{/each}}
-          {{#each core_areas}} {{this}} {{/each}}
+        <ul class="no-bullet">
+          <li>
+            μ: {{ grade.gpa.mean }}
+            σ: {{grade.gpa.stddev}}
+            Q<sub>1</sub>: {{grade.gpa.q1}} 
+            Q<sub>2</sub>: {{grade.gpa.q2}}
+            Q<sub>3</sub>: {{grade.gpa.q3}}
+          </li>
+          <li>
+            Credit Hours: {{#each creditHours}} {{this}} {{/each}}
+          </li>
+          <li>
+            {{#each core_areas}} {{this}} {{/each}}
+          </li>
         </p>
       </div>
       <div class="small-4 columns">
@@ -218,10 +224,52 @@
     </div>
     <div class="row grey-line"></div>
   </script>
-  <script type="text/template" id="templates/viewSections">
-    <div class="row collapse">
-      <h5>{{department.code}} {{number}} - {{name}}</h5><span class="right">X</span>
-      <p>{{description}}</p>
+  <script type="text/template" id="template/oscar/main">
+    <div class="large-8 columns main-content">
+      <div class="row collapse">
+        <h3>{{title}}</h3>
+      </div>
+      <div class="row collapse oscar-data scrollable">
+        <!-- Departments, Sections, or Courses here -->
+      </div>
+    </div>
+
+    <div class="large-4 columns hide-for-small-up show-for-large-up">
+        <h3>Current Schedule</h3>
+        <div class="row collapse schedule">
+        </div>
+    </div>
+  </script>
+  <script type="text/template" id="template/oscar/section">
+    <div class="row collapse section">
+      <h5><b>
+      {{section}} - 
+        {{#each where}}
+          {{#each profs}}
+            {{#notTBA this}}{{this}}{{/notTBA}}
+          {{/each}}
+        {{/each}}
+      </b></h5>
+      <div class="small-8 columns">
+        <ul class="no-bullet">
+          {{#each where}}<li>{{type}}: {{day}} @ {{time}} in {{location}}</li>{{/each}}
+        </ul>
+        <button data-crn="{{crn}}" class="small button secondary viewSections">Add section {{section}}</button>
+      </div>
+      <div class="small-4 columns">
+        GRAPH WOULD GO HERE
+      </div>
+    </div>
+    <div class="row grey-line"></div>
+  </script>
+  <script type="text/template" id="template/oscar/course">
+    <div class="row collapse course">
+      this is a course list item
+    </div>
+  </script>
+  <script type="text/template" id="template/oscar/department">
+    <div class="row collapse department">
+      THIS IS A department list item
     </div>
   </script>
   <script>

@@ -2,8 +2,8 @@
 // assist with testing.
 require(["config"], function() {
   // Kick off the application.
-  require(["app", "router", 'views/nav', 'views/search', 'models/user' ],
-  function(app,    Router,   NavView,    SearchView,      User) {
+  require(["app", "router", 'views/nav', 'views/search', 'views/oscar', 'models/user', 'libraries/validate' ],
+  function(app,    Router,   NavView,    SearchView,      OscarView,     User        ,  validate) {
     //Get User Login Credentials
     var user = new User({id: 'cbookman3'});
     user.fetch({
@@ -54,8 +54,22 @@ require(["config"], function() {
     app.router.on('route:login', function(username, password) {
         window.location.href = 'https://login.gatech.edu/cas/login';
     });
-    app.router.on('route:course', function(department, number) {
-        alert("IN COURSE CONTROLLER"); //CHECK
+    app.router.on('route:oscar', function(year, semester, department, course) {
+        /*  
+            Check that required parameters are given and valid
+        */
+        if(!validate.year(year) || !validate.semester(semester)) {
+            //TODO - Better error handling
+            alert("404: could not find record for the year or semester specified");
+        }
+        /*
+            Build options for course View
+        */
+        var options = { year : year, semester: semester };
+        if(typeof department !== 'undefined') { options.department = department; }
+        if(typeof course !== 'undefined') { options.course = course; }
+        var oscarView = new OscarView([], options);
+        oscarView.render();
     });
     app.router.on('route:watchedcourses', function(username) {
         views.search.remove();
@@ -89,3 +103,8 @@ require(["config"], function() {
 
   });
 });
+
+/* Add string capitolize method */
+String.prototype.toCapital = function() {
+    return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
+};

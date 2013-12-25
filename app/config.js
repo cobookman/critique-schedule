@@ -26,7 +26,8 @@ require.config({
     //Modules
     "models/user" : "models/user",
     //Collections
-    "collections/searchQuery" : "collections/searchQuery"
+    "collections/searchQuery" : "collections/searchQuery",
+    "collections/oscar" : "collections/oscar"
 
   },
 

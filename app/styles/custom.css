@@ -11,7 +11,7 @@ ul.off-canvas-list li.has-form .button {
 html, body, .off-canvas-wrap, .inner-wrap, .site-content, .main-content {
 	height: 100%;
 }
-.searchResults {
+.scrollable {
 	height: calc(100% - 250px);
 	overflow-y: auto;
 	overflow-x: hidden;

@@ -4,22 +4,9 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
     el : '.searchResults',
     events : {
       'scroll' : 'checkScroll',
-      'touchstart .viewSections' : 'viewSections',
-      'click .viewSections' : 'viewSections'
     },
     isViewSectionLoading : false, //used to stop touchstart and click from firing on mobile
     resultModels : [], //Used to store the search result models
-    viewSections : function(ev) {
-      var that = this;
-      if(!this.isViewSectionLoading) {
-        this.isViewSectionLoading = true;
-        setTimeout(function() {
-          that.isViewSectionLoading = false;
-        }, 100);
-        var temp = document.getElementById('templates/viewSections').text;
-        $(that.el).html(temp);
-      }
-    },
     initialize : function(models, options) {
       this.year = options.year;
       this.semester = options.semester;

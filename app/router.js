@@ -24,8 +24,8 @@ define(function(require, exports, module) {
         e.g: calendar/gburdell3/sampleSchedule will
         meet these rules
       */
-      ':year/:semester/:department' : 'course',
-      ':year/:semester/:department/:course' : 'course'
+      ':year/:semester/:department(/)' : 'oscar',
+      ':year/:semester/:department/:course(/)' : 'oscar'
       
     },
   });

@@ -1,0 +1,1281 @@
+[
+  {
+    "department": "MATH",
+    "number": "1113",
+    "name": "Precalculus",
+    "description": "Analytic geometry, the function concept, polynomials, exponential, logarithms, trigonometric functions, mathematical induction, and the theory of equations. May only be used for degree credit with departmental approval.",
+    "creditHours": [
+      "4.00"
+    ],
+    "lectureHours": [
+      "4.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "1501",
+    "name": "Calculus I",
+    "description": "Differential calculus and basic integral calculus including the fundamental theorem of calculus and Taylor's theorem with remainder. Credit not allowed for both MATH 1501 and 1712.",
+    "creditHours": [
+      "4.00"
+    ],
+    "lectureHours": [
+      "4.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "1502",
+    "name": "Calculus II",
+    "description": "This course concludes the treatment of single variable calculus and begins linear algebra, the linear basis of the multivariable theory.  Credit not allowed for both MATH 1502 and MATH 1522.  Credit not allowed for both MATH 1502 and MATH 15X2.",
+    "creditHours": [
+      "4.00"
+    ],
+    "lectureHours": [
+      "4.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "1512",
+    "name": "Honors Calculus II",
+    "description": "The topics covered parallel those of 1502 with a somewhat more intensive and rigorous treatment.  Credit not allowed for both honors calculus and the corresponding regular calculus course.  Credit not allowed for both MATH 1512 and MATH 1522.  Credit not allowed for both MATH 1512 and MATH 15X2.",
+    "creditHours": [
+      "4.00"
+    ],
+    "lectureHours": [
+      "4.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "1522",
+    "name": "Linear Algebra for Calc",
+    "description": "Basic topics in linear algebra, such as covered in MATH 1502, and needed for MATH 2401.  May not be taken for credit by students who have taken MATH 1502 or MATH 1512.",
+    "creditHours": [
+      "2.00"
+    ],
+    "lectureHours": [
+      "2.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "1711",
+    "name": "Finite Mathematics",
+    "description": "Linear equations, matrices, linear programming, sets and counting, probability and statistics.",
+    "creditHours": [
+      "4.00"
+    ],
+    "lectureHours": [
+      "4.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "1712",
+    "name": "Survey of Calculus",
+    "description": "Techniques of differentiation, integration, application of integration to probability and statistics, multidimensional calculus. Credit not allowed for both MATH 1712 and 1501.",
+    "creditHours": [
+      "4.00"
+    ],
+    "lectureHours": [
+      "4.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "2401",
+    "name": "Calculus III",
+    "description": "Multivariable calculus: Linear approximation and Taylor's theorems, Lagrange multiples and constrained optimization, multiple integration and vector analysis including the theorems of Green, Gauss, and Stokes.",
+    "creditHours": [
+      "4.00"
+    ],
+    "lectureHours": [
+      "4.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "2403",
+    "name": "Differential Equations",
+    "description": "Methods for obtaining numerical and analytic solutions of elementary differential equations.  Applications are also discussed with an emphasis on modeling.",
+    "creditHours": [
+      "4.00"
+    ],
+    "lectureHours": [
+      "4.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "2406",
+    "name": "Abstract Vector Spaces",
+    "description": "A proof-based development of linear algebra and vector spaces, with additional topics such as multilinear algebra and group theory.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "2602",
+    "name": "Linear and Discrete Math",
+    "description": "Topics in linear algebra, sequences, differences, finite sums and difference equations, multivariate optimization with an emphasis in discrete and recursive methods.",
+    "creditHours": [
+      "4.00"
+    ],
+    "lectureHours": [
+      "4.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "2605",
+    "name": "Calc III for Comput Sci",
+    "description": "Topics in linear algebra and multivariate calculus and their applications in optimization and numerical methods, including curve fitting, interpolation, and numerical differentiation and integration.",
+    "creditHours": [
+      "4.00"
+    ],
+    "lectureHours": [
+      "4.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "2803",
+    "name": "Special Topics",
+    "description": "Courses on special topics of current interest in mathematics.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "3012",
+    "name": "Applied Combinatorics",
+    "description": "Elementary combinatorial techniques used in discrete problem solving: counting methods, solving linear recurrences, graph and network models, related algorithms, and combinatorial designs.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "3215",
+    "name": "Probability & Statistics",
+    "description": "This course is a problem-oriented introduction to the basic concepts of probability and statistics, providing a foundation for applications and further study.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "3225",
+    "name": "Honors Prob & Statistics",
+    "description": "The topics covered parallel those of MATH 3215, with a more rigorous and intensive treatment.  Credit is not allowed for both MATH 3215 and 3225.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "3770",
+    "name": "Statistics& Applications",
+    "description": "Introduction to probability, probability distributions, point estimation, confidence intervals, hypothesis testing, linear regression, and analysis of variance. Math majors may not take this course for credit. Crosslisted with ISYE 3770 and CEE 3770.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4022",
+    "name": "Intro to Graph Theory",
+    "description": "The fundamentals of graph theory: trees, connectivity, Euler torus, Hamilton cycles, matchings, colorings, and Ramsey theory.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4080",
+    "name": "Senior Project I",
+    "description": "The first of a two-course sequence of faculty-directed independent research culminating in the writing of a senior thesis and its presentation.",
+    "creditHours": [
+      "2.00"
+    ],
+    "lectureHours": [
+      "2.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4090",
+    "name": "Senior Project II",
+    "description": "The second course of a two-course sequence of faculty-directed independent research culminating in the writing of a senior thesis and its presentation.",
+    "creditHours": [
+      "2.00"
+    ],
+    "lectureHours": [
+      "2.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4107",
+    "name": "Abstract Algebra I",
+    "description": "This course develops in the theme of \"Arithmetic congruence and abstract algebraic structures\". Strong emphasis on theory and proofs.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4221",
+    "name": "Stochastic Processes I",
+    "description": "Simple random walk and the theory of discrete time Markov chains.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4261",
+    "name": "Math Statistics I",
+    "description": "Sampling distributions, Normal, t, chi-square, and f distributions. Moment-generating function methods, Bayesian estimation, and introduction to hypothesis testing.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4305",
+    "name": "Linear Algebra",
+    "description": "Finite dimensional vector spaces, inner product spaces, least squares, linear transformations, the spectral theorem for normal transformations.  Applications to convex sets, positive matrices, difference equations.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4317",
+    "name": "Analysis I",
+    "description": "Real numbers, topology of Euclidean spaces, Cauchy sequences, completeness, continuity and compactness, uniform continuity, series of functions, Fourier series.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4318",
+    "name": "Analysis II",
+    "description": "Differentiation of functions of one real variable, Riemann-Stieltjes integral, the derivative in Rn, and integration in Rn.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4320",
+    "name": "Complex Analysis",
+    "description": "Topics from complex function theory, including contour integration and conformal mapping.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4347",
+    "name": "Partial Diff Eqns I",
+    "description": "Method of characteristics for first- and second-order partial differential equations, conservation laws and shocks, classification of second-order systems and applications.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4431",
+    "name": "Introduction to Topology",
+    "description": "Point set topology, topological spaces and metric spaces, continuity and compactness, homotopy, and covering spaces.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4441",
+    "name": "Differential Geometry",
+    "description": "The theory of curves, surfaces, and more generally, manifolds.  Curvature, parallel transport, covariant differentiation, Gauss-Bonet theorem.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4541",
+    "name": "Dynamics& Bifurcations I",
+    "description": "A broad introduction to the local and global behavior of nonlinear dynamical systems arising from maps and ordinary differential equations.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4581",
+    "name": "Math Methods in Engr",
+    "description": "The Laplace transform and applications, Fourier series, boundary value problems for partial differential equations.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4640",
+    "name": "Numerical Analysis I",
+    "description": "Introduction to numerical algorithms for some basic problems in computational mathematics.  Discussion of both implementation issues and error analysis.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4699",
+    "name": "Undergraduate Research",
+    "description": "Independent research conducted under the guidance of a faculty member.",
+    "creditHours": [
+      "1.00",
+      "12.00"
+    ],
+    "lectureHours": [
+      "1.00",
+      "12.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4782",
+    "name": "Quantum Info&Quant Comp",
+    "description": "Introduction to quantum computing and quantum information theory, formalism of quantum mechanics, quantum gates, algorithms, measurements, coding, and information. Physical realizations and experiments. Crosslisted with PHYS 4782.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4801",
+    "name": "Special Topics",
+    "description": "Courses on special topics of current interest in mathematics.",
+    "creditHours": [
+      "1.00"
+    ],
+    "lectureHours": [
+      "1.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4802",
+    "name": "Special Topics",
+    "description": "Courses on special topics of current interest in mathematics.",
+    "creditHours": [
+      "2.00"
+    ],
+    "lectureHours": [
+      "2.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "4803",
+    "name": "Special Topics",
+    "description": "Courses on special topics of current interest in mathematics.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "<span class=\"fieldlabeltext\">Course Attributes: </span>",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6014",
+    "name": "Graph Theory",
+    "description": "Fundamentals, connectivity, matchings, colorings, extremal problems, Ramsey theory, planar graphs, perfect graphs. Applications to operations research and the design of efficient algorithms.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6112",
+    "name": "Advanced Linear Algebra",
+    "description": "An advanced course in Linear Algebra and applications.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6121",
+    "name": "Algebra I",
+    "description": "Graduate-level linear and abstract algebra including groups, finite fields, classical matrix groups and bilinear forms, multilinear algebra, and matroids. First of two courses.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6235",
+    "name": "Stoch Process-Finance II",
+    "description": "Advanced mathematical modeling of financial markets, derivative securities pricing, and portfolio optimization. Concepts from advanced probability and mathematics are introduced as needed.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6241",
+    "name": "Probability I",
+    "description": "Develops the probability basis requisite in modern statistical theories and stochastic processes.  Topics of this course include measure and integration foundations of probability, distribution functions, convergence concepts, laws of large numbers, and central limit theory. First of two courses.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6263",
+    "name": "Testing Stat Hypotheses",
+    "description": "Basic theories of testing statistical hypotheses, including a thorough treatment of testing in exponential class families.  A careful mathematical treatment of the primary techniques of hypothesis testing utilized by statisticians.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6307",
+    "name": "Ordinary Diff Eqns I",
+    "description": "This sequence develops the qualitative theory for systems of ordinary differential equations. Topics include stability, Lyapunov functions, Floquet theory, attractors, invariant manifolds, bifurcation theory, normal forms. First of two courses.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6337",
+    "name": "Real Analysis I",
+    "description": "Measure and integration theory. Topics include measures, measurable functions, integration and differentiation of measures.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6341",
+    "name": "Partial Diff Eqns I",
+    "description": "Introduction to the mathematical theory of partial differential equations covering the basic linear models of science and exact solution techniques.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6421",
+    "name": "Algebraic Geometry I",
+    "description": "The study of zero sets of polynomials: algebraic varieties, regular and rational mappings, the Zariski topology.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6457",
+    "name": "Geometry and Topology I",
+    "description": "The course is an introduction to the fundamental group, covering spaces and techniques used to describe and study differentiable Manifolds and smooth functions.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6580",
+    "name": "Intro to Hilbert Spaces",
+    "description": "Geometry, convergence, and structure of linear operators in infinite dimensional spaces. Applications to science and engineering, including integral equations and ordinary partial differential equations.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6640",
+    "name": "Num Meth-Part Diff Eqns",
+    "description": "Introduction to the implementation and analysis of numerical algorithms for the numerical solution of the classic partial differential equations of science and engineering. Must have knowledge of a computer programming language, familiarity with partial differential equations and elements of scientific computing.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6643",
+    "name": "Numerical Linear Algebra",
+    "description": "Introduction to the numerical solution of the classic problems of linear algebra including linear systems, least squares, Singular value decomposition, eigenvalue problems. Crosslisted with CSE 6643.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6644",
+    "name": "Iterative Meth-Sys Eqns",
+    "description": "Iterative methods for linear and nonlinear systems of equations including Jacobi, G-S, SOR, CG, multigrid, Newton quasi-Newton, updating, and gradient-based methods. Crosslisted with CSE 6644.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6701",
+    "name": "Math Meth-Appli Sci I",
+    "description": "Review of linear algebra and ordinary differential equations, brief introduction to functions of a complex variable.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6705",
+    "name": "Modeling and Dynamics",
+    "description": "Mathematical methods for solving problems in the life sciences.  Models-based course on basic facts from the theory of ordinary differential equations and numerical methods of their solution.  Introduction to the control theory, diffusion theory, maximization, minimization and curve fitting.  Math majors may not use this course toward any degree in the School of Mathematics.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6759",
+    "name": "Stoch Process-Finance I",
+    "description": "Mathematical modeling of financial markets, derivative securities pricing, and portfolio optimization.  Concepts from probability and mathematics are introduced as needed. Crosslisted with ISYE 6759.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6761",
+    "name": "Stochastic Processes I",
+    "description": "Discrete time Markov chains, Poisson processes, and renewal processes. Transient and limiting behavior.  Average cost and utility measures of systems.  Algorithms for computing performance measures.  Modeling of inventories, and flows in manufacturing and computer networks. Crosslisted with ISYE 6761.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6767",
+    "name": "Sys-Computation Finance",
+    "description": "Computational Finance Introduction to large scale system design to support computational finance for options, stocks, or other financial instruments. Some programming experience, and previous exposure to stocks, bonds, and options required. Crosslisted with ISYE 6767",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "6785",
+    "name": "The Practice of QCF",
+    "description": "Case studies, visiting lecturers from financial institutions, student group projects of an advanced nature, and student reports, all centered around quantitative and computational finance. Crosslisted with ISYE and MGT 6785.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "7000",
+    "name": "Master's Thesis",
+    "description": "Master's Thesis",
+    "creditHours": [
+      ""
+    ],
+    "lectureHours": [
+      "1.00",
+      "21.00"
+    ],
+    "labHours": [
+      "1.00",
+      "21.00"
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "7338",
+    "name": "Functional Analysis",
+    "description": "Topics include the Hahn-Banach theorems, the Baire Category theorem and its consequences, duality in Banach spaces, locally convex spaces, and additional topics.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "7999",
+    "name": "Prep-PHD Qual Exam",
+    "description": "Preparation for Doctoral Examinations\nAudit only. Prerequisite: consent of the adviser.",
+    "creditHours": [
+      ""
+    ],
+    "lectureHours": [
+      "1.00",
+      "21.00"
+    ],
+    "labHours": [
+      "1.00",
+      "21.00"
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "8305",
+    "name": "Aural-Oral Engl for Math",
+    "description": "Enhancement of English listening/speaking skills for SOM international graduate students, post-docs, and new faculty who speak English as their second language (ESL) and who will be teaching undergraduate students.",
+    "creditHours": [
+      "0.00",
+      "2.00"
+    ],
+    "lectureHours": [
+      "0.00",
+      "2.00"
+    ],
+    "labHours": [
+      "0.00",
+      "1.00"
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "8306",
+    "name": "Intermed Academic Commun",
+    "description": "Continued enhancement of English listening/speaking skills for current and future SOM graduate international teaching assistants and international lead instructors who speak English as their second language (ESL).",
+    "creditHours": [
+      "2.00"
+    ],
+    "lectureHours": [
+      "2.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "8803",
+    "name": "Special Topics",
+    "description": "This course enables the School of Mathematics to comply with requests for courses in selected topics.",
+    "creditHours": [
+      "3.00"
+    ],
+    "lectureHours": [
+      "3.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "8900",
+    "name": "Special Problems",
+    "description": "",
+    "creditHours": [
+      "1.00",
+      "21.00"
+    ],
+    "lectureHours": [
+      "1.00",
+      "21.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "8901",
+    "name": "Special Problems",
+    "description": "",
+    "creditHours": [
+      "1.00",
+      "21.00"
+    ],
+    "lectureHours": [
+      "1.00",
+      "21.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "8997",
+    "name": "Teaching Assistantship",
+    "description": "For students holding graduate teaching assistantships.",
+    "creditHours": [
+      "1.00",
+      "9.00"
+    ],
+    "lectureHours": [
+      "1.00",
+      "9.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "8998",
+    "name": "Research Assistantship",
+    "description": "For students holding graduate research assistantships.",
+    "creditHours": [
+      "1.00",
+      "9.00"
+    ],
+    "lectureHours": [
+      "1.00",
+      "9.00"
+    ],
+    "labHours": [
+      ""
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  },
+  {
+    "department": "MATH",
+    "number": "9000",
+    "name": "Doctoral Thesis",
+    "description": "Doctoral Thesis",
+    "creditHours": [
+      ""
+    ],
+    "lectureHours": [
+      "1.00",
+      "21.00"
+    ],
+    "labHours": [
+      "1.00",
+      "21.00"
+    ],
+    "grade_basis": "",
+    "course_attributes": "",
+    "property": ""
+  }
+]
