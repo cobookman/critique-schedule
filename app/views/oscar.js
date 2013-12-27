@@ -75,13 +75,30 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
         success : function(oscarModels) {
           that.oscarModels = oscarModels;
           output.html('');
+          /* 
+            Change data from list of sections, to a prof->section hierarchy
+          */
+          var profsTeaching = [];
+          var prof = '';
           for(var i =0; i < oscarModels.length; ++i) {
+            var currModel = oscarModels.models[i].attributes;
+            prof = that.getProf(currModel);
+            if(typeof profsTeaching[prof] === 'undefined') {
+              profsTeaching[prof] = [];
+            }
+            profsTeaching[prof].push(currModel);
+          }
+          for(prof in profsTeaching) {
             /* 
               appending each iteration causes a frame redraw, as the seat
               info is also loaded async.  This is to avoid race conditions
             */
-            output.append(templates.oscar.section(oscarModels.models[i].attributes));
-            that.getSeatInfo(oscarModels.models[i].attributes.crn);
+            var context = {
+              year: that.year, semester: that.semester, department: that.department,
+              course: that.course, prof: prof, profID: that.getProfId(prof),
+              sections: profsTeaching[prof]
+            };
+            output.append(templates.oscar.section(context));
           }
           that.isOscarRendered = true;
         },
@@ -129,6 +146,7 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
               that.gradeModels = gradeModels.models[0];
               for(var i = 0; i < that.oscarModels.length; ++i) {
                 renderGrade(that.oscarModels.models[i].attributes);
+                that.getSeatInfo(that.oscarModels.models[i].attributes.crn);
               }
             }
           }, 10);
@@ -140,22 +158,32 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
       });
 
       function renderGrade(oscarmodel) {
-        var prof = '';
-        for(var w = 0, l = oscarmodel.where.length; w < l; ++w) {
-          var profW = oscarmodel.where[w].prof.trim();
-          if(profW.length > 0 && profW.toLowerCase() !== 'tba') {
-            prof = profW; break;
-          }
-        }
-        var profID = prof.replace(/\s|\,/g,'').toUpperCase();
+        var prof = that.getProf(oscarmodel);
+        var profID = that.getProfId(prof);
         var profGrades = that.gradeModels.attributes.profs[profID];
         if(profGrades) {
           var statistics = profGrades.statistics;
           var years = profGrades.years;
-          $('.'+oscarmodel.crn+'.gpa.average').html(templates.oscar.gpaAverage(profGrades));
-          $('.'+oscarmodel.crn+'.gpa.percentages').html(templates.oscar.gpaPercentages(profGrades));
+          $('.'+profID+'.gpa.average').html(templates.oscar.gpaAverage(profGrades));
+          $('.'+profID+'.gpa.percentages').html(templates.oscar.gpaPercentages(profGrades));
         }
       }
+    },
+    getProf : function(oscarmodel) {
+      if(oscarmodel.hasOwnProperty('attributes')) {
+        oscarmodel = oscarmodel.attributes;
+      }
+      var prof = '';
+      for(var w = 0, l = oscarmodel.where.length; w < l; ++w) {
+        var profW = oscarmodel.where[w].prof.trim();
+        if(profW.length > 0 && profW.toLowerCase() !== 'tba') {
+          prof = profW;
+        }
+      }
+      return prof;
+    },
+    getProfId : function(profName) {
+      return profName.replace(/\s|\,/g,'').toUpperCase();
     }
   });
   return OscarView;

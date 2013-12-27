@@ -20,7 +20,9 @@
     <noscript>Please enable javascript</noscript>
     <div class="inner-wrap">
       <!-- Full Screen Navbar -->
-      <nav class="top-bar hide-for-small hide-for-medium NavView" data-topbar=""></nav>
+      <div class="sticky">
+        <nav class="top-bar hide-for-small hide-for-medium NavView" data-topbar></nav>
+      </div>
       <!-- Mobile Side Menu (top bar) -->
       <nav class="tab-bar show-for-small-up hide-for-large-up NavView">
         <section class="left-small">
@@ -33,7 +35,7 @@
       <!--Mobile side menu content (left pane which slides) -->
       <aside class="left-off-canvas-menu NavView"></aside>
       <!-- Main site content -->
-      <main class="site-content row" role="main" >
+      <main class="site-content" role="main" >
       </main>
       <a class="exit-off-canvas"></a>
     </div>
@@ -94,7 +96,7 @@
         </div>
         <div class="row">
           <div class="large-6 columns">
-            <label for="semesterSelect">Semester</label>
+        7    <label for="semesterSelect">Semester</label>
             <select name="semester" id="semesterSelect">
               <option value="fall">Fall</option>
               <option value="spring">Spring</option>
@@ -191,7 +193,7 @@
       </div>
       <div class="row collapse searchResults scrollable"></div>
     </div>
-    <div class="large-4 columns hide-for-small-up show-for-large-up">
+    <div class="large-4 columns hide-for-small-up show-for-large-up fixed-top-right">
         <h3>Current Schedule</h3>
         <div class="row collapse schedule">
         </div>
@@ -202,12 +204,12 @@
       <h5><b><a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}">{{department.code}} {{number}} - {{name}}<a/></b></h5>
       <p>{{description}}</p>
       {{#each core_areas}} {{this}} {{/each}}
-      <div class="medium-5 columns">
+      <div class="medium-7 columns">
         <a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}" class="small button secondary viewSections">View Sections</a>
         
       </div>
-      <div class="medium-7 columns">
-        <table class="table-condensed">
+      <div class="medium-5 columns">
+        <table class="table-condensed" align="right">
           <thead>
             <th>μ</th>
             <th>σ</th> 
@@ -218,7 +220,7 @@
           </thead>
           <tbody>
             <tr>
-              <td>{{ grade.gpa.mean }}</td>
+              <td>{{grade.gpa.mean}}</td>
               <td>{{grade.gpa.stddev}}</td>
               <td>{{grade.gpa.q1}} </td>
               <td>{{grade.gpa.q2}}</td>
@@ -249,13 +251,23 @@
     </div>
   </script>
   <script type="text/template" id="template/oscar/section">
-    <div class="section">
-      <div class="row collapse">
+  <div class="row collapse sectionProf">
+    <div class="medium-10 columns">
+      <h6><strong>
+        {{prof}}</strong><span class="{{profID}} gpa average"></span>
+      </h6>
+    </div>
+    <div class="medium-2 columns">
+      <a href="/grades/{{department}}/{{course}}/{{profID}}" class="tiny button secondary float-right historical-grades">Historical Grades</a>
+    </div>
+  </div>
+
+  <div class="row collapse section-wrapper" >
+    {{#each sections}}
+      <div class="row section">
         <div class="medium-9 columns">
-          <div class="row collapse">
-            <button data-crn="{{crn}}" class="tiny secondary addSection">Add Section: {{section}}</button>
-            <b>{{#each where}}{{#notTBA prof}}{{this}}{{/notTBA}}{{/each}}</b>
-            <span class="{{crn}} gpa average"></span>
+          <div class="row">
+            <button data-crn="{{crn}}" style="margin-left:-0.9375rem" class="tiny secondary addSection">Add Section: {{section}}</button>
           </div>
           <div class="row collapse">
             <ul class="no-bullet">
@@ -266,16 +278,14 @@
             </ul>
           </div>
         </div>
-        <div class="medium-3 columns">
+        <div class="medium-3 columns hide-for-small-only">
           <div class="row collapse {{crn}} seatInfo">
-          </div>
-          <div class="row collapse">
-            <a href="/{{department}}/{{course}}/{{prof}}" class="tiny button secondary historical-grades">Historical Grades</a>
           </div>
         </div>
       </div>
-    </div>
-    <div class="row grey-line"></div>
+    {{/each}}
+  </div>
+
   </script>
   <script type="text/template" id="template/oscar/seatInfo">
     <h6>Available Seats</h6>

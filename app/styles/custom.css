@@ -8,16 +8,14 @@ ul.off-canvas-list li.has-form .button {
   height: 37px;
   border-bottom: 0;
 }
-html, body, .off-canvas-wrap, .inner-wrap, .site-content, .main-content {
-	height: 100%;
-}
-.scrollable {
-	height: calc(100% - 200px);
-	overflow-y: auto;
-	overflow-x: hidden;
-}
 .grey-line {
 	border: 1px solid gray;
+}
+.float-right{
+	float: right;
+}
+.float-left {
+	float: left;
 }
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
@@ -41,4 +39,52 @@ span.gpa.average {
 .searchResults table, .searchResults a.button, .searchResults p {
 	margin-bottom: 0.5rem;
 }
-.searchResults 
+.historical-grades {
+	margin-bottom: 0;
+}
+
+.section ul {
+	margin-bottom: 0;
+}
+.section {
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+}
+.sectionProf.row.collapse {
+	border-bottom: 1px solid black;
+	margin-top: 1rem;
+}
+/*
+	Float fixed top right schedule correctly
+*/
+.large-4.fixed-top-right {
+	position: fixed;
+	top: 45px;
+	margin-left: 66.666%;	
+}
+@media only screen and (min-width:90.063em) {
+	.large-4.fixed-top-right {
+		margin-left:66%;
+	}
+}
+@media only screen and (min-width:97.5em) {
+	.large-4.fixed-top-right {
+		margin-left:65%;
+	}
+}
+@media only screen and (min-width: 100em) {
+	.large-4.fixed-top-right {
+		margin-left:64%;
+	}
+}
+@media only screen and (min-width: 105em) {
+	.large-4.fixed-top-right {
+		margin-left:63%;
+	}
+}
+@media only screen and (min-width:110em) {
+	.large-4.fixed-top-right {
+		margin-left:61.4%;
+	}
+}
