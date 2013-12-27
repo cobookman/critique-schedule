@@ -251,60 +251,47 @@
   <script type="text/template" id="template/oscar/section">
     <div class="section">
       <div class="row collapse">
-        <h5>
-          <b>
-          {{section}} - {{#each where}}{{#notTBA prof}}{{this}}{{/notTBA}}{{/each}}
-          </b>
-          <span class="{{crn}} gpa average"></span>
-        </h5>
-      </div>
-      <div class="row collapse">
-        <h5><span class="{{crn}} gpa percentages"></span></h5>
-      </div>
-      <div class="row collapse">
-        <div class="medium-7 columns">
-          <ul class="no-bullet">
-            {{#each where}}<li>{{type}}: {{#each time}} {{this}}  {{/each}} {{day}}  in {{location}}</li>{{/each}}
-          </ul>
-          <button data-crn="{{crn}}" class="small button secondary viewSections">Add section {{section}}</button>
+        <div class="medium-9 columns">
+          <div class="row collapse">
+            <button data-crn="{{crn}}" class="tiny secondary addSection">Add Section: {{section}}</button>
+            <b>{{#each where}}{{#notTBA prof}}{{this}}{{/notTBA}}{{/each}}</b>
+            <span class="{{crn}} gpa average"></span>
+          </div>
+          <div class="row collapse">
+            <ul class="no-bullet">
+              {{#each where}}
+                <li>{{day}}: {{#each time}} {{this}} - {{/each}} {{location}}</li>
+              {{/each}}
+              <li>CRN: {{crn}}</li>
+            </ul>
+          </div>
         </div>
-        <div class="medium-5 columns {{crn}} seatInfo">
-          <img src="/app/img/loading.gif">
+        <div class="medium-3 columns">
+          <div class="row collapse {{crn}} seatInfo">
+          </div>
+          <div class="row collapse">
+            <a href="/{{department}}/{{course}}/{{prof}}" class="tiny button secondary historical-grades">Historical Grades</a>
+          </div>
         </div>
       </div>
     </div>
     <div class="row grey-line"></div>
   </script>
   <script type="text/template" id="template/oscar/seatInfo">
-    <table class="table-condensed">
-      <thead>
-        <th></th>
-        <th>Total</th>
-        <th>Taken</th>
-        <th>Remaining</th>
-      </thead>
-      <tbody>
-        <tr>
-          <td>Seats</td>
-          <td>{{seats.capacity}}</td>
-          <td>{{seats.actual}}</td>
-          <td>{{seats.remaining}}</td>
-        </tr>
-        <tr>
-          <td>Waitlist</td>
-          <td>{{waitlist.capacity}}</td>
-          <td>{{waitlist.actual}}</td>
-          <td>{{waitlist.remaining}}</td>
-        </tr>
-      </tbody>
-    </table>
+    <h6>Available Seats</h6>
+    <ul class="no-bullet">
+      <li>Normal: {{seats.remaining}}/{{seats.capacity}}</li>
+      <li>Waitlist: {{waitlist.remaining}}/{{waitlist.capacity}}</li>
+    </ul>
   </script>
   <script type="text/template" id="template/oscar/gpaAverage">
     μ: {{statistics.gpa.mean}}
     σ:{{statistics.gpa.stddev}} 
-    Q<sub>1</sub>: {{statistics.gpa.q1}}
     Q<sub>2</sub>: {{statistics.gpa.q2}}
+    <!--
+    Q<sub>1</sub>: {{statistics.gpa.q1}}
     Q<sub>3</sub>: {{statistics.gpa.q3}}
+    -->
   </script>
   <script type="text/template" id="template/oscar/gpaPercentages">
     A: {{statistics.A}}%
@@ -313,6 +300,7 @@
     D: {{statistics.D}}%
     F: {{statistics.F}}%
     W: {{statistics.W}}%
+    -->
   </script>
   <script type="text/template" id="template/oscar/course">
     <div class="row collapse course">
