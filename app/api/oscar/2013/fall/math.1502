@@ -10,21 +10,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Van Leer W200",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Klaus 2443",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -34,21 +36,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Van Leer W200",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Engr Science & Mech 212",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -58,21 +62,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Van Leer W200",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Sustainable Education 110",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -82,21 +88,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Van Leer W200",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Klaus 2447",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -106,21 +114,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Van Leer W200",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Engr Science & Mech 210",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -130,21 +140,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Van Leer W200",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Skiles 254",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -154,21 +166,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Van Leer W200",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Skiles 268",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -178,21 +192,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Van Leer W200",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "8:05",
+            "8:55"
+          ],
           "location": "Skiles 168",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -202,21 +218,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "9:05",
+            "9:55"
+          ],
           "location": "Skiles 154",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L1",
+          "time": [
+            "9:35",
+            "10:55"
+          ],
+          "location": "Howey (Physics) L1",
           "type": "Lecture",
-          "profs": [
-            "Klara Judith Grodzinsky P"
-          ]
+          "prof": "Grodzinsky, Klara J"
         }
       ]
     },
@@ -226,21 +244,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "9:05",
+            "9:55"
+          ],
           "location": "Skiles 168",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L1",
+          "time": [
+            "9:35",
+            "10:55"
+          ],
+          "location": "Howey (Physics) L1",
           "type": "Lecture",
-          "profs": [
-            "Klara Judith Grodzinsky P"
-          ]
+          "prof": "Grodzinsky, Klara J"
         }
       ]
     },
@@ -250,21 +270,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "9:05",
+            "9:55"
+          ],
           "location": "Skiles 169",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L1",
+          "time": [
+            "9:35",
+            "10:55"
+          ],
+          "location": "Howey (Physics) L1",
           "type": "Lecture",
-          "profs": [
-            "Klara Judith Grodzinsky P"
-          ]
+          "prof": "Grodzinsky, Klara J"
         }
       ]
     },
@@ -274,21 +296,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "9:05",
+            "9:55"
+          ],
           "location": "Skiles 170",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L1",
+          "time": [
+            "9:35",
+            "10:55"
+          ],
+          "location": "Howey (Physics) L1",
           "type": "Lecture",
-          "profs": [
-            "Klara Judith Grodzinsky P"
-          ]
+          "prof": "Grodzinsky, Klara J"
         }
       ]
     },
@@ -298,21 +322,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "9:05",
+            "9:55"
+          ],
           "location": "Skiles 171",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L1",
+          "time": [
+            "9:35",
+            "10:55"
+          ],
+          "location": "Howey (Physics) L1",
           "type": "Lecture",
-          "profs": [
-            "Klara Judith Grodzinsky P"
-          ]
+          "prof": "Grodzinsky, Klara J"
         }
       ]
     },
@@ -322,21 +348,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "9:05",
+            "9:55"
+          ],
           "location": "Skiles 270",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L1",
+          "time": [
+            "9:35",
+            "10:55"
+          ],
+          "location": "Howey (Physics) L1",
           "type": "Lecture",
-          "profs": [
-            "Klara Judith Grodzinsky P"
-          ]
+          "prof": "Grodzinsky, Klara J"
         }
       ]
     },
@@ -346,21 +374,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
-          "location": "Howey Physics L1",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
+          "location": "Howey (Physics) L1",
           "type": "Lecture",
-          "profs": [
-            "Ernest Croot P"
-          ]
+          "prof": "Croot, Ernest"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Molecular Sciences & Engr 1222",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -370,21 +400,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
-          "location": "Howey Physics L1",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
+          "location": "Howey (Physics) L1",
           "type": "Lecture",
-          "profs": [
-            "Ernest Croot P"
-          ]
+          "prof": "Croot, Ernest"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Skiles 169",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -394,21 +426,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
-          "location": "Howey Physics L1",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
+          "location": "Howey (Physics) L1",
           "type": "Lecture",
-          "profs": [
-            "Ernest Croot P"
-          ]
+          "prof": "Croot, Ernest"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Engr Science & Mech 201",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -418,21 +452,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
-          "location": "Howey Physics L1",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
+          "location": "Howey (Physics) L1",
           "type": "Lecture",
-          "profs": [
-            "Ernest Croot P"
-          ]
+          "prof": "Croot, Ernest"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Engr Science & Mech 202",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -442,21 +478,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
-          "location": "Howey Physics L1",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
+          "location": "Howey (Physics) L1",
           "type": "Lecture",
-          "profs": [
-            "Ernest Croot P"
-          ]
+          "prof": "Croot, Ernest"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Coll of Computing 52",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -466,21 +504,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Skiles 169",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "12:05",
+            "13:25"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Grigoriy Blekherman P"
-          ]
+          "prof": "Blekherman, Grigoriy"
         }
       ]
     },
@@ -490,21 +530,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Skiles 171",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "12:05",
+            "13:25"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Grigoriy Blekherman P"
-          ]
+          "prof": "Blekherman, Grigoriy"
         }
       ]
     },
@@ -514,21 +556,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Skiles 246",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "12:05",
+            "13:25"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Grigoriy Blekherman P"
-          ]
+          "prof": "Blekherman, Grigoriy"
         }
       ]
     },
@@ -538,21 +582,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Skiles 254",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "12:05",
+            "13:25"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Grigoriy Blekherman P"
-          ]
+          "prof": "Blekherman, Grigoriy"
         }
       ]
     },
@@ -562,21 +608,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Skiles 255",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "12:05",
+            "13:25"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Grigoriy Blekherman P"
-          ]
+          "prof": "Blekherman, Grigoriy"
         }
       ]
     },
@@ -586,21 +634,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Skiles 271",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "12:05",
+            "13:25"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Grigoriy Blekherman P"
-          ]
+          "prof": "Blekherman, Grigoriy"
         }
       ]
     },
@@ -610,21 +660,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "13:05",
+            "13:55"
+          ],
           "location": "Molecular Sciences & Engr G011",
           "type": "Lecture",
-          "profs": [
-            "Philip Carey Benge P"
-          ]
+          "prof": "Benge, Philip C"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Coll of Computing 53",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -634,21 +686,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "13:05",
+            "13:55"
+          ],
           "location": "Molecular Sciences & Engr G011",
           "type": "Lecture",
-          "profs": [
-            "Philip Carey Benge P"
-          ]
+          "prof": "Benge, Philip C"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Molecular Sciences & Engr 1224",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -658,21 +712,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "13:05",
+            "13:55"
+          ],
           "location": "Molecular Sciences & Engr G011",
           "type": "Lecture",
-          "profs": [
-            "Philip Carey Benge P"
-          ]
+          "prof": "Benge, Philip C"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "12:05",
+            "12:55"
+          ],
           "location": "Instr Center 217",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -682,21 +738,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "11:05",
+            "11:55"
+          ],
           "location": "D. M. Smith 105",
           "type": "Lecture",
-          "profs": [
-            "Chongchun Zeng P"
-          ]
+          "prof": "Zeng, Chongchun"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "10:05",
+            "10:55"
+          ],
           "location": "Skiles 170",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -706,21 +764,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "11:05",
+            "11:55"
+          ],
           "location": "D. M. Smith 105",
           "type": "Lecture",
-          "profs": [
-            "Chongchun Zeng P"
-          ]
+          "prof": "Zeng, Chongchun"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "10:05",
+            "10:55"
+          ],
           "location": "Skiles 255",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -730,21 +790,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "11:05",
+            "11:55"
+          ],
           "location": "D. M. Smith 105",
           "type": "Lecture",
-          "profs": [
-            "Chongchun Zeng P"
-          ]
+          "prof": "Zeng, Chongchun"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "10:05",
+            "10:55"
+          ],
           "location": "Skiles 246",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -754,21 +816,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "11:05",
+            "11:55"
+          ],
           "location": "D. M. Smith 105",
           "type": "Lecture",
-          "profs": [
-            "Chongchun Zeng P"
-          ]
+          "prof": "Zeng, Chongchun"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "10:05",
+            "10:55"
+          ],
           "location": "Skiles 268",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -778,21 +842,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "11:05",
+            "11:55"
+          ],
           "location": "D. M. Smith 105",
           "type": "Lecture",
-          "profs": [
-            "Chongchun Zeng P"
-          ]
+          "prof": "Zeng, Chongchun"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "10:05",
+            "10:55"
+          ],
           "location": "Skiles 270",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -802,21 +868,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "14:05",
+            "14:55"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Daniel Alexander Bernucci P"
-          ]
+          "prof": "Bernucci, Daniel A"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "15:05",
+            "15:55"
+          ],
           "location": "Skiles 169",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -826,21 +894,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "14:05",
+            "14:55"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Daniel Alexander Bernucci P"
-          ]
+          "prof": "Bernucci, Daniel A"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "15:05",
+            "15:55"
+          ],
           "location": "Skiles 170",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -850,21 +920,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "14:05",
+            "14:55"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Daniel Alexander Bernucci P"
-          ]
+          "prof": "Bernucci, Daniel A"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "15:05",
+            "15:55"
+          ],
           "location": "Skiles 254",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -874,21 +946,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "11:05",
+            "11:55"
+          ],
           "location": "Skiles 170",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "13:35",
+            "14:55"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Michael Loss P"
-          ]
+          "prof": "Loss, Michael"
         }
       ]
     },
@@ -898,21 +972,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "11:05",
+            "11:55"
+          ],
           "location": "Skiles 202",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "13:35",
+            "14:55"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Michael Loss P"
-          ]
+          "prof": "Loss, Michael"
         }
       ]
     },
@@ -922,21 +998,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "11:05",
+            "11:55"
+          ],
           "location": "Skiles 246",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "13:35",
+            "14:55"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Michael Loss P"
-          ]
+          "prof": "Loss, Michael"
         }
       ]
     },
@@ -946,21 +1024,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "11:05",
+            "11:55"
+          ],
           "location": "Skiles 268",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "13:35",
+            "14:55"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Michael Loss P"
-          ]
+          "prof": "Loss, Michael"
         }
       ]
     },
@@ -970,21 +1050,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "11:05",
+            "11:55"
+          ],
           "location": "Skiles 270",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "13:35",
+            "14:55"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Michael Loss P"
-          ]
+          "prof": "Loss, Michael"
         }
       ]
     },
@@ -994,21 +1076,23 @@
       "where": [
         {
           "day": "MW",
-          "time": "",
+          "time": [
+            "11:05",
+            "11:55"
+          ],
           "location": "Skiles 271",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics L4",
+          "time": [
+            "13:35",
+            "14:55"
+          ],
+          "location": "Howey (Physics) L4",
           "type": "Lecture",
-          "profs": [
-            "Michael Loss P"
-          ]
+          "prof": "Loss, Michael"
         }
       ]
     },
@@ -1018,21 +1102,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "15:05",
+            "15:55"
+          ],
           "location": "Clough Undergraduate Commons 152",
           "type": "Lecture",
-          "profs": [
-            "Martin Engman P"
-          ]
+          "prof": "Engman, Martin"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "16:05",
+            "16:55"
+          ],
           "location": "Skiles 202",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -1042,21 +1128,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "15:05",
+            "15:55"
+          ],
           "location": "Clough Undergraduate Commons 152",
           "type": "Lecture",
-          "profs": [
-            "Martin Engman P"
-          ]
+          "prof": "Engman, Martin"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "16:05",
+            "16:55"
+          ],
           "location": "Skiles 170",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -1066,21 +1154,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "15:05",
+            "15:55"
+          ],
           "location": "Clough Undergraduate Commons 152",
           "type": "Lecture",
-          "profs": [
-            "Martin Engman P"
-          ]
+          "prof": "Engman, Martin"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "16:05",
+            "16:55"
+          ],
           "location": "Skiles 171",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -1090,21 +1180,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "9:05",
+            "9:55"
+          ],
           "location": "Coll of Computing 16",
           "type": "Lecture",
-          "profs": [
-            "Hyunshik Shin P"
-          ]
+          "prof": "Shin, Hyunshik"
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics N210",
+          "time": [
+            "9:05",
+            "9:55"
+          ],
+          "location": "Howey (Physics) N210",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -1114,21 +1206,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "9:05",
+            "9:55"
+          ],
           "location": "Coll of Computing 16",
           "type": "Lecture",
-          "profs": [
-            "Hyunshik Shin P"
-          ]
+          "prof": "Shin, Hyunshik"
         },
         {
           "day": "TR",
-          "time": "",
-          "location": "Howey Physics S204",
+          "time": [
+            "9:05",
+            "9:55"
+          ],
+          "location": "Howey (Physics) S204",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -1138,21 +1232,23 @@
       "where": [
         {
           "day": "MWF",
-          "time": "",
+          "time": [
+            "9:05",
+            "9:55"
+          ],
           "location": "Coll of Computing 16",
           "type": "Lecture",
-          "profs": [
-            "Hyunshik Shin P"
-          ]
+          "prof": "Shin, Hyunshik"
         },
         {
           "day": "TR",
-          "time": "",
+          "time": [
+            "9:05",
+            "9:55"
+          ],
           "location": "Instr Center 205",
           "type": "Lecture",
-          "profs": [
-            "TBA"
-          ]
+          "prof": ""
         }
       ]
     },
@@ -1162,12 +1258,12 @@
       "where": [
         {
           "day": "",
-          "time": "",
+          "time": [
+            ""
+          ],
           "location": "",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         }
       ]
     },
@@ -1177,12 +1273,12 @@
       "where": [
         {
           "day": "",
-          "time": "",
+          "time": [
+            ""
+          ],
           "location": "",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         }
       ]
     },
@@ -1192,12 +1288,12 @@
       "where": [
         {
           "day": "",
-          "time": "",
+          "time": [
+            ""
+          ],
           "location": "",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         }
       ]
     },
@@ -1207,12 +1303,12 @@
       "where": [
         {
           "day": "",
-          "time": "",
+          "time": [
+            ""
+          ],
           "location": "",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         }
       ]
     },
@@ -1222,12 +1318,12 @@
       "where": [
         {
           "day": "",
-          "time": "",
+          "time": [
+            ""
+          ],
           "location": "",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         }
       ]
     },
@@ -1237,12 +1333,12 @@
       "where": [
         {
           "day": "",
-          "time": "",
+          "time": [
+            ""
+          ],
           "location": "",
           "type": "Lecture",
-          "profs": [
-            "Thomas Morley P"
-          ]
+          "prof": "Morley, Thomas"
         }
       ]
     }

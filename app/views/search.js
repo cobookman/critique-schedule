@@ -31,15 +31,19 @@ function($,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
       if(query.length > 0) {
         this.removeOldResults();
         this.query = query;
+        this.setInputValue(query);
         this.searchResults = new SearchResults([], { query: query, year: this.year, semester : this.semester});
         this.searchResults.render();
       }
     },
-    getQuery : function() {
-      var queries = document.getElementsByClassName('search');
-      for(var i = 0; i < queries.length; ++i) {
-        if(queries[i].value.trim().length > 0) {
-          return queries[i].value.trim();
+    setInputValue : function(data) {
+      $('.search').val(data);
+    },
+    getQuery : function(event) {
+      var target = event.originalEvent.target;
+      for(var i =0, l = target.length; i<l; ++i) {
+        if(target[i].value && target[i].value.trim().length >0) {
+          return target[i].value.trim();
         }
       }
     },

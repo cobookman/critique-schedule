@@ -16,25 +16,15 @@ require(["config"], function() {
     //Create object to store our views in
     app.views = {};
     app.router.on('route:search', function(year, semester, query) {
-        var m = {
-            year : 2013,
-            semester : 'fall'
-        };
+        var m = { year : 2013, semester : 'fall' };
         if(typeof year !== 'undefined' && typeof semester !== 'undefined') {
             m.year = year;
             m.semester = semester;
         }
-
         app.views.current = new SearchView([], { year: m.year, semester: m.semester});
         app.views.current.render();
-        /*
-            If Url included the year/semester
-            we must override the currently selected schedule
-        */
-       
-        /*
-            If url included a query, run its query
-        */
+        
+        /* If url included a query, run its query */
         if(typeof query !== 'undefined') {
              app.views.current.runQuery(decodeURIComponent(query));
         }
@@ -46,33 +36,29 @@ require(["config"], function() {
         */
         $('.searchbar').on('submit', function(ev) {
             ev.preventDefault();
-            var query = app.views.current.getQuery();
+            var query = app.views.current.getQuery(ev);
             app.views.current.runQuery(query);
             app.router.navigate(m.year + '/' + m.semester + '/search/' + app.views.current.urlString(query), {trigger: false});
         });
+
     });
     app.router.on('route:login', function(username, password) {
         window.location.href = 'https://login.gatech.edu/cas/login';
     });
-    app.router.on('route:oscar', function(year, semester, department, course) {
-        /*  
-            Check that required parameters are given and valid
-        */
-        if(!validate.year(year) || !validate.semester(semester)) {
+    app.router.on('route:oscarSections', function(year, semester, department, course) {
+        /*  Check that required parameters are given and valid */
+        if(!validate.year(year) || !validate.semester(semester) || department.length < 1 || course.length < 1) {
             //TODO - Better error handling
-            alert("404: could not find record for the year or semester specified");
+            alert("404");
         }
         /*
-            Build options for course View
+            Build options for View
         */
-        var options = { year : year, semester: semester };
-        if(typeof department !== 'undefined') { options.department = department; }
-        if(typeof course !== 'undefined') { options.course = course; }
-        var oscarView = new OscarView([], options);
-        oscarView.render();
+        var options = { year : year, semester: semester, department: department, course : course };
+        app.views.current = new OscarView([], options);
+        app.views.current.render();
     });
     app.router.on('route:watchedcourses', function(username) {
-        views.search.remove();
         alert("IN WATCHED COURSES"); //CHECK
     });
     app.router.on('route:calendar', function(username, schedulename) {
@@ -92,12 +78,13 @@ require(["config"], function() {
         if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
             event.preventDefault();
             var url = $(event.currentTarget).attr("href").replace(/^\//, "");
-            //Remove old route's view
-            if(app.views.current && app.views.current.remove) {
-                app.views.current.remove();
+            //Route to only new url paths
+            if(Backbone.history.fragment !== url) {
+                if(app.views.current && app.views.current.remove) {
+                    app.views.current.remove();
+                }
+                app.router.navigate(url, { trigger: true });
             }
-            //Route to new route
-            app.router.navigate(url, { trigger: true });
         }
     });
 

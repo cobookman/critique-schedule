@@ -12,10 +12,33 @@ html, body, .off-canvas-wrap, .inner-wrap, .site-content, .main-content {
 	height: 100%;
 }
 .scrollable {
-	height: calc(100% - 250px);
+	height: calc(100% - 200px);
 	overflow-y: auto;
 	overflow-x: hidden;
 }
 .grey-line {
 	border: 1px solid gray;
 }
+.table-condensed > thead > tr > th,
+.table-condensed > tbody > tr > th,
+.table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td,
+.table-condensed > tbody > tr > td, 
+.table-condensed > tfoot > tr > td,
+.table-condensed tr th,
+.table-condensed tr td {
+	padding: 0.25rem;
+}
+span.gpa.average {
+	padding-left: 1.5rem;
+}
+
+
+.searchResults p, .oscar-data li {
+	font-size: 0.9rem;
+}
+.oscar-data button, .oscar-data ul,
+.searchResults table, .searchResults a.button, .searchResults p {
+	margin-bottom: 0.5rem;
+}
+.searchResults 

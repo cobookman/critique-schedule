@@ -17,6 +17,7 @@ define(function(require, exports, module) {
       'watchedcourses/:username(/)': 'watchedcourses',
 
       '(/)' : 'search',
+      'index' : 'search',
       ':year/:semester/search(/)' : 'search',
       ':year/:semester/search/:query(/)' : 'search',
       /*
@@ -24,8 +25,9 @@ define(function(require, exports, module) {
         e.g: calendar/gburdell3/sampleSchedule will
         meet these rules
       */
-      ':year/:semester/:department(/)' : 'oscar',
-      ':year/:semester/:department/:course(/)' : 'oscar'
+      ':year/:semester(/)' : 'oscarDepartments',
+      ':year/:semester/:department(/)' : 'oscarCourses',
+      ':year/:semester/:department/:course(/)' : 'oscarSections'
       
     },
   });
