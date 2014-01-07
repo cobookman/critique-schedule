@@ -3,7 +3,6 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
   var SearchResults = Backbone.View.extend({
     el : '.searchResults',
     events : {
-      'scroll' : 'checkScroll',
     },
     isViewSectionLoading : false, //used to stop touchstart and click from firing on mobile
     resultModels : [], //Used to store the search result models
@@ -13,6 +12,8 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
       this.isLoading = false;
       this.query = options.query;
       this.searchQuery = new SearchQuery([], { query :  this.query, year : this.year, semester: this.semester});
+      var that = this;
+      $(document).on('scroll', function() { that.checkScroll.call(that); });
     },
     render : function() {
       this.loadResults();
@@ -51,8 +52,9 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
       });
     },
     checkScroll : function() {
-      var triggerPoint = 100; //if 100px from bottom
-      if(!this.isLoading && this.el.scrollTop + this.el.clientHeight + triggerPoint > this.el.scrollHeight) {
+      var triggerPoint = 150; //if 100px from bottom
+      var win = $(window);
+      if(!this.isLoading && win.scrollTop() + win.height() + triggerPoint > $(document).height()) {
           this.searchQuery.page += 1; // Load next page
           this.loadResults();
       }

@@ -29,13 +29,6 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
     //TODO - Remove this once pre-cache of templates done
     loadTemplates : function() {
       templates.oscar = {};
-      Handlebars.registerHelper('notTBA', function(item, options) {
-        var out = '';
-        if(item.toLowerCase() !== 'tba' && item) {
-          out = options.fn(item);
-        }
-        return out;
-      });
 
       if(typeof templates.oscar.main === 'undefined') {
         templates.oscar.main = Handlebars.compile(document.getElementById('template/oscar/main').innerHTML);
@@ -79,23 +72,21 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
             Change data from list of sections, to a prof->section hierarchy
           */
           var profsTeaching = [];
-          var prof = '';
           for(var i =0; i < oscarModels.length; ++i) {
             var currModel = oscarModels.models[i].attributes;
-            prof = that.getProf(currModel);
-            if(typeof profsTeaching[prof] === 'undefined') {
-              profsTeaching[prof] = [];
+            if(typeof profsTeaching[currModel.prof] === 'undefined') {
+              profsTeaching[currModel.prof] = [];
             }
-            profsTeaching[prof].push(currModel);
+            profsTeaching[currModel.prof].push(currModel);
           }
-          for(prof in profsTeaching) {
+          for(var prof in profsTeaching) {
             /* 
               appending each iteration causes a frame redraw, as the seat
               info is also loaded async.  This is to avoid race conditions
             */
             var context = {
               year: that.year, semester: that.semester, department: that.department,
-              course: that.course, prof: prof, profID: that.getProfId(prof),
+              course: that.course, prof: prof, profId: that.getProfId(prof),
               sections: profsTeaching[prof]
             };
             output.append(templates.oscar.section(context));
@@ -158,29 +149,16 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
       });
 
       function renderGrade(oscarmodel) {
-        var prof = that.getProf(oscarmodel);
-        var profID = that.getProfId(prof);
-        var profGrades = that.gradeModels.attributes.profs[profID];
+        var prof = oscarmodel.prof;
+        var profId = that.getProfId(prof);
+        var profGrades = that.gradeModels.attributes.profs[profId];
         if(profGrades) {
           var statistics = profGrades.statistics;
           var years = profGrades.years;
-          $('.'+profID+'.gpa.average').html(templates.oscar.gpaAverage(profGrades));
-          $('.'+profID+'.gpa.percentages').html(templates.oscar.gpaPercentages(profGrades));
+          $('#'+profId+'-historical-grades').removeClass('hide');
+          $('.'+profId+'.gpa.average').html(templates.oscar.gpaAverage(profGrades));
         }
       }
-    },
-    getProf : function(oscarmodel) {
-      if(oscarmodel.hasOwnProperty('attributes')) {
-        oscarmodel = oscarmodel.attributes;
-      }
-      var prof = '';
-      for(var w = 0, l = oscarmodel.where.length; w < l; ++w) {
-        var profW = oscarmodel.where[w].prof.trim();
-        if(profW.length > 0 && profW.toLowerCase() !== 'tba') {
-          prof = profW;
-        }
-      }
-      return prof;
     },
     getProfId : function(profName) {
       return profName.replace(/\s|\,/g,'').toUpperCase();

@@ -24,6 +24,7 @@
         <nav class="top-bar hide-for-small hide-for-medium NavView" data-topbar></nav>
       </div>
       <!-- Mobile Side Menu (top bar) -->
+      <div class="sticky">
       <nav class="tab-bar show-for-small-up hide-for-large-up NavView">
         <section class="left-small">
           <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
@@ -32,17 +33,18 @@
           <h1 class="title">Course Scheduler</h1>
         </section>
       </nav>
+    </div>
       <!--Mobile side menu content (left pane which slides) -->
       <aside class="left-off-canvas-menu NavView"></aside>
       <!-- Main site content -->
-      <main class="site-content" role="main" >
+      <main class="site-content row" role="main" >
       </main>
       <a class="exit-off-canvas"></a>
     </div>
   </div>
   <!--
-    These templates are inline as they are required for
-    global styling
+    Templates are inline as they are small in size, and add
+    little overhead
   -->
   <script type="text/template" id="template/top-bar">
     <ul class="title-area">
@@ -54,20 +56,20 @@
       <ul class="right">
         <li class="divider"></li>
         <li class="has-dropdown not-click schedulePicker">
-          <a href="#" data-schedule="{{schedules.selected.id}}">{{schedules.selected.name}}</a>
+          <a href="#" data-schedule="{{schedules.selected.id}}">{{schedules.selected.semester}} {{schedules.selected.year}}: {{schedules.selected.name}}</a>
           <ul class="dropdown">
             <li><a href="#newSchedule" data-schedule="" data-reveal-id="newScheduleModal">New</a></li>
             {{#each schedules.others}}
-            <li><a href="#changeSchedule" data-schedule="{{id}}">{{name}}</a></li>
+            <li><a href="#changeSchedule" data-schedule="{{id}}">{{semester}} {{year}}: {{name}}</a></li>
             {{/each}}
           </ul>
         </li>
 
         <li class="divider"></li>
-        <li><a href="/watchedcourses/{{user.name}}">Watched Courses</a></li>
+        <li><a href="/watchedcourses/{{username}}">Watched Courses</a></li>
 
         <li class="divider"></li>
-        <li><a href="/calendar/{{user.name}}/{{schedules.selected.id}}">Calendar</a></li>
+        <li><a href="/calendar/{{username}}/{{schedules.selected.id}}">Calendar</a></li>
 
         <li class="divider"></li>
         <li class="has-dropdown not-click">
@@ -79,7 +81,7 @@
           </ul>
         </li>
 
-        <li class="active"><a href="https://login.gatech.edu/cas/login">Login</a></li>
+        <li class="active"><a href="https://login.gatech.edu/cas/login?service=https://critique.gatech.edu">Login</a></li>
       </ul> <!-- Left Nav Section --> 
       <ul class="left">
       </ul>
@@ -87,34 +89,37 @@
 
     <div id="newScheduleModal" class="reveal-modal" data-reveal>
       <h2>Create a new schedule</h2>
-      <form>
+      <form data-abide>
         <div class="row">
           <div class="large-12 columns">
-            <label for="scheduleName">Name of Schedule</label>
-            <input type="text" name="name" id="scheduleName" placeholder="gburdel's awesome schedule" />
+            <label for="newScheduleName">Name of Schedule</label>
+            <input type="text" name="name" id="newScheduleName" placeholder="gburdel's awesome schedule" required pattern="alpha_numeric">
+            <small class="error">Schedule name is a required field, and must be an alpha numeric string.</small>
           </div>
         </div>
         <div class="row">
           <div class="large-6 columns">
-        7    <label for="semesterSelect">Semester</label>
-            <select name="semester" id="semesterSelect">
-              <option value="fall">Fall</option>
-              <option value="spring">Spring</option>
-              <option value="summer">Summer</option>
+            <label for="newSemesterSelect">Semester</label>
+            <select name="semester" id="newSemesterSelect" required pattern="Fall|Spring|Summer">
+              <option value="Fall">Fall</option>
+              <option value="Spring">Spring</option>
+              <option value="Summer">Summer</option>
             </select>
+            <small class="error">Please choose one of the following:</small>
           </div>
           <div class="large-6 columns">
-            <label for="yearSelect">Year</label>
-            <select name="year" id="yearSelect">
+            <label for="newYearSelect">Year</label>
+            <select name="year" id="newYearSelect" required pattern="\d{4}">
               <option value="2014">2014</option>
               <option value="2013">2013</option>
               <option value="2012">2012</option>
             </select>
+            <small class="error">Please choose one of the following:</small>
           </div>
         </div>
         <div class="row">
           <div class="large-12 columns">
-            <input type="submit" name="submit" value="Create" class="button createNewSchedule" />
+            <button type="submit" name="submit" class="button createNewSchedule">Create</button>
           </div>
         </div>
       </form>
@@ -125,22 +130,24 @@
   <script type="text/template" id="template/left-off-canvas-menu">
     <ul class="off-canvas-list">
       <li><label>{{schedules.selected.name}}</label></li>
-      <li class="has-form" style="">
+      <li class="has-form">
+      <form action="search" method="get" class="searchbar">
         <div class="row collapse">
           <div class="small-9 columns">
             <input type="text" placeholder="Search" class="search" name="query"></input>
           </div>
           <div class="small-3 columns">
-            <a href="#" class="small-2 button expand" style="">Search</a>
+            <button type="submit" class="button postfix">Search</button>
           </div>
         </div>
+      </form>
       </li>
-      <li><a href="/watchedcourses/{{user.name}}">Watched Courses</a></li>
-      <li><a href="/calendar/{{user.name}}/{{schedules.selected.id}}">Calendar</a></li>
+      <li><a href="/watchedcourses/{{username}}">Watched Courses</a></li>
+      <li><a href="/calendar/{{username}}/{{schedules.selected.id}}">Calendar</a></li>
       <li><a href="/{{schedules.selected.year}}/{{schedules.selected.semester}}">Course List</a></li>
 
       <li><label>Settings</label></li>
-      <li><a href="https://login.gatech.edu/cas/login">Login</a></li>
+      <li><a href="https://login.gatech.edu/cas/login?service=https://critique.gatech.edu">Login</a></li>
       <li><a href="#changeSchedule">Change Schedule</a></li>
       <li><a href="/contact">Contact Us</a></li>
       <li><a href="/about">About Us</a></li>
@@ -177,7 +184,7 @@
   </script>
 
   <script type="text/template" id="template/search">
-    <div class="large-8 columns main-content">
+    <div class="medium-8 columns main-content">
       <div class="row collapse">
         <h3>What kind of class are you looking for</h3>
         <form action="search" method="get" class="searchbar">
@@ -191,25 +198,25 @@
           </div>
         </form>
       </div>
-      <div class="row collapse searchResults scrollable"></div>
+      <div class="row collapse searchResults">
+      </div>
     </div>
-    <div class="large-4 columns hide-for-small-up show-for-large-up fixed-top-right">
+    <div class="medium-4 columns hide-for-small-up show-for-medium-up fixed-top-right">
         <h3>Current Schedule</h3>
-        <div class="row collapse schedule">
+        <div class="schedule">
         </div>
     </div>
   </script>
   <script type="text/template" id="template/searchResult">
     <div class="row collapse">
-      <h5><b><a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}">{{department.code}} {{number}} - {{name}}<a/></b></h5>
-      <p>{{description}}</p>
-      {{#each core_areas}} {{this}} {{/each}}
-      <div class="medium-7 columns">
-        <a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}" class="small button secondary viewSections">View Sections</a>
-        
-      </div>
-      <div class="medium-5 columns">
-        <table class="table-condensed" align="right">
+      <div class="row collapse">
+        <div class="small-12 medium-8 columns">
+          <h5><b><a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}">{{department.code}} {{number}} - {{name}}<a/></b></h5>
+          <p>{{description}}</p>
+          {{#each core_areas}} {{this}} {{/each}}
+        </div>
+        <div class="medium-4 columns hide-for-small-only">
+          <table class="table-condensed" align="right">
           <thead>
             <th>μ</th>
             <th>σ</th> 
@@ -228,23 +235,31 @@
               <td>{{#each creditHours}} {{this}} {{/each}}</td>
             </tr>
           </tbody>
-        </table>
+          </table>
+          <div class="row collapse right hide-for-small-only">
+            <a href="/grades/{{department.code}}/{{number}}" class="small button secondary viewGrades">Grades</a>
+            <a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}" class="small button secondary viewSections">Sections</a>
+          </div>
+        </div>
       </div>
     </div>
     <div class="row grey-line"></div>
   </script>
   <script type="text/template" id="template/oscar/main">
-    <div class="large-8 columns main-content">
+    <div class="medium-6 columns main-content">
       <div class="row collapse">
         <h3>{{title}}</h3>
       </div>
-      <div class="row collapse oscar-data scrollable">
+      <div class="row collapse oscar-data">
         <!-- Departments, Sections, or Courses here -->
+        <h3>Parsing Oscar</h3>
+        <h4>this can take a few seconds</h4>
         <img src="/app/img/loading.gif">
+
       </div>
     </div>
 
-    <div class="large-4 columns hide-for-small-up show-for-large-up">
+    <div class="medium-6 columns hide-for-small-up show-for-medium-up fixed-top-right">
         <h3>Current Schedule</h3>
         <div class="row collapse schedule">
         </div>
@@ -252,35 +267,32 @@
   </script>
   <script type="text/template" id="template/oscar/section">
   <div class="row collapse sectionProf">
-    <div class="medium-10 columns">
-      <h6><strong>
-        {{prof}}</strong><span class="{{profID}} gpa average"></span>
-      </h6>
+    <div class="medium-9 columns">
+      <h6><strong>{{prof}}</strong><span class="{{profId}} gpa average"></span></h6>
     </div>
-    <div class="medium-2 columns">
-      <a href="/grades/{{department}}/{{course}}/{{profID}}" class="tiny button secondary float-right historical-grades">Historical Grades</a>
+    <div class="medium-3 columns">
+      <a id="{{profId}}-historical-grades" href="/grades/{{department}}/{{course}}/{{profId}}" class="tiny button secondary float-right historical-grades hide">Historical Grades</a>
     </div>
   </div>
 
   <div class="row collapse section-wrapper" >
     {{#each sections}}
       <div class="row section">
-        <div class="medium-9 columns">
-          <div class="row">
-            <button data-crn="{{crn}}" style="margin-left:-0.9375rem" class="tiny secondary addSection">Add Section: {{section}}</button>
-          </div>
+        <div class="small-12 medium-9 columns">
           <div class="row collapse">
-            <ul class="no-bullet">
+            <div class="small-3 columns">
+              <button data-crn="{{crn}}" class="tiny secondary addSection">Add Section: {{section}}</button>
+            </div>
+            <div class="small-9 columns" style="font-size:0.7rem;">
+              <ul class="no-bullet">
               {{#each where}}
-                <li>{{day}}: {{#each time}} {{this}} - {{/each}} {{location}}</li>
+                <li>{{day}}: {{#each time}} {{this}} - {{/each}} {{location}}<li>
               {{/each}}
-              <li>CRN: {{crn}}</li>
-            </ul>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="medium-3 columns hide-for-small-only">
-          <div class="row collapse {{crn}} seatInfo">
-          </div>
+        <div class="medium-3 columns hide-for-small-only {{crn}} seatInfo">
         </div>
       </div>
     {{/each}}
@@ -288,10 +300,9 @@
 
   </script>
   <script type="text/template" id="template/oscar/seatInfo">
-    <h6>Available Seats</h6>
-    <ul class="no-bullet">
-      <li>Normal: {{seats.remaining}}/{{seats.capacity}}</li>
-      <li>Waitlist: {{waitlist.remaining}}/{{waitlist.capacity}}</li>
+    <ul class="no-bullet right">
+      <li>Actual: {{seats.actual}}/{{seats.capacity}}</li>
+      <li>Waitlist: {{waitlist.actual}}/{{waitlist.capacity}}</li>
     </ul>
   </script>
   <script type="text/template" id="template/oscar/gpaAverage">
@@ -312,19 +323,38 @@
     W: {{statistics.W}}%
     -->
   </script>
-  <script type="text/template" id="template/oscar/course">
-    <div class="row collapse course">
-      this is a course list item
+  <script type="text/template" id="template/grades/wrapper">
+    <div class="row collapse">
+      <!-- e.g: <h3>Bookman, Colin: Math 1502</h3> -->
+      <h3>
+        {{#if prof}} {{prof}}: {{/if}}
+        {{#if department}} {{department}} {{/if}}
+        {{#if course}} {{course}} {{/if}}
+      </h3>
+      <dl class="sub-nav" style="margin-top:10px;">
+        <dt>View grades for the:</dt>
+        {{#if prof}}
+          <dd>
+            <a href="#Professor" class="grades prof">Professor</a>
+          </dd>
+        {{/if}}
+        {{#if course}}
+          <dd>
+            <a href="#Course" class="grades course">Course</a>
+          </dd>
+        {{/if}}
+      </dl>
     </div>
-  </script>
-  <script type="text/template" id="template/oscar/department">
-    <div class="row collapse department">
-      THIS IS A department list item
+    <div class="row collapse gradeGraph">
     </div>
   </script>
   <script>
-    //place to store rendered templates
+    //place to store rendered templates 
     var templates = {};
+    //make sure that the side mobile nav is the full window height
+    (function() {
+      document.getElementsByClassName('inner-wrap')[0].style.height = window.innerHeight + 'px';
+    })();
   </script>
 
   <!-- Application source. -->

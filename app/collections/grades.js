@@ -10,6 +10,9 @@ function(Backbone) {
         // TODO - Change '.' to '/', used for testing purposes
         this.urlParams += '/' + options.course.toLowerCase(); //Course can have letters e.g: 1211k
       }
+      if(options.profId) {
+        this.urlParams += '/' + options.profId;
+      }
     },
     /*
       FOR GRUNT TESTING /app/api/ is used over /api (static files stored in /app/api/...)

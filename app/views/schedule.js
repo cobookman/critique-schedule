@@ -7,6 +7,12 @@ function($,   Backbone) {
             templates.schedule = document.getElementById('template/schedule').innerHTML;
         }
         this.$el.html(templates.schedule);
+    },
+    /*
+      TODO - Completley Remove all bindings/other content
+    */
+    remove : function() {
+
     }
   });
   return ScheduleView;

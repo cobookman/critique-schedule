@@ -9,6 +9,10 @@ define(['jquery', 'handlebars', 'foundation', 'backbone'],
 function($,   Handlebars,   foundation, Backbone) {
   var NavView = Backbone.View.extend({
     className : 'NavView',
+    initialize: function(models, params) {
+      this.user = params.user;
+      this.user.bind('change', this.render, this);
+    },
     touchTriggered : false,
     changeSchedule : function(ev) {
       ev.preventDefault();
@@ -18,37 +22,23 @@ function($,   Handlebars,   foundation, Backbone) {
         setTimeout(function() { that.touchTriggered = false;}, 100);
 
         var scheduleID = ev.currentTarget.getAttribute('data-schedule');
-        var schedules = this.model.get('schedules');
-        for(var i in schedules.others) {
-          if(schedules.others[i].id === scheduleID) {
-            var moved = schedules.selected;
-            schedules.selected = schedules.others[i];
-            schedules.others[i] = moved;
-            this.model.set( {schedules: schedules});
-            this.render();
-          }
-        }
+
+        this.user.changeSelectedSchedule(scheduleID);
       }
     },
     newSchedule : function(ev) {
+      ev.stopPropagation();
       ev.preventDefault();
-      if(!this.touchTriggered) {
-        this.touchTriggered = true;
-        var that = this;
-        setTimeout(function() { that.touchTriggered = false; }, 100);
-        store();
-        move();
+      if(ev.type === 'valid') {
+        alert("HI WORLD");
+        var scheduleObj = {
+          name : document.getElementById('newScheduleName').value,
+          semester : document.getElementById('newSemesterSelect').value,
+          year : document.getElementById('newYearSelect').value
+        };
+        scheduleObj.id =  scheduleObj.name.replace(/\s|\,|\/|\\/g, '') + (new Date()).getTime();
+        this.user.newSchedule(scheduleObj);
         this.closeModal();
-      }
-      /*
-          While this is a performance hit, it helps make this code a bit more 
-          redable w/o polluting namespace
-      */
-      function store() {
-        alert("store(): To be implemented");
-      }
-      function move() {
-        alert("move(): To be implemented");
       }
     },
     closeModal : function() {
@@ -61,8 +51,8 @@ function($,   Handlebars,   foundation, Backbone) {
       var leftOffCanvasMenuHTML = document.getElementById('template/left-off-canvas-menu').innerHTML;
       templates.topBar = Handlebars.compile(topBarHTML);
       templates.leftOffCanvasMenu = Handlebars.compile(leftOffCanvasMenuHTML);
-
-      var data = this.model.toJSON();
+      this.user.sort();
+      var data = this.user.toJSON();
       $('.top-bar').html(templates.topBar(data));
       $('.left-off-canvas-menu').html(templates.leftOffCanvasMenu(data));
       this.bindEvents();
@@ -71,9 +61,14 @@ function($,   Handlebars,   foundation, Backbone) {
     bindEvents : function() {
       var that = this;
       $('a[href="#changeSchedule"]').on('click touchstart', function(ev) { that.changeSchedule(ev); });
-      $('input.createNewSchedule').on('click touchstart', function(ev) { that.newSchedule(ev); });
+      $('#newScheduleModal > form').on('valid invalid submit', function(ev) { that.newSchedule(ev); });
       //Commented out line below as event as event is auto-handled by foundation
       // $('a[href="#newSchedule"]').on('click touchstart', function(ev) { that.newSchedule(ev); });
+    },
+    unbind : function() {
+      this.user.off(null, null, this);
+      $('a[href="#changeSchedule"]').off();
+      $('input.createNewSchedule').off();
     }
   });
   return NavView;

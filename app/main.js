@@ -2,16 +2,29 @@
 // assist with testing.
 require(["config"], function() {
   // Kick off the application.
-  require(["app", "router", 'views/nav', 'views/search', 'views/oscar', 'models/user', 'libraries/validate' ],
-  function(app,    Router,   NavView,    SearchView,      OscarView,     User        ,  validate) {
+  require(["app", "router", 'views/nav', 'views/search', 'views/oscar', 'views/historicalgrades', 'models/user', 'libraries/validate'],
+  function(app,    Router,   NavView,    SearchView,      OscarView,     HistoricalGradeView,      User        ,  validate) {
     //Get User Login Credentials
-    var user = new User({id: 'cbookman3'});
+    var user = new User();
     user.fetch({
         success: function() {
-            var nav = new NavView({model: user});
-            nav.render({});
-        }
+            var nav = new NavView([], { user: user});
+            nav.render();
+        },
+        failure : function() {
+            /*
+                TODO - if for whatever reason we can't login the user
+                should use dummy object stored locally
+            */
+            alert("404: could not fetch user credentials");
+        },
     });
+    /*
+        Even though the user model still might not have finished fetching, we 
+        start rendering our view as the 'schedule' view and other views
+        which use the user model, should bind their render method to the
+        user model's resfresh event
+    */
     app.router = new Router();
     //Create object to store our views in
     app.views = {};
@@ -34,16 +47,17 @@ require(["config"], function() {
                 2) run query
                 2) Change URL to /search?query=:query
         */
-        $('.searchbar').on('submit', function(ev) {
+        $(document).on('submit', '.searchbar', function(ev) {
             ev.preventDefault();
             var query = app.views.current.getQuery(ev);
             app.views.current.runQuery(query);
             app.router.navigate(m.year + '/' + m.semester + '/search/' + app.views.current.urlString(query), {trigger: false});
         });
 
+
     });
     app.router.on('route:login', function(username, password) {
-        window.location.href = 'https://login.gatech.edu/cas/login';
+        window.location.href = 'https://login.gatech.edu/cas/login?service=https://critique.gatech.edu';
     });
     app.router.on('route:oscarSections', function(year, semester, department, course) {
         /*  Check that required parameters are given and valid */
@@ -56,6 +70,10 @@ require(["config"], function() {
         */
         var options = { year : year, semester: semester, department: department, course : course };
         app.views.current = new OscarView([], options);
+        app.views.current.render();
+    });
+    app.router.on('route:grades', function(department, course, profId) {
+        app.views.current = new HistoricalGradeView([], {user: user, department: department, course : course, profId: profId});
         app.views.current.render();
     });
     app.router.on('route:watchedcourses', function(username) {
@@ -78,12 +96,13 @@ require(["config"], function() {
         if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
             event.preventDefault();
             var url = $(event.currentTarget).attr("href").replace(/^\//, "");
-            //Route to only new url paths
+            //Route to only new url paths, only issue with pages such-as '/search'
             if(Backbone.history.fragment !== url) {
                 if(app.views.current && app.views.current.remove) {
                     app.views.current.remove();
                 }
                 app.router.navigate(url, { trigger: true });
+                $(window).scrollTop(0);
             }
         }
     });

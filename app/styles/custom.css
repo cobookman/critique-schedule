@@ -17,6 +17,27 @@ ul.off-canvas-list li.has-form .button {
 .float-left {
 	float: left;
 }
+.oscar-data li, .oscar-data button {
+	font-size: 0.75rem;
+}
+.addSection {
+	margin-left: -0.9375rem;
+	margin-bottom: 0;
+}
+button.addSection.tiny {
+	padding: 0.75rem;
+}
+.hide {
+	display: none;
+}
+
+/*
+	make container wider
+*/
+.row {
+	max-width: 80em	;
+}
+
 .table-condensed > thead > tr > th,
 .table-condensed > tbody > tr > th,
 .table-condensed > tfoot > tr > th,
@@ -30,12 +51,9 @@ ul.off-canvas-list li.has-form .button {
 span.gpa.average {
 	padding-left: 1.5rem;
 }
-
-
-.searchResults p, .oscar-data li {
+.searchResults p {
 	font-size: 0.9rem;
 }
-.oscar-data button, .oscar-data ul,
 .searchResults table, .searchResults a.button, .searchResults p {
 	margin-bottom: 0.5rem;
 }
@@ -58,33 +76,25 @@ span.gpa.average {
 /*
 	Float fixed top right schedule correctly
 */
-.large-4.fixed-top-right {
+.fixed-top-right{
 	position: fixed;
-	top: 45px;
-	margin-left: 66.666%;	
+	top:45px;
 }
-@media only screen and (min-width:90.063em) {
-	.large-4.fixed-top-right {
-		margin-left:66%;
+.medium-6.fixed-top-right {
+	margin-left:calc(80rem*6/12);
+	width: calc(80rem*6/12);
+}
+.medium-4.fixed-top-right {
+	margin-left: calc(80rem*8/12);
+	width: calc(80rem*4/12);
+}
+@media(max-width:80rem) {
+	.medium-4.fixed-top-right {
+		margin-left:66.6666%;
+		width: 33.333%;
 	}
-}
-@media only screen and (min-width:97.5em) {
-	.large-4.fixed-top-right {
-		margin-left:65%;
-	}
-}
-@media only screen and (min-width: 100em) {
-	.large-4.fixed-top-right {
-		margin-left:64%;
-	}
-}
-@media only screen and (min-width: 105em) {
-	.large-4.fixed-top-right {
-		margin-left:63%;
-	}
-}
-@media only screen and (min-width:110em) {
-	.large-4.fixed-top-right {
-		margin-left:61.4%;
+	.medium-6.fixed-top-right {
+		margin-left:50%;
+		width:50%;
 	}
 }

@@ -14,6 +14,10 @@ define(function(require, exports, module) {
       'calendar/:username/:schedulename(/)': 'calendar',
       'calendar/:username(/)' : 'calendar',
 
+      'grades/:department(/)' : 'grades',
+      'grades/:department/:course(/)' : 'grades',
+      'grades/:department/:course/:profId(/)' : 'grades',
+
       'watchedcourses/:username(/)': 'watchedcourses',
 
       '(/)' : 'search',
