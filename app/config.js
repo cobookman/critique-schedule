@@ -28,10 +28,11 @@ require.config({
 
     //Modules
     "models/user" : "models/user",
+    "models/grades" : "models/grades",
+
     //Collections
     "collections/searchQuery" : "collections/searchQuery",
-    "collections/oscar" : "collections/oscar",
-    "collecitons/grades" : "collections/grades"
+    "collections/oscar" : "collections/oscar"
 
   },
 

@@ -218,12 +218,14 @@
         <div class="medium-4 columns hide-for-small-only">
           <table class="table-condensed" align="right">
           <thead>
-            <th>μ</th>
-            <th>σ</th> 
-            <th>Q<sub>1</sub></th>
-            <th>Q<sub>2</sub></th>
-            <th>Q<sub>3</sub></th>
-            <th>Credits</th>
+            <tr>
+              <th>μ</th>
+              <th>σ</th> 
+              <th>Q<sub>1</sub></th>
+              <th>Q<sub>2</sub></th>
+              <th>Q<sub>3</sub></th>
+              <th>Credits</th>
+            </tr>
           </thead>
           <tbody>
             <tr>
@@ -271,7 +273,7 @@
       <h6><strong>{{prof}}</strong><span class="{{profId}} gpa average"></span></h6>
     </div>
     <div class="medium-3 columns">
-      <a id="{{profId}}-historical-grades" href="/grades/{{department}}/{{course}}/{{profId}}" class="tiny button secondary float-right historical-grades hide">Historical Grades</a>
+      <a id="{{profId}}-historical-grades" href="/grades/{{department}}/{{course}}/{{profId}}" class="tiny button secondary right historical-grades hide">Historical Grades</a>
     </div>
   </div>
 
@@ -321,39 +323,97 @@
     D: {{statistics.D}}%
     F: {{statistics.F}}%
     W: {{statistics.W}}%
-    -->
   </script>
   <script type="text/template" id="template/grades/wrapper">
     <div class="row collapse">
-      <!-- e.g: <h3>Bookman, Colin: Math 1502</h3> -->
-      <h3>
-        {{#if prof}} {{prof}}: {{/if}}
+      <h3>Grades For: 
+        {{#if prof}} {{prof}} {{#if department}}, {{/if}}{{/if}}
         {{#if department}} {{department}} {{/if}}
         {{#if course}} {{course}} {{/if}}
       </h3>
-      <dl class="sub-nav" style="margin-top:10px;">
-        <dt>View grades for the:</dt>
-        {{#if prof}}
-          <dd>
-            <a href="#Professor" class="grades prof">Professor</a>
-          </dd>
-        {{/if}}
-        {{#if course}}
-          <dd>
-            <a href="#Course" class="grades course">Course</a>
-          </dd>
-        {{/if}}
-      </dl>
     </div>
-    <div class="row collapse gradeGraph">
+    <div class="grade-tables">
+      <!-- Tabular grade data generated here -->
     </div>
+  </script>
+  <script type="text/template" id="template/grades/profTable">
+    <!-- 
+      If the client's screen is small, the table will overflow 
+      their window.  As there's only one 'table' in this view
+      inline style was used
+    -->
+
+    <div class="row collapse" style="overflow-x: scroll;">
+      <div class="small-12 columns">
+        <table class="static-left-column">
+          <thead>
+            <tr>
+              {{#if isMultipleProfs}}
+                <th></th>
+                <th>GPA</th>
+                <th>Median</th>
+                <th>σ</th>
+                <th>A</th>
+                <th>B</th>
+                <th>C</th>
+                <th>D</th>
+                <th>F</th>
+                <th>W</th>
+              {{else}}
+                <th>Year</th>
+                <th>Semester</th>
+                <th>Section</th>
+                <td>GPA</td>
+                <td>A</td>
+                <td>B</td>
+                <td>C</td>
+                <td>D</td>
+                <td>F</td>
+                <td>W</td>
+                <td>Size</td>
+              {{/if}}
+            </tr>
+          </thead>
+          <tbody>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </script>
+  <script type="text/template" id="template/grades/profTable-entry">
+    <tr>
+      {{#if statistics}}
+        <td><a href="/grades/{{department}}/{{course}}/{{profId}}">{{name}}</a></td>
+        <td>{{statistics.gpa.mean}}</td>
+        <td>{{statistics.gpa.q2}}</td>
+        <td>{{statistics.gpa.stddev}}</td>
+        <td>{{statistics.A}}%</td>
+        <td>{{statistics.B}}%</td>
+        <td>{{statistics.C}}%</td>
+        <td>{{statistics.D}}%</td>
+        <td>{{statistics.F}}%</td>
+        <td>{{statistics.W}}%</td>
+      {{else}}
+        <td>{{year}}</td>
+        <td>{{semester}}</td>
+        <td>{{section}}</td>
+        <td>{{gpa}}</td>
+        <td>{{A}}%</td>
+        <td>{{B}}%</td>
+        <td>{{C}}%</td>
+        <td>{{D}}%</td>
+        <td>{{F}}%</td>
+        <td>{{W}}%</td>
+        <td>{{size}}</td>
+      {{/if}}
+    </tr>
   </script>
   <script>
     //place to store rendered templates 
     var templates = {};
-    //make sure that the side mobile nav is the full window height
+    //make sure that the side mobile nav is at least the full window height
     (function() {
-      document.getElementsByClassName('inner-wrap')[0].style.height = window.innerHeight + 'px';
+      document.getElementsByClassName('inner-wrap')[0].style.minHeight = window.innerHeight + 'px';
     })();
   </script>
 

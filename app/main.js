@@ -102,7 +102,13 @@ require(["config"], function() {
                     app.views.current.remove();
                 }
                 app.router.navigate(url, { trigger: true });
-                $(window).scrollTop(0);
+                /*
+                    Sometimes when rendering a new page, 
+                    the document is not scrolled to the top.
+                    this ensures that all navigation brings the user
+                    to the top of the page
+                */
+                $("html,body").scrollTop(0);
             }
         }
     });

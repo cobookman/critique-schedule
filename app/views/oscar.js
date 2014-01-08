@@ -1,5 +1,5 @@
-define(['jquery', 'backbone',  'handlebars', 'highcharts', 'views/schedule', 'collections/oscar', 'collections/grades'],
-function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     OscarCollection,     GradesCollection) {
+define(['jquery', 'backbone',  'handlebars', 'highcharts', 'views/schedule', 'collections/oscar', 'models/grades'],
+function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     OscarCollection,     GradesModel) {
   var OscarView = Backbone.View.extend({
     el : '.site-content',
     oscarData : '.oscar-data',
@@ -8,17 +8,17 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
     initialize : function(models, options) {
       this.loadTemplates();
       this.createCollections(options);
-
       this.year = options.year;
       this.semester = options.semester;
       this.department = options.department;
       this.course = options.course;
-
       this.title = this.semester.toCapital() + " " + this.year +": " + this.department + " " + this.course;
+
     },
     createCollections : function(options) {
       this.oscar = new OscarCollection([] , options);
-      this.grades = new GradesCollection([], options);
+      this.grades = new GradesModel([], options);
+      this.oscar.bind('sync', this.renderGrades, this);
     },
     remove : function() {
       this.scheduleView.remove();
@@ -52,28 +52,23 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
       this.scheduleView = new ScheduleView();
       /* Render Wrapper/main */
       this.scheduleView.render();
-      /* Render Oscar Data */
-      this.isOscarRendered = false;
-      this.getAndRenderOscarCollection();
-      /* Render Graphs */
-      this.getAndRenderGradeGraphs();
+      /* Render oscar data first, then  grades get rendered afterwords on change event */
+      this.renderOscarCollection();
     },
-    isOscarRendered: false,
-    checkInterval : null,
-    oscarModels : null,
-    getAndRenderOscarCollection : function() {
+    isOscarRendered : false,
+    renderOscarCollection : function() {
+      this.isOscarRendered = false;
       var that = this;
       var output = $(that.oscarData);
       this.oscar.fetch({
-        success : function(oscarModels) {
-          that.oscarModels = oscarModels;
+        success : function() {
           output.html('');
           /* 
             Change data from list of sections, to a prof->section hierarchy
           */
           var profsTeaching = [];
-          for(var i =0; i < oscarModels.length; ++i) {
-            var currModel = oscarModels.models[i].attributes;
+          for(var i =0; i < that.oscar.length; ++i) {
+            var currModel = that.oscar.models[i].attributes;
             if(typeof profsTeaching[currModel.prof] === 'undefined') {
               profsTeaching[currModel.prof] = [];
             }
@@ -95,7 +90,6 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
         },
         error : function(r, s) {
           //TODO - Better Error Handling
-          clearInterval(that.checkInterval);
           alert('Error: \n' + JSON.stringify(s));
           return false;
         }
@@ -121,37 +115,38 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
       });
 
     },
-    gradeModels : null,
-    getAndRenderGradeGraphs : function() {
+    renderGrades : function() {
       var that = this;
       /*
-        Get data ASYNC. the interval checks every 10ms to see if oscar data
-        has been successfully renedred.  This is cause the 'graphs' are attached
-        to the department/course/sections.
+        Race Condition here!! (hence the interval);
+        if oscar's rendering takes a while, and 'success'
+        is triggered, the grade data would have no-where to
+        render
       */
       this.grades.fetch({
-        success : function(gradeModels) {
-          that.checkInterval = setInterval(function() {
+        success : function() {
+          var interval = setInterval(function() {
             if(that.isOscarRendered) {
-              clearInterval(that.checkInterval);
-              that.gradeModels = gradeModels.models[0];
-              for(var i = 0; i < that.oscarModels.length; ++i) {
-                renderGrade(that.oscarModels.models[i].attributes);
-                that.getSeatInfo(that.oscarModels.models[i].attributes.crn);
-              }
+              clearInterval(interval);
+              goAndRenderGrades();
             }
-          }, 10);
+          }, 25);
         },
         error : function(r, s) {
-          clearInterval(that.checkInterval);
           alert('Error: \n' + JSON.stringify(s));
         }
       });
 
+      function goAndRenderGrades() {
+        for(var i = 0; i < that.oscar.length; ++i) {
+          that.getSeatInfo(that.oscar.models[i].attributes.crn);
+          renderGrade(that.oscar.models[i].attributes);
+        }
+      }
       function renderGrade(oscarmodel) {
         var prof = oscarmodel.prof;
         var profId = that.getProfId(prof);
-        var profGrades = that.gradeModels.attributes.profs[profId];
+        var profGrades = that.grades.attributes.profs[profId];
         if(profGrades) {
           var statistics = profGrades.statistics;
           var years = profGrades.years;

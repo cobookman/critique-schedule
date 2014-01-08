@@ -1,10 +1,10 @@
-define(['jquery', 'handlebars', 'backbone', 'collections/grades'],
-function($,        Handlebars,   Backbone,   GradesCollection ) {
+define(['jquery', 'handlebars', 'backbone', 'models/grades'],
+function($,        Handlebars,   Backbone,   GradesModel ) {
   var HistoricalGradesView = Backbone.View.extend({
     el : '.site-content',
-    graphEl : 'gradeGraph',
+    graphEl : '.graphs-content',
     events : {
-      'click a.grades' : 'switchTo'
+      
     },
     initialize : function(models, options) {
       if(typeof options.user === 'undefined' || typeof options.department === 'undefined') {
@@ -20,7 +20,7 @@ function($,        Handlebars,   Backbone,   GradesCollection ) {
       if(typeof options.profId !== 'undefined') {
         this.profId = options.profId;
       }
-      this.grades = new GradesCollection([], options);
+      this.grades = new GradesModel([], options);
       this.loadTemplates();
     },
     remove : function() {
@@ -29,8 +29,17 @@ function($,        Handlebars,   Backbone,   GradesCollection ) {
       return this;
     },
     loadTemplates : function() {
-      templates.grades = {};
-      templates.grades.wrapper = Handlebars.compile(document.getElementById('template/grades/wrapper').innerHTML);
+      if(typeof templates.grades) {
+        templates.grades = {};
+      }
+      if(typeof templates.grades.wrapper === 'undefined') {
+        templates.grades.wrapper = Handlebars.compile(document.getElementById('template/grades/wrapper').innerHTML);
+      }
+      if(typeof templates.grades.profTable === 'undefined') {
+        templates.grades.profTable = Handlebars.compile(document.getElementById('template/grades/profTable').text);
+      }
+      if(typeof templates.grades.profTableEntry === 'undefined')
+        templates.grades.profTableEntry = Handlebars.compile(document.getElementById('template/grades/profTable-entry').text);
     },
     render : function() {
       var that = this;
@@ -43,14 +52,12 @@ function($,        Handlebars,   Backbone,   GradesCollection ) {
             user : that.user.toJSON(),
             grades : that.grades.toJSON(),
           };
-          if(that.grades.models.length === 1 && that.grades.models[0].attributes.hasOwnProperty('name')) {
-            context.prof = that.grades.models[0].get('name');
+          if(that.grades.attributes.hasOwnProperty('name')) {
+            context.prof = that.grades.get('name');
           }
           var output = templates.grades.wrapper(context);
           that.$el.html(output);
-          //Make first sub-nav item 'active'
-          var firstSubNavItem = that.$el.find(' dl.sub-nav > dd:first');
-          that.makeActive(firstSubNavItem);
+          that.showData();
         },
         failure : function(r,s) {
           alert('404: Could not find grade data');
@@ -61,33 +68,84 @@ function($,        Handlebars,   Backbone,   GradesCollection ) {
     /* 
       Renders graphs and tables corr. to current active subnav
     */
-    showData : function(active) {
-      if(typeof active !== 'object') {
-        active = this.findActive();
+    showData : function() {
+      if(this.grades.attributes.hasOwnProperty('profs')) {
+        this.showCourseData();
+      } else if(this.grades.attributes.hasOwnProperty('name')) {
+        this.showProfData();
+      } else {
+        $(this.graphEl).html("Improper API syntax :(");
+        throw new Error("Improper grade API");
       }
-      $('.gradeGraph').html("<h3>Active: " + active.text().trim() +"</h3>");
     },
-    /*
-      returns the currently active subnav item
-    */
-    findActive : function() {
-      return this.$el.find('dl.sub-nav > dd.active');
+    showCourseData : function() {
+      $('.grade-tables').append(templates.grades.profTable({isMultipleProfs : true}));
+      var profGrades = this.grades.get('profs');
+      var context = {};
+      var profIds = [];
+      var profId;
+      //2nd for loop needed for sorting purposes...yep inefficient but w/e
+      for(profId in profGrades) {
+        profIds.push(profId);
+      }
+      profIds = profIds.sort();
+      //Generate each row's html
+      var outputHTML = '';
+      for(var i = 0, l = profIds.length; i < l; ++i) {
+        profId = profIds[i];
+        context = {
+          profId : profId,
+          department : this.department,
+          course : this.course,
+          name : profGrades[profId].name,
+          statistics : profGrades[profId].statistics
+        };
+        outputHTML += templates.grades.profTableEntry(context);
+      }
+      $('.grade-tables table > tbody').append(outputHTML);
     },
-    /*
-      Highlights subnav, then renders the graph for given jquery item
-    */
-    makeActive : function(jQueryItem) {
-      this.findActive().removeClass('active');
-      jQueryItem.addClass('active');
-      this.showData(jQueryItem);
+    showProfData : function() {
+      $('.grade-tables').append(templates.grades.profTable({isMultipleProfs : false}));
+      var context = {};
+      //Generate each row's html
+      var outputHTML = '';
+      var years = this.grades.get('years');
+      for(var year in years) {
+        var semesters = years[year].semesters;
+        for(var semester in semesters) {
+          var sections = semesters[semester].sections;
+          for(var section in sections) {
+            context = {
+              year : year,
+              semester : semester,
+              section : section,
+              gpa : sections[section].gpa,
+              A : sections[section].A,
+              B : sections[section].B,
+              C : sections[section].C,
+              D : sections[section].D,
+              F : sections[section].F,
+              W : sections[section].W,
+              size : sections[section].size
+            };
+            outputHTML += templates.grades.profTableEntry(context);
+          }
+        }
+      }
+      $('.grade-tables table > tbody').append(outputHTML);
     },
-    /*
-      Switches the graph to the clicked sub-nav item
-    */
-    switchTo : function(ev) {
+    changeTab : function(ev) {
       ev.stopPropagation();
       ev.preventDefault();
-      this.makeActive($(ev.target.parentNode));
+      var clicked = ev.target;
+      if(clicked.parentElement.className.indexOf('active') < 0) {
+        this.$el.find('.graphs > .tabs > dd.active').removeClass('active');
+        clicked.parentElement.className += " active";
+        this.renderGraph(clicked.getAttribute('href').replace('#',''));
+      }
+    },
+    renderGraph : function(type) {
+      alert("TYPE: " + type);
     }
   });
   return HistoricalGradesView;

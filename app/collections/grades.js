@@ -1,6 +1,6 @@
 define(['backbone'],
 function(Backbone) {
-  var Grades = Backbone.Collection.extend({
+  var GradesModel = Backbone.Model.extend({
     initialize: function(models, options) {
       this.urlParams = '';
       if(options.department) {
@@ -25,7 +25,7 @@ function(Backbone) {
       return res;
     }
   });
-  return Grades;
+  return GradesModel;
 });
 
 // var volvos = new SearchQuery([], {query:'volvo'});

@@ -11,12 +11,6 @@ ul.off-canvas-list li.has-form .button {
 .grey-line {
 	border: 1px solid gray;
 }
-.float-right{
-	float: right;
-}
-.float-left {
-	float: left;
-}
 .oscar-data li, .oscar-data button {
 	font-size: 0.75rem;
 }
@@ -30,7 +24,6 @@ button.addSection.tiny {
 .hide {
 	display: none;
 }
-
 /*
 	make container wider
 */
