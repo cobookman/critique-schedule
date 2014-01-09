@@ -1,5 +1,5 @@
-define(['jquery', 'handlebars', 'backbone', 'models/grades'],
-function($,        Handlebars,   Backbone,   GradesModel ) {
+define(['jquery', 'handlebars', 'backbone', 'models/grades', 'highcharts'],
+function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ) {
   var HistoricalGradesView = Backbone.View.extend({
     el : '.site-content',
     graphEl : '.graphs-content',
@@ -103,6 +103,7 @@ function($,        Handlebars,   Backbone,   GradesModel ) {
         outputHTML += templates.grades.profTableEntry(context);
       }
       $('.grade-tables table > tbody').append(outputHTML);
+      this.renderGraph();
     },
     showProfData : function() {
       $('.grade-tables').append(templates.grades.profTable({isMultipleProfs : false}));
@@ -133,6 +134,7 @@ function($,        Handlebars,   Backbone,   GradesModel ) {
         }
       }
       $('.grade-tables table > tbody').append(outputHTML);
+      this.renderGraph();
     },
     changeTab : function(ev) {
       ev.stopPropagation();
@@ -145,7 +147,26 @@ function($,        Handlebars,   Backbone,   GradesModel ) {
       }
     },
     renderGraph : function(type) {
-      alert("TYPE: " + type);
+      this.chart = new Highcharts.Chart({
+        chart: {
+          renderTo: 'grade-graphs'
+        },
+        legend : {
+          enabled : false
+        },
+        yAxis:  {
+          title: { text: 'GPA' }
+        },
+        xAxis: {
+          categories: ['2012 Spring', '2012 Summer', '2012 Fall']
+          },
+          title : {
+            text : ""
+          },
+          series: [{
+            data: [29.9, 71.5, 106.4]
+          }]
+      });
     }
   });
   return HistoricalGradesView;

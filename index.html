@@ -332,6 +332,9 @@
         {{#if course}} {{course}} {{/if}}
       </h3>
     </div>
+    <div id="grade-graphs">
+      <!-- Graphs will render here -->
+    </div>
     <div class="grade-tables">
       <!-- Tabular grade data generated here -->
     </div>
@@ -342,10 +345,9 @@
       their window.  As there's only one 'table' in this view
       inline style was used
     -->
-
     <div class="row collapse" style="overflow-x: scroll;">
       <div class="small-12 columns">
-        <table class="static-left-column">
+        <table>
           <thead>
             <tr>
               {{#if isMultipleProfs}}

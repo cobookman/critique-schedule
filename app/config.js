@@ -19,6 +19,7 @@ require.config({
     "foundation" : "../vendor/bower/foundation/js/foundation.min",
     "queryString" : "libraries/queryString",
     "highcharts" : "../vendor/highcharts/js/highcharts-all",
+
     //Views
     "views/nav" : "views/nav",
     "views/schedule" : "views/schedule",
@@ -57,8 +58,7 @@ require.config({
       deps: ["jquery", "modernizr"]
     },
     "highcharts" : {
-      deps: ["jquery"],
-      exports: "Highcharts"
+        exports: 'Highcharts'
     }
   }
 });
