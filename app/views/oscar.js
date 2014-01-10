@@ -47,7 +47,7 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
       }
     },
     render : function() {
-      this.$el.html(templates.oscar.main({title: this.title }));
+      this.$el.html(templates.oscar.main({department : this.department, course : this.course,semester : this.semester, year : this.year}));
       /* Schedule attached to right */
       this.scheduleView = new ScheduleView();
       /* Render Wrapper/main */
@@ -138,6 +138,9 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
       });
 
       function goAndRenderGrades() {
+        if(that.grades.attributes.hasOwnProperty('statistics')) {
+          $('.class-statistics.gpa.average').html(templates.oscar.gpaAverage(that.grades.toJSON()));
+        }
         for(var i = 0; i < that.oscar.length; ++i) {
           that.getSeatInfo(that.oscar.models[i].attributes.crn);
           renderGrade(that.oscar.models[i].attributes);

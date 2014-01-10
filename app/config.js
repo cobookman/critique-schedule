@@ -18,6 +18,7 @@ require.config({
     "modernizr" : "../vendor/bower/foundation/js/vendor/custom.modernizr",
     "foundation" : "../vendor/bower/foundation/js/foundation.min",
     "queryString" : "libraries/queryString",
+    "yearSemesterSort" : "libraries/yearSemesterSort",
     "highcharts" : "../vendor/highcharts/js/highcharts-all",
 
     //Views

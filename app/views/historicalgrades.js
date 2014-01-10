@@ -1,5 +1,5 @@
-define(['jquery', 'handlebars', 'backbone', 'models/grades', 'highcharts'],
-function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ) {
+define(['jquery', 'handlebars', 'backbone', 'models/grades', 'highcharts', 'libraries/yearSemesterSort'],
+function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  yearSemesterSort) {
   var HistoricalGradesView = Backbone.View.extend({
     el : '.site-content',
     graphEl : '.graphs-content',
@@ -103,7 +103,7 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ) {
         outputHTML += templates.grades.profTableEntry(context);
       }
       $('.grade-tables table > tbody').append(outputHTML);
-      this.renderGraph();
+      this.renderGraph(this.grades.get('statistics'));
     },
     showProfData : function() {
       $('.grade-tables').append(templates.grades.profTable({isMultipleProfs : false}));
@@ -118,7 +118,7 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ) {
           for(var section in sections) {
             context = {
               year : year,
-              semester : semester,
+              semester : semester[0].toUpperCase() + semester.substring(1).toLowerCase(),
               section : section,
               gpa : sections[section].gpa,
               A : sections[section].A,
@@ -134,7 +134,7 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ) {
         }
       }
       $('.grade-tables table > tbody').append(outputHTML);
-      this.renderGraph();
+      this.renderGraph(this.grades.get('statistics'));
     },
     changeTab : function(ev) {
       ev.stopPropagation();
@@ -146,26 +146,66 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ) {
         this.renderGraph(clicked.getAttribute('href').replace('#',''));
       }
     },
-    renderGraph : function(type) {
+    renderGraph : function(graphData, type) {
       this.chart = new Highcharts.Chart({
         chart: {
-          renderTo: 'grade-graphs'
+          renderTo: 'grade-graphs',
+          type: 'column',
         },
-        legend : {
+        title: {
+          text: null
+        },
+        xAxis : {
+          categories : ['A%','B%','C%','D%','F%','W%']
+        },
+        yAxis : {
+          min : 0,
+          title : {
+            text: null
+          },
+          gridLineWidth: 0,
+          minorGridLineWidth: 0
+        },
+        plotOptions : {
+          column : {
+            dataLabels: {
+              enabled: true,
+            }
+          }
+        },
+        legend:{
           enabled : false
         },
-        yAxis:  {
-          title: { text: 'GPA' }
+        tooltip : {
+          useHTML : true,
+          formatter : function() {
+            return this.x + ": " + this.y;
+          }
         },
-        xAxis: {
-          categories: ['2012 Spring', '2012 Summer', '2012 Fall']
-          },
-          title : {
-            text : ""
-          },
-          series: [{
-            data: [29.9, 71.5, 106.4]
-          }]
+        series : [{
+          name : "grade distribution",
+          data : [
+            {
+              y:  parseFloat(graphData.A),
+              color: '#4572A7'
+            },{
+              y: parseFloat(graphData.B),
+              color: '#AA4643'
+            }, {
+              y: parseFloat(graphData.C),
+              color: '#89A54E'
+            }, {
+              y: parseFloat(graphData.D),
+              color: '#80699B'
+            }, {
+              y: parseFloat(graphData.F),
+              color: '#3D96AE'
+            }, {
+              y: parseFloat(graphData.W),
+              color: '#DB843D'
+            }
+          ]
+        }]
       });
     }
   });
