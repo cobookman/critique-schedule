@@ -167,7 +167,9 @@
         </tr>
       </thead>
       <tbody>
-        <tr><td>7 am</td><td></td><td></td><td></td><td></td><td></td></tr>
+        <tr><td>7 am</td><td style="">
+          <div class="two-hour">HI WORLD<br>HI WORLD</div>
+        </td><td></td><td></td><td></td><td></td></tr>
         <tr><td>8 am</td><td></td><td></td><td></td><td></td><td></td></tr>
         <tr><td>9 am</td><td></td><td></td><td></td><td></td><td></td></tr>
         <tr><td>10 am</td><td></td><td></td><td></td><td></td><td></td></tr>
@@ -180,9 +182,14 @@
         <tr><td>5 pm</td><td></td><td></td><td></td><td></td><td></td></tr>
         <tr><td>6 pm</td><td></td><td></td><td></td><td></td><td></td></tr>
       </tbody>
+      </div>
     </table>
   </script>
-
+  <script type="text/template" id="template/sectionBox">
+    <div class="sectionBox {{crn}}" style="height: {{height}}; background: {{color}};margin-top: {{marginTop}};display: table-cell;">
+      {{name}}
+    </div>
+  </script>
   <script type="text/template" id="template/search">
     <div class="medium-8 columns main-content">
       <div class="row collapse">
@@ -288,12 +295,16 @@
         <div class="small-12 medium-9 columns">
           <div class="row collapse">
             <div class="small-3 columns">
-              <button data-crn="{{crn}}" class="tiny secondary addSection">Add Section: {{section}}</button>
+              <button data-crn="{{crn}}" data-year="{{../year}}" data-semester="{{../semester}}" data-department="{{../department}}" data-course="{{../course}}" class="tiny secondary addSection">Add Section: {{section}}</button>
             </div>
             <div class="small-9 columns" style="font-size:0.7rem;">
               <ul class="no-bullet">
               {{#each where}}
-                <li>{{day}}: {{#each time}} {{this}} - {{/each}} {{location}}<li>
+                {{#if day}}
+                  <li data-day="{{day}}" data-location="{{location}}" data-time="{{#each time}}{{this}} {{/each}}">{{day}}: {{#each time}} {{this}} - {{/each}} {{location}}</li>
+                {{else}}
+                  <li data-day="TBA">TBA</li>
+                {{/if}}
               {{/each}}
               </ul>
             </div>

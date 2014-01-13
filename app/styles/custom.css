@@ -67,6 +67,32 @@ span.gpa.average {
 	margin-top: 1rem;
 }
 /*
+	Styling for the schedule grid view.
+		13 rows, therefore 1 hour = 1/13 * 100%
+		aka: .one-hour : { height: calc(100% * 1/13) };
+*/
+.schedule-data > tbody > tr > td:not(:first-child) {
+	position:relative; 
+	vertical-align:top;
+	padding:0;
+}
+.schedule-data > tbody > tr > td > div {
+	position: absolute;
+	z-index: 1000;
+}
+.schedule-data > tbody > tr > td, .schedule-data > thead > tr > th {
+	height: 40px;
+	padding-top:0;
+	padding-bottom:0;
+	margin-top:0;
+	margin-bottom:0;
+	width: 16.6666%;
+}
+.sectionBox {
+	width: 16.6666%;
+}
+
+/*
 	Float fixed top right schedule correctly
 */
 .fixed-top-right{
