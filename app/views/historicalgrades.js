@@ -47,8 +47,8 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  year
         success : function() {
           var context = {
             profId : that.profId,
-            course : that.course,
-            department : that.department,
+            course : that.course.toCapital(),
+            department : that.department.toCapital(),
             user : that.user.toJSON(),
             grades : that.grades.toJSON(),
           };
@@ -118,7 +118,7 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  year
           for(var section in sections) {
             context = {
               year : year,
-              semester : semester[0].toUpperCase() + semester.substring(1).toLowerCase(),
+              semester : semester.toCapital(),
               section : section,
               gpa : sections[section].gpa,
               A : sections[section].A,
@@ -127,7 +127,7 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  year
               D : sections[section].D,
               F : sections[section].F,
               W : sections[section].W,
-              size : sections[section].size
+              size : sections[section].size.toCapital()
             };
             outputHTML += templates.grades.profTableEntry(context);
           }
@@ -183,7 +183,7 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  year
           }
         },
         series : [{
-          name : "grade distribution",
+          name : "Grade Distribution",
           data : [
             {
               y:  parseFloat(graphData.A),

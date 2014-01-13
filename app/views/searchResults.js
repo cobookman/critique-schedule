@@ -8,7 +8,7 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
     resultModels : [], //Used to store the search result models
     initialize : function(models, options) {
       this.year = options.year;
-      this.semester = options.semester;
+      this.semester = options.semester.toCapital();
       this.isLoading = false;
       this.query = options.query;
       this.searchQuery = new SearchQuery([], { query :  this.query, year : this.year, semester: this.semester});
@@ -36,7 +36,10 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
             var id =results.models[i].attributes._id;
             //attach the year/semester)
             results.models[i].attributes._source.year = that.year;
-            results.models[i].attributes._source.semester = that.semester;
+            results.models[i].attributes._source.semester = that.semester.toCapital();
+            //Capitalize...
+            results.models[i].attributes._source.department.code = results.models[i].attributes._source.department.code.toCapital();
+            results.models[i].attributes._source.name = results.models[i].attributes._source.name.toCapital();
             //render template
             html += that.resultTemplate(results.models[i].attributes._source);
           }

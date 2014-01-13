@@ -7,7 +7,7 @@ function($,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
     initialize : function(models, options) {
       this.loadTemplates();
       this.year = options.year;
-      this.semester = options.semester;
+      this.semester = options.semester.toCapital();
     },
     remove : function() {
       this.scheduleView.remove();

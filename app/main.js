@@ -2,8 +2,8 @@
 // assist with testing.
 require(["config"], function() {
   // Kick off the application.
-  require(["app", "router", 'views/nav', 'views/search', 'views/oscar', 'views/historicalgrades', 'models/user', 'libraries/validate'],
-  function(app,    Router,   NavView,    SearchView,      OscarView,     HistoricalGradeView,      User        ,  validate) {
+  require(["app", "router", 'views/nav', 'views/search', 'views/oscar', 'views/historicalgrades', 'models/user', 'libraries/validate', 'handlebars'],
+  function(app,    Router,   NavView,    SearchView,      OscarView,     HistoricalGradeView,      User        ,  validate, handlebars) { 
     //Get User Login Credentials
     var user = new User();
     user.fetch({
@@ -118,5 +118,5 @@ require(["config"], function() {
 
 /* Add string capitolize method */
 String.prototype.toCapital = function() {
-    return this.replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
+    return this.toLowerCase().replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
 };

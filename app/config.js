@@ -27,7 +27,8 @@ require.config({
     "views/search" : "views/search",
     "views/searchResults" : "views/searchResults",
     "views/oscar" : "views/oscar",
-
+    "views/scheduleSection" : "views/scheduleSection",
+    
     //Modules
     "models/user" : "models/user",
     "models/grades" : "models/grades",

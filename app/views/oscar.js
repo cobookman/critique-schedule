@@ -80,8 +80,12 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
               info is also loaded async.  This is to avoid race conditions
             */
             var context = {
-              year: that.year, semester: that.semester, department: that.department,
-              course: that.course, prof: prof, profId: that.getProfId(prof),
+              year: that.year,
+              semester: that.semester.toCapital(),
+              department: that.department.toCapital(),
+              course: that.course.toCapital(),
+              prof: prof.toCapital(),
+              profId: that.getProfId(prof),
               sections: profsTeaching[prof]
             };
             output.append(templates.oscar.section(context));
@@ -98,9 +102,9 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
     getSeatInfo : function(crn) {
       var options = {
         year: this.year,
-        semester : this.semester,
-        department : this.department,
-        course : this.course,
+        semester : this.semester.toCapital(),
+        department : this.department.toCapital(),
+        course : this.course.toCapital(),
         crn : crn
       };
       var that = this;
