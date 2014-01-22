@@ -13,7 +13,6 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
       this.department = options.department;
       this.course = options.course;
       this.title = this.semester.toCapital() + " " + this.year +": " + this.department + " " + this.course;
-
     },
     createCollections : function(options) {
       this.oscar = new OscarCollection([] , options);
@@ -68,7 +67,7 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
           */
           var profsTeaching = [];
           for(var i =0; i < that.oscar.length; ++i) {
-            var currModel = that.oscar.models[i].attributes;
+            var currModel = that.oscar.models[i].toJSON();
             if(typeof profsTeaching[currModel.prof] === 'undefined') {
               profsTeaching[currModel.prof] = [];
             }
@@ -110,7 +109,7 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
       var that = this;
       (new OscarCollection([], options)).fetch({
         success : function(seatInfo) {
-          $('.'+crn + '.seatInfo').html(templates.oscar.seatInfo(seatInfo.models[0].attributes));
+          $('.'+crn + '.seatInfo').html(templates.oscar.seatInfo(seatInfo.models[0].toJSON()));
         },
         error : function(r, s) {
           //TODO - Better Error Hanling
@@ -146,19 +145,20 @@ function($,        Backbone,    Handlebars,   Highcharts,   ScheduleView,     Os
           $('.class-statistics.gpa.average').html(templates.oscar.gpaAverage(that.grades.toJSON()));
         }
         for(var i = 0; i < that.oscar.length; ++i) {
-          that.getSeatInfo(that.oscar.models[i].attributes.crn);
-          renderGrade(that.oscar.models[i].attributes);
+          that.getSeatInfo(that.oscar.models[i].get('crn'));
+          renderGrade(that.oscar.models[i].toJSON());
         }
       }
       function renderGrade(oscarmodel) {
         var prof = oscarmodel.prof;
         var profId = that.getProfId(prof);
-        var profGrades = that.grades.attributes.profs[profId];
-        if(profGrades) {
-          var statistics = profGrades.statistics;
-          var years = profGrades.years;
+
+        var allGrades = that.grades.get('profs');
+        if(typeof allGrades !== 'undefined' && typeof allGrades[profId] !== 'undefined') {
+          var statistics = allGrades[profId].statistics;
+          var years = allGrades[profId].years;
           $('#'+profId+'-historical-grades').removeClass('hide');
-          $('.'+profId+'.gpa.average').html(templates.oscar.gpaAverage(profGrades));
+          $('.'+profId+'.gpa.average').html(templates.oscar.gpaAverage(allGrades[profId]));
         }
       }
     },

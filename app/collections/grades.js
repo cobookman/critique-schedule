@@ -22,7 +22,11 @@ function(Backbone) {
       // return '/app/api/grades' + this.urlParams;
     },
     parse : function(res, xhr) {
-      return res;
+      if(typeof res !== 'undefined' && res.length > 0) {
+        return res;
+      } else {
+        return false;
+      }
     }
   });
   return GradesModel;

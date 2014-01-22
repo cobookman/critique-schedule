@@ -11,6 +11,7 @@ function($,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
     },
     remove : function() {
       this.scheduleView.remove();
+      this.searchResults.remove();
       this.$el.empty();
       this.stopListening();
       return this;

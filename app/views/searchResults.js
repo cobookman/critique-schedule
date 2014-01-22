@@ -5,15 +5,20 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
     events : {
     },
     isViewSectionLoading : false, //used to stop touchstart and click from firing on mobile
-    resultModels : [], //Used to store the search result models
     initialize : function(models, options) {
       this.year = options.year;
       this.semester = options.semester.toCapital();
       this.isLoading = false;
       this.query = options.query;
       this.searchQuery = new SearchQuery([], { query :  this.query, year : this.year, semester: this.semester});
+      this.bindEvents();
+    },
+    bindEvents : function() {
       var that = this;
       $(document).on('scroll', function() { that.checkScroll.call(that); });
+    },
+    unbindEvents : function() {
+      $(document).off();
     },
     render : function() {
       this.loadResults();
@@ -32,16 +37,15 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
           //Populate template
           var html='';
           for(var i = 0; i < results.length; ++i) {
-            that.resultModels.push(results.models[i]);
-            var id =results.models[i].attributes._id;
+            var currModel = results.models[i].get('_source');
             //attach the year/semester)
-            results.models[i].attributes._source.year = that.year;
-            results.models[i].attributes._source.semester = that.semester.toCapital();
+            currModel.year = that.year;
+            currModel.semester = that.semester.toCapital();
             //Capitalize...
-            results.models[i].attributes._source.department.code = results.models[i].attributes._source.department.code.toCapital();
-            results.models[i].attributes._source.name = results.models[i].attributes._source.name.toCapital();
+            currModel.department.code = currModel.department.code.toCapital();
+            currModel.course = currModel.name;
             //render template
-            html += that.resultTemplate(results.models[i].attributes._source);
+            html += that.resultTemplate(currModel);
           }
           $(that.el).append(html);
           that.isLoading = false;
@@ -67,6 +71,8 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
       just want to empty, not remove el
     */
     remove : function() {
+      alert("REMOVING!");
+      this.unbindEvents();
       this.$el.empty();
       this.stopListening();
       return this;
