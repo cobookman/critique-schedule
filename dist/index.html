@@ -18,8 +18,11 @@
     <noscript>Please enable javascript</noscript>
     <div class="inner-wrap">
       <!-- Full Screen Navbar -->
-      <nav class="top-bar hide-for-small hide-for-medium NavView" data-topbar=""></nav>
+      <div class="sticky">
+        <nav class="top-bar hide-for-small hide-for-medium NavView" data-topbar></nav>
+      </div>
       <!-- Mobile Side Menu (top bar) -->
+      <div class="sticky">
       <nav class="tab-bar show-for-small-up hide-for-large-up NavView">
         <section class="left-small">
           <a class="left-off-canvas-toggle menu-icon" ><span></span></a>
@@ -28,6 +31,7 @@
           <h1 class="title">Course Scheduler</h1>
         </section>
       </nav>
+    </div>
       <!--Mobile side menu content (left pane which slides) -->
       <aside class="left-off-canvas-menu NavView"></aside>
       <!-- Main site content -->
@@ -37,8 +41,8 @@
     </div>
   </div>
   <!--
-    These templates are inline as they are required for
-    global styling
+    Templates are inline as they are small in size, and add
+    little overhead
   -->
   <script type="text/template" id="template/top-bar">
     <ul class="title-area">
@@ -49,58 +53,100 @@
     <section class="top-bar-section"> 
       <ul class="right">
         <li class="divider"></li>
-        <li class="has-dropdown not-click">
-          <a href="/schedule/{{schedules.selected.id}}">{{schedules.selected.name}}</a>
+        <li class="has-dropdown not-click schedulePicker">
+          <a href="#" data-schedule="{{schedules.selected.id}}">{{schedules.selected.semester}} {{schedules.selected.year}}: {{schedules.selected.name}}</a>
           <ul class="dropdown">
+            <li><a href="#newSchedule" data-schedule="" data-reveal-id="newScheduleModal">New</a></li>
             {{#each schedules.others}}
-            <li><a href="/schedule/{{id}}">{{name}}</a></li>
+            <li><a href="#changeSchedule" data-schedule="{{id}}">{{semester}} {{year}}: {{name}}</a></li>
             {{/each}}
           </ul>
         </li>
 
         <li class="divider"></li>
-        <li><a href="/watchedcourses/{{user.name}}">Watched Courses</a></li>
+        <li><a href="/watchedcourses/{{username}}">Watched Courses</a></li>
 
         <li class="divider"></li>
-        <li><a href="/calendar/{{user.name}}/{{schedules.selected.id}}">Calendar</a></li>
+        <li><a href="/calendar/{{username}}/{{schedules.selected.id}}">Calendar</a></li>
 
         <li class="divider"></li>
         <li class="has-dropdown not-click">
-          <a href="/course">Departments</a>
+          <a href="/{{schedules.selected.year}}/{{schedules.selected.semester}}/">Departments</a>
           <ul class="dropdown">
             {{#each departments}}
-              <li><a href="{{this.url}}">{{name}}</a></li>
+              <li><a href="/{{../schedules.selected.year}}/{{../schedules.selected.semester}}/{{this.code}}">{{name}}</a></li>
             {{/each}}
           </ul>
         </li>
 
-        <li class="active"><a href="/help">Login</a></li>
+        <li class="active"><a href="https://login.gatech.edu/cas/login?service=https://critique.gatech.edu">Login</a></li>
       </ul> <!-- Left Nav Section --> 
       <ul class="left">
       </ul>
     </section>
+
+    <div id="newScheduleModal" class="reveal-modal" data-reveal>
+      <h2>Create a new schedule</h2>
+      <form data-abide>
+        <div class="row">
+          <div class="large-12 columns">
+            <label for="newScheduleName">Name of Schedule</label>
+            <input type="text" name="name" id="newScheduleName" placeholder="gburdel's awesome schedule" required pattern="alpha_numeric">
+            <small class="error">Schedule name is a required field, and must be an alpha numeric string.</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-6 columns">
+            <label for="newSemesterSelect">Semester</label>
+            <select name="semester" id="newSemesterSelect" required pattern="Fall|Spring|Summer">
+              <option value="Fall">Fall</option>
+              <option value="Spring">Spring</option>
+              <option value="Summer">Summer</option>
+            </select>
+            <small class="error">Please choose one of the following:</small>
+          </div>
+          <div class="large-6 columns">
+            <label for="newYearSelect">Year</label>
+            <select name="year" id="newYearSelect" required pattern="\d{4}">
+              <option value="2014">2014</option>
+              <option value="2013">2013</option>
+              <option value="2012">2012</option>
+            </select>
+            <small class="error">Please choose one of the following:</small>
+          </div>
+        </div>
+        <div class="row">
+          <div class="large-12 columns">
+            <button type="submit" name="submit" class="button createNewSchedule">Create</button>
+          </div>
+        </div>
+      </form>
+      <a class="close-reveal-modal">&#215;</a>
+    </div>
   </script>
 
   <script type="text/template" id="template/left-off-canvas-menu">
     <ul class="off-canvas-list">
       <li><label>{{schedules.selected.name}}</label></li>
-      <li class="has-form" style="">
+      <li class="has-form">
+      <form action="search" method="get" class="searchbar">
         <div class="row collapse">
           <div class="small-9 columns">
-            <input type="text" placeholder="Search"></input>
+            <input type="text" placeholder="Search" class="search" name="query"></input>
           </div>
           <div class="small-3 columns">
-            <a href="#" class="small-2 button expand" style="">Search</a>
+            <button type="submit" class="button postfix">Search</button>
           </div>
         </div>
+      </form>
       </li>
-      <li><a href="/watchedcourses/{{user.name}}">Watched Courses</a></li>
-      <li><a href="/calendar/{{user.name}}/{{schedules.selected.id}}">Calendar</a></li>
-      <li><a href="/course">Course List</a></li>
+      <li><a href="/watchedcourses/{{username}}">Watched Courses</a></li>
+      <li><a href="/calendar/{{username}}/{{schedules.selected.id}}">Calendar</a></li>
+      <li><a href="/{{schedules.selected.year}}/{{schedules.selected.semester}}">Course List</a></li>
 
       <li><label>Settings</label></li>
-      <li><a href="/login">Login</a></li>
-      <li><a href="/schedule">Change Schedule</a></li>
+      <li><a href="https://login.gatech.edu/cas/login?service=https://critique.gatech.edu">Login</a></li>
+      <li><a href="#changeSchedule">Change Schedule</a></li>
       <li><a href="/contact">Contact Us</a></li>
       <li><a href="/about">About Us</a></li>
     </ul>
@@ -132,17 +178,22 @@
         <tr><td>5 pm</td><td></td><td></td><td></td><td></td><td></td></tr>
         <tr><td>6 pm</td><td></td><td></td><td></td><td></td><td></td></tr>
       </tbody>
+      </div>
     </table>
   </script>
-
+  <script type="text/template" id="template/sectionBox">
+    <div class="sectionBox" style="height: {{height}}; background: {{color}};margin-top: {{marginTop}};" data-crn="{{crn}}">
+      <b>{{name}}</b>
+    </div>
+  </script>
   <script type="text/template" id="template/search">
-    <div class="large-8 columns main-content">
-      <div class="row">
+    <div class="medium-8 columns main-content">
+      <div class="row collapse">
         <h3>What kind of class are you looking for</h3>
         <form action="search" method="get" class="searchbar">
           <div class="row collapse">
             <div class="small-10 medium-11 columns">
-              <input name="query" type="text" placeholder="E.g: Differential Equations" tabindex="1" autofocus>
+              <input name="query" type="text" placeholder="E.g: Differential Equations" tabindex="1" class="search" autofocus>
             </div>
             <div class="small-2 medium-1 columns">
               <button type="submit" class="button postfix">Search</button>
@@ -150,25 +201,239 @@
           </div>
         </form>
       </div>
-      <div class="row searchResults"></div>
+      <div class="row collapse searchResults">
+      </div>
     </div>
-    <div class="large-4 columns hide-for-small-up show-for-large-up">
+    <div class="medium-4 columns hide-for-small-up show-for-medium-up fixed-top-right">
+        <h3>Current Schedule</h3>
+        <div class="schedule">
+        </div>
+    </div>
+  </script>
+  <script type="text/template" id="template/searchResult">
+    <div class="row collapse">
+      <div class="row collapse">
+        <div class="small-12 medium-8 columns">
+          <h5><b><a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}">{{department.code}} {{number}} - {{course}}<a/></b></h5>
+          <p>{{description}}</p>
+          {{#each core_areas}} {{this}} {{/each}}
+        </div>
+        <div class="medium-4 columns hide-for-small-only">
+          <table class="table-condensed" align="right">
+          <thead>
+            <tr>
+              <th>μ</th>
+              <th>σ</th> 
+              <th>Q<sub>1</sub></th>
+              <th>Q<sub>2</sub></th>
+              <th>Q<sub>3</sub></th>
+              <th>Credits</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>{{grade.gpa.mean}}</td>
+              <td>{{grade.gpa.stddev}}</td>
+              <td>{{grade.gpa.q1}} </td>
+              <td>{{grade.gpa.q2}}</td>
+              <td>{{grade.gpa.q3}}</td>
+              <td>{{#each creditHours}} {{this}} {{/each}}</td>
+            </tr>
+          </tbody>
+          </table>
+          <div class="row collapse right hide-for-small-only">
+            <a href="/grades/{{department.code}}/{{number}}" class="small button secondary viewGrades">Grades</a>
+            <a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}" class="small button secondary viewSections">Sections</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row grey-line"></div>
+  </script>
+  <script type="text/template" id="template/oscar/main">
+    <div class="medium-6 columns main-content">
+      <div class="row collapse">
+        <h3>
+          <a id="class-statistics-historical-grades" href="/grades/{{department}}/{{course}}/" title="{{department}} {{course}} Grades">
+            {{year}} {{semester}}: {{department}} {{course}}
+            <span class="class-statistics gpa average"></span>
+          </a>
+        </h3>
+      </div>
+      <div class="row collapse oscar-data">
+        <!-- Departments, Sections, or Courses here -->
+        <h3>Parsing Oscar</h3>
+        <h4>this can take a few seconds</h4>
+        <img src="/app/img/loading.gif">
+
+      </div>
+    </div>
+
+    <div class="medium-6 columns hide-for-small-up show-for-medium-up fixed-top-right">
         <h3>Current Schedule</h3>
         <div class="row collapse schedule">
         </div>
     </div>
   </script>
-  <script type="text/template" id="template/searchResult">
-    <div>
-      
+  <script type="text/template" id="template/oscar/section">
+  <div class="row collapse sectionProf">
+    <div class="medium-9 columns">
+      <h6><strong>{{prof}}</strong><span class="{{profId}} gpa average"></span></h6>
+    </div>
+    <div class="medium-3 columns">
+      <a id="{{profId}}-historical-grades" href="/grades/{{department}}/{{course}}/{{profId}}" class="tiny button secondary right historical-grades hide">Historical Grades</a>
+    </div>
+  </div>
+
+  <div class="row collapse section-wrapper" >
+    {{#each sections}}
+      <div class="row section">
+        <div class="small-12 medium-9 columns">
+          <div class="row collapse">
+            <div class="small-3 columns">
+              <button data-crn="{{crn}}" data-year="{{../year}}" data-semester="{{../semester}}" data-department="{{../department}}" data-course="{{../course}}" class="tiny secondary addSection">Add Section: {{section}}</button>
+            </div>
+            <div class="small-9 columns" style="font-size:0.7rem;">
+              <ul class="no-bullet">
+              {{#each where}}
+                {{#if day}}
+                  <li data-day="{{day}}" data-location="{{location}}" data-time="{{#each time}}{{this}} {{/each}}">{{day}}: {{#each time}} {{this}} - {{/each}} {{location}}</li>
+                {{else}}
+                  <li data-day="TBA">TBA</li>
+                {{/if}}
+              {{/each}}
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="medium-3 columns hide-for-small-only {{crn}} seatInfo">
+        </div>
+      </div>
+    {{/each}}
+  </div>
+
+  </script>
+  <script type="text/template" id="template/oscar/seatInfo">
+    <ul class="no-bullet right">
+      <li>Actual: {{seats.actual}}/{{seats.capacity}}</li>
+      <li>Waitlist: {{waitlist.actual}}/{{waitlist.capacity}}</li>
+    </ul>
+  </script>
+  <script type="text/template" id="template/oscar/gpaAverage">
+    μ: {{statistics.gpa.mean}}
+    σ:{{statistics.gpa.stddev}} 
+    Q<sub>2</sub>: {{statistics.gpa.q2}}
+  </script>
+  <script type="text/template" id="template/oscar/gpaPercentages">
+    A: {{statistics.A}}%
+    B: {{statistics.B}}%
+    C: {{statistics.C}}%
+    D: {{statistics.D}}%
+    F: {{statistics.F}}%
+    W: {{statistics.W}}%
+  </script>
+  <script type="text/template" id="template/grades/wrapper">
+    <!--
+      the grade-tables have a max width of 750px...which messes up centering on larger 
+      screens. therefore I just forced all the cells to never be larger than
+      the table 
+    -->
+    <div class="row collapse">
+      <div class="small-12 medium-9 large-8"  style="margin: 0 auto; max-width: 750px;">
+        <h3>Grades For: 
+          {{#if prof}} {{prof}} {{#if department}}, {{/if}}{{/if}}
+          {{#if department}} {{department}} {{/if}}
+          {{#if course}} {{course}} {{/if}}
+        </h3>
+      </div>
+    </div>
+    <div class="row collapse">
+      <div class="medium-12 large-8" id="grade-graphs" style="margin: 0 auto; max-width: 750px; height: 300px;">
+      <!-- Graphs will render here -->
+      </div>
+    </div>
+    <div class="row collapse">
+      <div class="medium-12 large-8 grade-tables" style="margin: 0 auto;">
+      <!-- Tabular grade data generated here -->
+      </div>
     </div>
   </script>
+  <script type="text/template" id="template/grades/profTable">
+    <!--
+      Must force the table to center, as while div is centered, the table does not take up the full width
+    -->
+    <table style="margin: 0 auto;">
+      <thead>
+        <tr>
+          {{#if isMultipleProfs}}
+            <th></th>
+            <th>GPA</th>
+            <th>Median</th>
+            <th>σ</th>
+            <th>A</th>
+            <th>B</th>
+            <th>C</th>
+            <th>D</th>
+            <th>F</th>
+            <th>W</th>
+          {{else}}
+            <th>Year</th>
+            <th>Semester</th>
+            <th>Section</th>
+            <td>GPA</td>
+            <td>A</td>
+            <td>B</td>
+            <td>C</td>
+            <td>D</td>
+            <td>F</td>
+            <td>W</td>
+            <td>Size</td>
+          {{/if}}
+        </tr>
+      </thead>
+      <tbody>
+      </tbody>
+    </table>
+  </script>
+  <script type="text/template" id="template/grades/profTable-entry">
+    <tr>
+      {{#if statistics}}
+        <td><a href="/grades/{{department}}/{{course}}/{{profId}}">{{name}}</a></td>
+        <td>{{statistics.gpa.mean}}</td>
+        <td>{{statistics.gpa.q2}}</td>
+        <td>{{statistics.gpa.stddev}}</td>
+        <td>{{statistics.A}}%</td>
+        <td>{{statistics.B}}%</td>
+        <td>{{statistics.C}}%</td>
+        <td>{{statistics.D}}%</td>
+        <td>{{statistics.F}}%</td>
+        <td>{{statistics.W}}%</td>
+      {{else}}
+        <td>{{year}}</td>
+        <td>{{semester}}</td>
+        <td>{{section}}</td>
+        <td>{{gpa}}</td>
+        <td>{{A}}%</td>
+        <td>{{B}}%</td>
+        <td>{{C}}%</td>
+        <td>{{D}}%</td>
+        <td>{{F}}%</td>
+        <td>{{W}}%</td>
+        <td>{{size}}</td>
+      {{/if}}
+    </tr>
+  </script>
   <script>
-    //place to store rendered templates
+    //place to store rendered templates 
     var templates = {};
+    //make sure that the side mobile nav is at least the full window height
+    (function() {
+      document.getElementsByClassName('inner-wrap')[0].style.minHeight = window.innerHeight + 'px';
+    })();
   </script>
 
   <!-- Application source. -->
   <script data-main="/app/main" src="/source.min.js"></script>
 </body>
 </html>
+  

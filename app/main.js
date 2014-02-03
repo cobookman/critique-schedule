@@ -3,7 +3,7 @@
 require(["config"], function() {
   // Kick off the application.
   require(["app", "router", 'views/nav', 'views/search', 'views/oscar', 'views/historicalgrades', 'models/user', 'libraries/validate', 'handlebars'],
-  function(app,    Router,   NavView,    SearchView,      OscarView,     HistoricalGradeView,      User        ,  validate, handlebars) { 
+  function(app,    Router,   NavView,    SearchView,      OscarView,     HistoricalGradeView,      User        ,  validate, handlebars) {
     //Get User Login Credentials
     var user = new User();
     user.fetch({
@@ -93,24 +93,24 @@ require(["config"], function() {
     Backbone.history.start({ pushState: true, root: app.root });
     // Allow links to re-direct page
     $(document).on("click", "a[href^='/']", function(event) {
-        if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
-            event.preventDefault();
-            var url = $(event.currentTarget).attr("href").replace(/^\//, "");
-            //Route to only new url paths, only issue with pages such-as '/search'
-            if(Backbone.history.fragment !== url) {
-                if(app.views.current && app.views.current.remove) {
-                    app.views.current.remove();
-                }
-                app.router.navigate(url, { trigger: true });
-                /*
-                    Sometimes when rendering a new page, 
-                    the document is not scrolled to the top.
-                    this ensures that all navigation brings the user
-                    to the top of the page
-                */
-                $("html,body").scrollTop(0);
-            }
+      if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
+        event.preventDefault();
+        var url = $(event.currentTarget).attr("href").replace(/^\//, "");
+        //Route to only new url paths, only issue with pages such-as '/search'
+        if(Backbone.history.fragment !== url) {
+          if(app.views.current && app.views.current.remove) {
+              app.views.current.remove();
+          }
+          app.router.navigate(url, { trigger: true });
+          /*
+              Sometimes when rendering a new page, 
+              the document is not scrolled to the top.
+              this ensures that all navigation brings the user
+              to the top of the page
+          */
+          $("html,body").scrollTop(0);
         }
+      }
     });
 
   });
@@ -120,3 +120,5 @@ require(["config"], function() {
 String.prototype.toCapital = function() {
     return this.toLowerCase().replace( /(^|\s)([a-z])/g , function(m,p1,p2){ return p1+p2.toUpperCase(); } );
 };
+
+

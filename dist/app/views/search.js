@@ -1,46 +1,60 @@
 define(['jquery', 'backbone', 'queryString', 'views/schedule', 'views/searchResults'],
-function(jquery,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
+function($,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
   var SearchView = Backbone.View.extend({
     el : '.site-content',
     events : {
-      'submit .searchbar' : 'runQuery'
     },
-    render : function() {
-      //TODO - Remove this if, and pre-cache
-      if(typeof templates.search === 'undefined') {
+    initialize : function(models, options) {
+      this.loadTemplates();
+      this.year = options.year;
+      this.semester = options.semester.toCapital();
+    },
+    remove : function() {
+      this.scheduleView.remove();
+      this.searchResults.remove();
+      this.$el.empty();
+      this.stopListening();
+      return this;
+    },
+    //TODO - Remove this once pre-cache of templates done
+    loadTemplates : function() {
+       if(typeof templates.search === 'undefined') {
         templates.search = document.getElementById('template/search').innerHTML;
       }
-      //Load Search Template, and the search view has a schedule view on right hand side
-      this.$el.html(templates.search);
-      var scheduleView = new ScheduleView();
-      scheduleView.render();
     },
-    runQuery : function(event) {
-      event.preventDefault();
-      var query = this.getQuery();
-      if(query.length > 1) {
-        history.pushState({}, "", 'search?query='+query);
+    render : function() {
+      //Load Search Template (schedule view attached on left hand side)
+      this.$el.html(templates.search);
+      this.scheduleView = new ScheduleView();
+      this.scheduleView.render();
+    },
+    runQuery : function(query) {
+      if(query.length > 0) {
         this.removeOldResults();
-        this.searchResults = new SearchResults([], {query : 'math'});
+        this.query = query;
+        this.setInputValue(query);
+        this.searchResults = new SearchResults([], { query: query, year: this.year, semester : this.semester});
         this.searchResults.render();
       }
     },
-    getQuery : function() {
-      var query = '';
-      var searchBarQuery = document.querySelector('.searchbar input').value.trim();
-      var urlParams = queryString.parse();
-      if(searchBarQuery.length > 1) {
-        query = searchBarQuery;
-      } else if(urlParams.hasOwnProperty('query') && urlParams.query.trim().length > 1) {
-        query = urlParams.query.trim();
+    setInputValue : function(data) {
+      $('.search').val(data);
+    },
+    getQuery : function(event) {
+      var target = event.originalEvent.target;
+      for(var i =0, l = target.length; i<l; ++i) {
+        if(target[i].value && target[i].value.trim().length >0) {
+          return target[i].value.trim();
+        }
       }
-      return query;
+    },
+    urlString : function(query) {
+      return encodeURIComponent(query);
     },
     removeOldResults : function() {
       if(typeof this.searchResults !== 'undefined') {
-        alert("this isn't triggering...right?");
-        this.searchResults.destroy();
-        this.searchResults.unbind();
+        this.searchResults.remove();
+        this.searchResults = null;
       }
     }
   });

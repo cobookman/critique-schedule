@@ -19,7 +19,9 @@ define([], function() {
     stringify: function(obj) {
       var encoded = '?';
       for(var el in obj) {
-        encoded += el + '=' + obj[el] +'&';
+        if(obj.hasOwnProperty(el)) {
+          encoded += el + '=' + obj[el] +'&';
+        }
       }
       encoded = encoded.slice(0, -1); //remove trailing &
       return encoded;

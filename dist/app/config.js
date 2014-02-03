@@ -18,15 +18,25 @@ require.config({
     "modernizr" : "../vendor/bower/foundation/js/vendor/custom.modernizr",
     "foundation" : "../vendor/bower/foundation/js/foundation.min",
     "queryString" : "libraries/queryString",
+    "yearSemesterSort" : "libraries/yearSemesterSort",
+    "highcharts" : "../vendor/highcharts/js/highcharts-all",
+
     //Views
     "views/nav" : "views/nav",
     "views/schedule" : "views/schedule",
     "views/search" : "views/search",
     "views/searchResults" : "views/searchResults",
+    "views/oscar" : "views/oscar",
+    "views/scheduleSection" : "views/scheduleSection",
+    "views/sectionPopup" : "views/sectionPopup",
+    
     //Modules
-    "modules/user" : "modules/user",
+    "models/user" : "models/user",
+    "models/grades" : "models/grades",
+
     //Collections
-    "collections/searchQuery" : "collections/searchQuery"
+    "collections/searchQuery" : "collections/searchQuery",
+    "collections/oscar" : "collections/oscar"
 
   },
 
@@ -49,6 +59,9 @@ require.config({
     },
     "foundation" : {
       deps: ["jquery", "modernizr"]
+    },
+    "highcharts" : {
+        exports: 'Highcharts'
     }
   }
 });

@@ -6,7 +6,7 @@
     -The mobile slide out menu (For smaller screens)
 */
 define(['jquery', 'handlebars', 'foundation', 'backbone'],
-function(jquery,   Handlebars,   foundation,   Backbone) {
+function($,   Handlebars,   foundation,   Backbone) {
   alert("Included");
   var NavView = Backbone.View.extend({
     className : 'NavView',
@@ -26,8 +26,8 @@ function(jquery,   Handlebars,   foundation,   Backbone) {
           ]
         },
         departments : [
-          {url : '/course/math', name: "Mathamatics"},
-          {url : '/course/ece', name: "Electrical and Computer Engineering"}
+          {code : 'math', name: "Mathamatics"},
+          {code : 'ece', name: "Electrical and Computer Engineering"}
         ],
         user : {
           name : 'cbookman3'

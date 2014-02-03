@@ -8,11 +8,114 @@ ul.off-canvas-list li.has-form .button {
   height: 37px;
   border-bottom: 0;
 }
-html, body, .off-canvas-wrap, .inner-wrap, .site-content, .main-content {
-	height: 100%;
+.grey-line {
+	border: 1px solid gray;
 }
-.searchResults {
-	height: calc(100% - 250px);
-	overflow-y: auto;
-	overflow-x: hidden;
+.oscar-data li, .oscar-data button {
+	font-size: 0.75rem;
+}
+.addSection {
+	margin-left: -0.9375rem;
+	margin-bottom: 0;
+}
+button.addSection.tiny {
+	padding: 0.75rem;
+}
+.hide {
+	display: none;
+}
+/*
+	make container wider
+*/
+.row {
+	max-width: 80em	;
+}
+
+.table-condensed > thead > tr > th,
+.table-condensed > tbody > tr > th,
+.table-condensed > tfoot > tr > th,
+.table-condensed > thead > tr > td,
+.table-condensed > tbody > tr > td, 
+.table-condensed > tfoot > tr > td,
+.table-condensed tr th,
+.table-condensed tr td {
+	padding: 0.25rem;
+}
+span.gpa.average {
+	padding-left: 1.5rem;
+}
+.searchResults p {
+	font-size: 0.9rem;
+}
+.searchResults table, .searchResults a.button, .searchResults p {
+	margin-bottom: 0.5rem;
+}
+.historical-grades {
+	margin-bottom: 0;
+}
+
+.section ul {
+	margin-bottom: 0;
+}
+.section {
+	border-left: 1px solid black;
+	border-right: 1px solid black;
+	border-bottom: 1px solid black;
+}
+.sectionProf.row.collapse {
+	border-bottom: 1px solid black;
+	margin-top: 1rem;
+}
+/*
+	Styling for the schedule grid view.
+		13 rows, therefore 1 hour = 1/13 * 100%
+		aka: .one-hour : { height: calc(100% * 1/13) };
+*/
+.schedule-data > tbody > tr > td:not(:first-child) {
+	position:relative; 
+	vertical-align:top;
+	padding:0;
+}
+.schedule-data > tbody > tr > td > div {
+	position: absolute;
+	z-index: 1000;
+}
+.schedule-data > tbody > tr > td, .schedule-data > thead > tr > th {
+	height: 40px;
+	padding-top:0;
+	padding-bottom:0;
+	margin-top:0;
+	margin-bottom:0;
+	width: 16.6666%;
+}
+.sectionBox {
+	width: 16.6666%;
+	text-align: center;
+	color: #FFFFFF;
+}	
+
+/*
+	Float fixed top right schedule correctly
+*/
+.fixed-top-right{
+	position: fixed;
+	top:45px;
+}
+.medium-6.fixed-top-right {
+	margin-left:calc(80rem*6/12);
+	width: calc(80rem*6/12);
+}
+.medium-4.fixed-top-right {
+	margin-left: calc(80rem*8/12);
+	width: calc(80rem*4/12);
+}
+@media(max-width:80rem) {
+	.medium-4.fixed-top-right {
+		margin-left:66.6666%;
+		width: 33.333%;
+	}
+	.medium-6.fixed-top-right {
+		margin-left:50%;
+		width:50%;
+	}
 }

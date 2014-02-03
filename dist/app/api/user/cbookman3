@@ -1,0 +1,22 @@
+{
+  "schedules" : {
+    "selected" : {
+        "semester" : "Fall",
+        "year" : "2013",
+        "name" : "Colin's Schedule",
+        "id" : "colinschedule"
+    },
+    "others" : [
+      {"name": "my spring", "year" : "2013", "semester" : "Spring", "id" : "temp"},
+      {"name" : "oldstuff", "year" : "2012", "semester" : "Fall", "id" : "temp2"},
+      {"name" : "my summer", "year" : "2013", "semester" : "Summer", "id" : "temp3"},
+      {"name" : "shweet", "year" : "2013", "semester" : "Fall", "id" : "temp4"}
+
+    ]
+  },
+  "departments" : [
+    {"code" : "math", "name": "Mathamatics"},
+    {"code" : "ece", "name": "Electrical and Computer Engineering"}
+  ],
+  "username" : "cbookman3"
+}

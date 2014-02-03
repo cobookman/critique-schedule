@@ -1,7 +1,10 @@
-define(['jquery', 'backbone', 'handlebars', 'collections/oscar', 'views/scheduleSection'],
-function($,   Backbone, Handlebars, OscarCollection, ScheduleSection) {
+define(['jquery', 'backbone', 'handlebars', 'collections/oscar', 'views/scheduleSection', 'views/sectionPopup'],
+function($,   Backbone, Handlebars, OscarCollection, ScheduleSection, SectionPopup) {
   var ScheduleView = Backbone.View.extend({
     el : '.schedule',
+    events : {
+      'mouseover div.sectionBox' : 'sectionBoxHover',
+    },
     initialize : function() {
       this.bindEvents();
       this.color = new this.randomColor();
@@ -93,6 +96,18 @@ function($,   Backbone, Handlebars, OscarCollection, ScheduleSection) {
           return colorList[index++];
         }
       };
+    },
+    sectionBoxHover : function(ev) {
+      ev.preventDefault();
+      ev.stopPropagation();
+      //Don't re-show pop-up, and only trigger if inside the containing div, not its child elms
+      if(ev.target.getAttribute('data-showing') === true || ev.target.nodeName.toUpperCase() !== 'DIV') {
+        return;
+      } else {
+        ev.target.setAttribute('data-showing', true);
+        //Self destructing
+        (new SectionPopup({user: this.user}, {crn: ev.target.getAttribute('data-crn'), el: ev.target})).render();
+      }
     }
   });
   return ScheduleView;

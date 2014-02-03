@@ -18,7 +18,7 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
       $(document).on('scroll', function() { that.checkScroll.call(that); });
     },
     unbindEvents : function() {
-      $(document).off();
+      $(document).off('scroll');
     },
     render : function() {
       this.loadResults();
@@ -71,7 +71,6 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
       just want to empty, not remove el
     */
     remove : function() {
-      alert("REMOVING!");
       this.unbindEvents();
       this.$el.empty();
       this.stopListening();
