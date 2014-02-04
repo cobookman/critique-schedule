@@ -100,12 +100,11 @@ function($,   Backbone, Handlebars, OscarCollection, ScheduleSection, SectionPop
     sectionBoxHover : function(ev) {
       ev.preventDefault();
       ev.stopPropagation();
-      //Don't re-show pop-up, and only trigger if inside the containing div, not its child elms
-      if(ev.target.getAttribute('data-showing') === true || ev.target.nodeName.toUpperCase() !== 'DIV') {
-        return;
-      } else {
+      //only show pop-up if Its not been triggered before, 
+      //and target is inside the containing wrapper divs, not its child elms
+      if(!$(ev.target).data('data-showing') && ev.target.className.match('sectionBox')) {
         ev.target.setAttribute('data-showing', true);
-        //Self destructing
+        //Self destructing View
         (new SectionPopup({user: this.user}, {crn: ev.target.getAttribute('data-crn'), el: ev.target})).render();
       }
     }

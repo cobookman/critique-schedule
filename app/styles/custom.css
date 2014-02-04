@@ -76,10 +76,6 @@ span.gpa.average {
 	vertical-align:top;
 	padding:0;
 }
-.schedule-data > tbody > tr > td > div {
-	position: absolute;
-	z-index: 1000;
-}
 .schedule-data > tbody > tr > td, .schedule-data > thead > tr > th {
 	height: 40px;
 	padding-top:0;
@@ -89,11 +85,25 @@ span.gpa.average {
 	width: 16.6666%;
 }
 .sectionBox {
+	position: absolute;
 	width: 16.6666%;
 	text-align: center;
 	color: #FFFFFF;
 }	
-
+.popup {
+	margin-top: 50px;
+	left:0;
+	width:150px;
+	display: block;
+	visibility: visible;
+	text-align: left;
+	z-index: 1000;
+}
+.popup ul {
+	list-style: none;
+	line-height: 1rem;
+	margin:0;
+}
 /*
 	Float fixed top right schedule correctly
 */

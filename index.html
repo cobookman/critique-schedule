@@ -188,6 +188,27 @@
       <b>{{name}}</b>
     </div>
   </script>
+  <script type="text/template" id="template/sectionPopup">
+    <div class="joyride-tip-guide popup">
+      <div class="nub">
+        <span class="joyride-nub top"></span>
+      </div>
+      <!-- Hack: alows for mouse curser to move down to the
+           popup w/o having to go through the tiny up arrow -->
+      <div style="width:150px; height:10px; margin-top:-20px; overflow:hide;">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+      <div data-showing="false" class="joyride-content-wrapper" style="margin-top:20px;">
+        <ul>
+          <li>CRN: {{crn}}</li>
+          <li><td>Prof: {{prof}}</li>
+          <li><td>Time: {{time}}</li>
+          <li><a href="/{{year}}/{{semester}}/{{department}}/{{number}}">Other Sections</a></li>
+          <li><button data-crn="{{crn}}" class="button small alert removeSection">Remove</button></li>
+        </ul>
+      </div>
+    </div>
+  </script>
   <script type="text/template" id="template/search">
     <div class="medium-8 columns main-content">
       <div class="row collapse">
