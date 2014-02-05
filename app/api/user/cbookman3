@@ -1,8 +1,8 @@
 {
   "schedules" : {
     "selected" : {
-        "semester" : "Fall",
-        "year" : "2013",
+        "semester" : "Spring",
+        "year" : "2014",
         "name" : "Colin's Schedule",
         "id" : "colinschedule"
     },

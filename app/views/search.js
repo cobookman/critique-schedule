@@ -5,9 +5,9 @@ function($,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
     events : {
     },
     initialize : function(models, options) {
+      this.user = models.user;
       this.loadTemplates();
-      this.year = options.year;
-      this.semester = options.semester.toCapital();
+      this.user.bind('change', this.render, this);
     },
     remove : function() {
       if(this.scheduleView) { //Just in case the scheduleView dies and burns to death!!!
@@ -18,6 +18,7 @@ function($,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
       }
       this.$el.empty();
       this.stopListening();
+      this.user.unbind("change", this.render);
       return this;
     },
     //TODO - Remove this once pre-cache of templates done
@@ -37,7 +38,12 @@ function($,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
         this.removeOldResults();
         this.query = query;
         this.setInputValue(query);
-        this.searchResults = new SearchResults([], { query: query, year: this.year, semester : this.semester});
+        var schedules = this.user.get('schedules');
+        this.searchResults = new SearchResults([], {
+          query: query,
+          year: schedules.selected.year,
+          semester : schedules.selected.semester.toCapital()
+        });
         this.searchResults.render();
       }
     },
