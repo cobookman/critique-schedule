@@ -2,8 +2,8 @@
 // assist with testing.
 require(["config"], function() {
   // Kick off the application.
-  require(["app", "router", 'views/nav', 'views/search', 'views/oscar', 'views/historicalgrades', 'models/user', 'libraries/validate', 'handlebars'],
-  function(app,    Router,   NavView,    SearchView,      OscarView,     HistoricalGradeView,      User        ,  validate, handlebars) {
+  require(["app", "router", 'views/nav', 'views/search', 'views/oscar', 'views/historicalgrades', 'views/calendar', 'models/user', 'libraries/validate', 'handlebars'],
+  function(app,    Router,   NavView,    SearchView,      OscarView,     HistoricalGradeView,      CalendarView,     User        ,  validate,             handlebars) {
     //Get User Login Credentials
     var user = new User();
     user.fetch({
@@ -27,7 +27,9 @@ require(["config"], function() {
     */
     app.router = new Router();
     //Create object to store our views in
-    app.views = {};
+    app.views = {
+        current : null //the current view goes here
+    };
     app.router.on('route:search', function(year, semester, query) {
         var m = { year : 2013, semester : 'fall' };
         if(typeof year !== 'undefined' && typeof semester !== 'undefined') {
@@ -73,14 +75,14 @@ require(["config"], function() {
         app.views.current.render();
     });
     app.router.on('route:grades', function(department, course, profId) {
-        app.views.current = new HistoricalGradeView([], {user: user, department: department, course : course, profId: profId});
+        app.views.current = new HistoricalGradeView({user : user}, {department: department, course : course, profId: profId});
         app.views.current.render();
     });
     app.router.on('route:watchedcourses', function(username) {
         alert("IN WATCHED COURSES"); //CHECK
     });
     app.router.on('route:calendar', function(username, schedulename) {
-        alert("IN CALENDAR");
+        app.views.current = new CalendarView({}, {username : username, schedulename : schedulename});
     });
     app.router.on('route:contact', function() {
         alert("Contact us!!");
@@ -92,34 +94,26 @@ require(["config"], function() {
     // root folder to '/' by default.  Change in app.js.
     Backbone.history.start({ pushState: true, root: app.root });
     // Allow links to re-direct page
-    bindLinks();
-    // Need to re-bind on a popstate
-    $(window).on('popstate', function() {
-        bindLinks();
-    });
-    
-    function bindLinks() {
-      $(document).on("click", "a[href^='/']", function(event) {
-        if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
-          event.preventDefault();
-          var url = $(event.currentTarget).attr("href").replace(/^\//, "");
-          //Route to only new url paths, only issue with pages such-as '/search'
-          if(Backbone.history.fragment !== url) {
-            if(app.views.current && app.views.current.remove) {
-                app.views.current.remove();
-            }
-            app.router.navigate(url, { trigger: true });
-            /*
-                Sometimes when rendering a new page, 
-                the document is not scrolled to the top.
-                this ensures that all navigation brings the user
-                to the top of the page
-            */
-            $("html,body").scrollTop(0);
+    $(document).on("click", "a[href^='/']", function(event) {
+      if (!event.altKey && !event.ctrlKey && !event.metaKey && !event.shiftKey) {
+        event.preventDefault();
+        var url = $(event.currentTarget).attr("href").replace(/^\//, "");
+        //Route to only new url paths, only issue with pages such-as '/search'
+        if(Backbone.history.fragment !== url) {
+          if(app.views.current && app.views.current.remove) {
+              app.views.current.remove();
           }
+          app.router.navigate(url, { trigger: true });
+          /*
+              Sometimes when rendering a new page, 
+              the document is not scrolled to the top.
+              this ensures that all navigation brings the user
+              to the top of the page
+          */
+          $("html,body").scrollTop(0);
         }
-      });
-    }
+      }
+    });
 
   });
 });

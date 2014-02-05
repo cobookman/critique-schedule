@@ -29,6 +29,7 @@ require.config({
     "views/oscar" : "views/oscar",
     "views/scheduleSection" : "views/scheduleSection",
     "views/sectionPopup" : "views/sectionPopup",
+    "views/calendar" : "views/calendar",
     
     //Modules
     "models/user" : "models/user",

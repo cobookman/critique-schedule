@@ -21,10 +21,22 @@ function($,   Handlebars,   foundation, Backbone) {
         var that = this;
         setTimeout(function() { that.touchTriggered = false;}, 100);
 
-        var scheduleID = ev.currentTarget.getAttribute('data-schedule');
+        var scheduleId = ev.currentTarget.getAttribute('data-schedule');
 
-        this.user.changeSelectedSchedule(scheduleID);
+        this.user.changeSelectedSchedule(scheduleId);
       }
+    },
+    deleteSchedule : function(ev) {
+      ev.preventDefault();
+      if(!this.touchTriggered) {
+        this.touchTriggered = true;
+        var that = this;
+        setTimeout(function() { that.touchTriggered=false; }, 100);
+
+        var scheduleId = ev.currentTarget.getAttribute('data-schedule');
+
+        this.user.deleteSchedule(scheduleId);
+      }      
     },
     newSchedule : function(ev) {
       ev.stopPropagation();
@@ -61,6 +73,7 @@ function($,   Handlebars,   foundation, Backbone) {
     bindEvents : function() {
       var that = this;
       $('a[href="#changeSchedule"]').on('click touchstart', function(ev) { that.changeSchedule(ev); });
+      $('a[href="#deleteSchedule"]').on('click touchstart', function(ev) { that.deleteSchedule(ev); });
       $('#newScheduleModal > form').on('valid invalid submit', function(ev) { that.newSchedule(ev); });
       //Commented out line below as event as event is auto-handled by foundation
       // $('a[href="#newSchedule"]').on('click touchstart', function(ev) { that.newSchedule(ev); });
@@ -68,6 +81,7 @@ function($,   Handlebars,   foundation, Backbone) {
     unbind : function() {
       this.user.off(null, null, this);
       $('a[href="#changeSchedule"]').off();
+      $('a[href="#deleteSchedule"]').off();
       $('input.createNewSchedule').off();
     }
   });

@@ -2,8 +2,8 @@
 // assist with testing.
 require(["config"], function() {
   // Kick off the application.
-  require(["app", "router", 'views/nav', 'views/search', 'views/oscar', 'views/historicalgrades', 'models/user', 'libraries/validate', 'handlebars'],
-  function(app,    Router,   NavView,    SearchView,      OscarView,     HistoricalGradeView,      User        ,  validate, handlebars) {
+  require(["app", "router", 'views/nav', 'views/search', 'views/oscar', 'views/historicalgrades', 'views/calendar', 'models/user', 'libraries/validate', 'handlebars'],
+  function(app,    Router,   NavView,    SearchView,      OscarView,     HistoricalGradeView,      CalendarView,     User        ,  validate,             handlebars) {
     //Get User Login Credentials
     var user = new User();
     user.fetch({
@@ -27,7 +27,9 @@ require(["config"], function() {
     */
     app.router = new Router();
     //Create object to store our views in
-    app.views = {};
+    app.views = {
+        current : null //the current view goes here
+    };
     app.router.on('route:search', function(year, semester, query) {
         var m = { year : 2013, semester : 'fall' };
         if(typeof year !== 'undefined' && typeof semester !== 'undefined') {
@@ -73,14 +75,14 @@ require(["config"], function() {
         app.views.current.render();
     });
     app.router.on('route:grades', function(department, course, profId) {
-        app.views.current = new HistoricalGradeView([], {user: user, department: department, course : course, profId: profId});
+        app.views.current = new HistoricalGradeView({user : user}, {department: department, course : course, profId: profId});
         app.views.current.render();
     });
     app.router.on('route:watchedcourses', function(username) {
         alert("IN WATCHED COURSES"); //CHECK
     });
     app.router.on('route:calendar', function(username, schedulename) {
-        alert("IN CALENDAR");
+        app.views.current = new CalendarView({}, {username : username, schedulename : schedulename});
     });
     app.router.on('route:contact', function() {
         alert("Contact us!!");

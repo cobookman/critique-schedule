@@ -10,8 +10,12 @@ function($,   Backbone,   queryString,   ScheduleView,     SearchResults ) {
       this.semester = options.semester.toCapital();
     },
     remove : function() {
-      this.scheduleView.remove();
-      this.searchResults.remove();
+      if(this.scheduleView) { //Just in case the scheduleView dies and burns to death!!!
+        this.scheduleView.remove();
+      }
+      if(this.searchResults) { //there might not be any search results
+        this.searchResults.remove();
+      }
       this.$el.empty();
       this.stopListening();
       return this;

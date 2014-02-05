@@ -7,10 +7,10 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  year
       
     },
     initialize : function(models, options) {
-      if(typeof options.user === 'undefined' || typeof options.department === 'undefined') {
+      if(typeof models.user === 'undefined' || typeof options.department === 'undefined') {
         throw new Error('user and department are required params');
       }
-      this.user = options.user;
+      this.user = models.user;
       this.department = options.department;
       this.course = false;
       this.profId = false;

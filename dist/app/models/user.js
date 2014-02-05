@@ -22,6 +22,16 @@ define(['backbone', 'libraries/yearSemesterSort'], function(Backbone, yearSemest
       this.sort();
       this.save();
     },
+    deleteSchedule : function(scheduleId) {
+      var schedules = this.get("schedules");
+      if(schedules.selected.id === scheduleId) {
+        throw new Error("cannot remove the currently selected schedule");
+      }
+      //removes the scheduleId from others
+      schedules.others.splice(this.otherScheduleIndex(scheduleId),1);
+      this.set({schedules : schedules});
+      this.save();
+    },
     otherScheduleIndex : function(scheduleId) {
       var schedules = this.get("schedules");
       for(var i = 0, l = schedules.others.length; i < l; ++i) {

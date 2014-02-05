@@ -58,7 +58,10 @@
           <ul class="dropdown">
             <li><a href="#newSchedule" data-schedule="" data-reveal-id="newScheduleModal">New</a></li>
             {{#each schedules.others}}
-            <li><a href="#changeSchedule" data-schedule="{{id}}">{{semester}} {{year}}: {{name}}</a></li>
+            <li>
+              <a class="left changeSchedule" href="#changeSchedule" data-schedule="{{id}}">{{semester}} {{year}}: {{name}}</a>
+              <a class="right deleteSchedule" href="#deleteSchedule" data-schedule="{{id}}">X</a>
+            </li>
             {{/each}}
           </ul>
         </li>
@@ -186,6 +189,27 @@
       <b>{{name}}</b>
     </div>
   </script>
+  <script type="text/template" id="template/sectionPopup">
+    <div class="joyride-tip-guide popup">
+      <div class="nub">
+        <span class="joyride-nub top"></span>
+      </div>
+      <!-- Hack: alows for mouse curser to move down to the
+           popup w/o having to go through the tiny up arrow -->
+      <div style="width:150px; height:10px; margin-top:-20px; overflow:hide;">
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      </div>
+      <div data-showing="false" class="joyride-content-wrapper" style="margin-top:20px;">
+        <ul>
+          <li>CRN: {{crn}}</li>
+          <li><td>Prof: {{prof}}</li>
+          <li><td>Time: {{time}}</li>
+          <li><a href="/{{year}}/{{semester}}/{{department}}/{{number}}">Other Sections</a></li>
+          <li><button data-crn="{{crn}}" class="button small alert removeSection">Remove</button></li>
+        </ul>
+      </div>
+    </div>
+  </script>
   <script type="text/template" id="template/search">
     <div class="medium-8 columns main-content">
       <div class="row collapse">
@@ -213,12 +237,12 @@
   <script type="text/template" id="template/searchResult">
     <div class="row collapse">
       <div class="row collapse">
-        <div class="small-12 medium-8 columns">
+        <div class="small-12 large-8 columns">
           <h5><b><a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}">{{department.code}} {{number}} - {{course}}<a/></b></h5>
           <p>{{description}}</p>
           {{#each core_areas}} {{this}} {{/each}}
         </div>
-        <div class="medium-4 columns hide-for-small-only">
+        <div class="large-4 columns hide-for-small-up show-for-large-up">
           <table class="table-condensed" align="right">
           <thead>
             <tr>

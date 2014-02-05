@@ -18,7 +18,7 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
       $(document).on('scroll', function() { that.checkScroll.call(that); });
     },
     unbindEvents : function() {
-      $(document).off();
+      $(document).off('scroll');
     },
     render : function() {
       this.loadResults();

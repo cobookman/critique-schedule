@@ -12,7 +12,6 @@ define(function(require, exports, module) {
       'logout(/)' : 'logout',
 
       'calendar/:username/:schedulename(/)': 'calendar',
-      'calendar/:username(/)' : 'calendar',
 
       'grades/:department(/)' : 'grades',
       'grades/:department/:course(/)' : 'grades',

@@ -1,5 +1,5 @@
 define(['jquery', 'backbone', 'handlebars', 'collections/oscar', 'views/scheduleSection', 'views/sectionPopup'],
-function($,   Backbone, Handlebars, OscarCollection, ScheduleSection) {
+function($,   Backbone, Handlebars, OscarCollection, ScheduleSection, SectionPopup) {
   var ScheduleView = Backbone.View.extend({
     el : '.schedule',
     events : {
@@ -100,13 +100,12 @@ function($,   Backbone, Handlebars, OscarCollection, ScheduleSection) {
     sectionBoxHover : function(ev) {
       ev.preventDefault();
       ev.stopPropagation();
-      //Don't re-show pop-up
-      if(ev.target.getAttribute('data-showing')) {
-        return;
-      } else {
+      //only show pop-up if Its not been triggered before, 
+      //and target is inside the containing wrapper divs, not its child elms
+      if(!$(ev.target).data('data-showing') && ev.target.className.match('sectionBox')) {
         ev.target.setAttribute('data-showing', true);
-        //Self destructing
-        (new sectionPopup(this.user, ev.target.getAttribute('data-crn')));
+        //Self destructing View
+        (new SectionPopup({user: this.user}, {crn: ev.target.getAttribute('data-crn'), el: ev.target})).render();
       }
     }
   });
