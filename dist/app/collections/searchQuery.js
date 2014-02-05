@@ -11,7 +11,8 @@ function($, _, Backbone) {
       FOR GRUNT TESTING /app/api/ is used over /api (static files stored in /app/api/...)
     */
     url : function() {
-      return '/app/api/search/'+this.year+'/query.' + this.query +'.page.' +this.page; // + this.query + '&from=' + this.page + '&number=' + this.number;
+      return 'http://burdellanswers:3000/api/search/' + this.year + '/' + this.semester + '?query' + this.query + '&from=' + this.page;
+      //return '/app/api/search/'+this.year+'/query.' + this.query +'.page.' +this.page; // + this.query + '&from=' + this.page + '&number=' + this.number;
     },
     parse : function(res, xhr) {
       this.took = res.took;

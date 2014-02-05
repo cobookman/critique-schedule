@@ -18,7 +18,7 @@ function(Backbone) {
       FOR GRUNT TESTING /app/api/ is used over /api (static files stored in /app/api/...)
     */
     url : function() {
-      return 'http://localhost:3000/api/grade' + this.urlParams;
+      return 'http://burdellanswers:3000/api/grade' + this.urlParams;
       // return '/app/api/grades' + this.urlParams;
     },
     parse : function(res, xhr) {
