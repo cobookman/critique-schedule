@@ -22,7 +22,7 @@ function(Backbone) {
     */
     url : function() {
       //return '/app/api/oscar/'+this.year+'/'+this.semester + this.optionalURLParams;
-      return 'http://burdellanswers:3000/api/oscar/' + this.year +'/' + this.semester + this.optionalURLParams;
+      return 'http://burdellanswers.com:3000/api/oscar/' + this.year +'/' + this.semester + this.optionalURLParams;
     },
     parse : function(res, xhr) {
       if(res.hasOwnProperty('sections')) {
