@@ -60,7 +60,10 @@
           <ul class="dropdown">
             <li><a href="#newSchedule" data-schedule="" data-reveal-id="newScheduleModal">New</a></li>
             {{#each schedules.others}}
-            <li><a href="#changeSchedule" data-schedule="{{id}}">{{semester}} {{year}}: {{name}}</a></li>
+            <li>
+              <a class="left changeSchedule" href="#changeSchedule" data-schedule="{{id}}">{{semester}} {{year}}: {{name}}</a>
+              <a class="right deleteSchedule" href="#deleteSchedule" data-schedule="{{id}}">X</a>
+            </li>
             {{/each}}
           </ul>
         </li>

@@ -24,6 +24,18 @@ button.addSection.tiny {
 .hide {
 	display: none;
 }
+.deletion-x {
+	color:red;
+	font-size:1rem;
+	font-weight:bold;
+}
+.changeSchedule {
+  width: calc(100% - 3em) !important;
+}
+.deleteSchedule {
+	width: 3em !important;
+	color: red !important;
+}
 /*
 	make container wider
 */
