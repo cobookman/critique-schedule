@@ -48,7 +48,8 @@ require(["config"], function() {
                 ev.preventDefault();
                 var query = app.views.current.getQuery(ev);
                 app.views.current.runQuery(query);
-                app.router.navigate(m.year + '/' + m.semester + '/search/' + app.views.current.urlString(query), {trigger: false});
+                var selectedSchedule = user.get('schedules').selected;
+                app.router.navigate(selectedSchedule.year + '/' + selectedSchedule.semester + '/search/' + app.views.current.urlString(query), {trigger: false});
             });
 
 
