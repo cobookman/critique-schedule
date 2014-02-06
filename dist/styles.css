@@ -754,7 +754,7 @@ span.gpa.average {padding-left: 1.5rem;}
 .sectionProf.row.collapse {border-bottom: 1px solid black; margin-top: 1rem;}
 .schedule-data > tbody > tr > td:not(:first-child) {position: relative; vertical-align: top; padding: 0;}
 .schedule-data > tbody > tr > td, .schedule-data > thead > tr > th {height: 40px; padding-top: 0; padding-bottom: 0; margin-top: 0; margin-bottom: 0; width: 16.6666%;}
-.sectionBox {position: absolute; width: 16.6666%; text-align: center; color: #FFFFFF;}
+.sectionBox {position: absolute; width: 95%; text-align: center; color: #FFFFFF;}
 .popup {margin-top: 50px; left: 0; width: 150px; display: block; visibility: visible; text-align: left; z-index: 1000;}
 .popup ul {list-style: none; line-height: 1rem; margin: 0;}
 .fixed-top-right {position: fixed; top: 45px;}
