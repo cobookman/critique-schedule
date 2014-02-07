@@ -241,7 +241,13 @@
       <div class="row collapse">
         <div class="small-12 large-8 columns">
           <h5><b><a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}">{{department.code}} {{number}} - {{course}}<a/></b></h5>
-          <p>{{description}}</p>
+          <p>
+            {{#if description}}
+              {{description}}
+            {{else}}
+              <i>No Description for course given on Oscar</i>
+            {{/if}}
+          </p>
           {{#each core_areas}} {{this}} {{/each}}
         </div>
         <div class="large-4 columns hide-for-small-up show-for-large-up">
@@ -258,11 +264,41 @@
           </thead>
           <tbody>
             <tr>
-              <td>{{grade.gpa.mean}}</td>
-              <td>{{grade.gpa.stddev}}</td>
-              <td>{{grade.gpa.q1}} </td>
-              <td>{{grade.gpa.q2}}</td>
-              <td>{{grade.gpa.q3}}</td>
+              <td>
+                {{#if grade.gpa.mean}}
+                  {{grade.gpa.mean}}
+                {{else}}
+                  N/A
+                {{/if}}
+              </td>
+              <td>
+                {{#if grade.gpa.stddev}}
+                  {{grade.gpa.stddev}}
+                {{else}}
+                  N/A
+                {{/if}}
+              </td>
+              <td>
+                {{#if grade.gpa.q1}} 
+                  {{grade.gpa.q1}}
+                {{else}}
+                  N/A
+                {{/if}}
+              </td>
+              <td>
+                {{#if grade.gpa.q2}} 
+                  {{grade.gpa.q2}}
+                {{else}}
+                  N/A
+                {{/if}}
+              </td>
+              <td>
+                {{#if grade.gpa.q3}} 
+                  {{grade.gpa.q3}}
+                {{else}}
+                  N/A
+                {{/if}}
+              </td>
               <td>{{#each creditHours}} {{this}} {{/each}}</td>
             </tr>
           </tbody>

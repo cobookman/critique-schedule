@@ -18,6 +18,9 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
       $(document).on('scroll', function() { that.checkScroll.call(that); });
     },
     unbindEvents : function() {
+      this.unbindScroll();
+    },
+    unbindScroll : function() {
       $(document).off('scroll');
     },
     render : function() {
@@ -31,11 +34,24 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
       this.isLoading = true;
       this.searchQuery.fetch({
         success : function(results) {
-          if(results.length < 1) {
-            return $(this.el).off('scroll');
-          }
-          //Populate template
           var html='';
+          /*
+            turn off scroll bind if no results, 
+            as we've obviously fetched all the results
+          */
+          if(results.length < 1) {
+            that.unbindScroll();
+            /* 
+              if its a new query string, we should show an err msg 
+              telling end user that no results for given querystr
+            */
+            if($(that.el).html().trim().length === 0) {
+              html = "0 Results found";
+            }
+          }
+          
+
+          //Generate templates
           for(var i = 0; i < results.length; ++i) {
             var currModel = results.models[i].get('_source');
             //attach the year/semester)
@@ -47,7 +63,7 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
             //render template
             html += that.resultTemplate(currModel);
           }
-          $(that.el).append(html);
+          $(that.el).append(html); //add rendered templates to dom
           that.isLoading = false;
         },
         /*
