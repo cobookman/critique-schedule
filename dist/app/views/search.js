@@ -1,5 +1,5 @@
-define(['jquery', 'handlebars', 'backbone', 'foundation', 'queryString', 'views/schedule', 'views/searchResults'],
-function($,   Handlebars,   Backbone,   foundation,   queryString,   ScheduleView,     SearchResults ) {
+define(['jquery', 'handlebars', 'backbone', 'foundation', 'queryString', 'views/schedule', 'views/searchResults', 'departmentList'],
+function($,   Handlebars,   Backbone,   foundation,   queryString,   ScheduleView,     SearchResults,   DepartmentList) {
   var SearchView = Backbone.View.extend({
     el : '.site-content',
     events : {
@@ -29,16 +29,16 @@ function($,   Handlebars,   Backbone,   foundation,   queryString,   ScheduleVie
         templates.search = Handlebars.compile(searchHTML);
       }
     },
-    render : function() {   
-      this.user.sort();
-      var data = this.user.toJSON();
-
+    render : function() {
       //Load Search Template (schedule view attached on left hand side)
-      this.$el.html(templates.search(data));
+      this.$el.html(templates.search({'departments': DepartmentList}));
       this.scheduleView = new ScheduleView();
       this.scheduleView.render();
       this.bindEvents();
-      $(document).foundation();
+      //Initialize modal and form validation for search template
+      //reflow not implemented for reveal or abide, but can initialize foundation just for our scope
+      this.$el.foundation('reveal').foundation('abide');
+      
     },
     runQuery : function(query) {
       if(query.length > 0) {
@@ -76,32 +76,30 @@ function($,   Handlebars,   Backbone,   foundation,   queryString,   ScheduleVie
             subject = document.getElementById("searchSubjectSelect").value,
             gpaMax = document.getElementById("searchGPAMax").value,
             gpaMin = document.getElementById("searchGPAMin").value,
-            professor = document.getElementById("searchProfessor").value,
-            totalQuery = "";
+            professor = document.getElementById("searchProfessor").value;
 
-        totalQuery = query;
         if(level) {
-          totalQuery += " " + level;
+          query += " " + level;
         }
         if(subject) {
-          totalQuery += " " + subject;// + " course"; <- for some reason introduces faulty results
+          query += " " + subject;// + " course"; <- for some reason introduces faulty results
         }
         if(gpaMax && gpaMin) {
-          totalQuery += " with gpa from " + gpaMin + " to " + gpaMax;
+          query += " with gpa from " + gpaMin + " to " + gpaMax;
         } else if(gpaMax) {
-          totalQuery += " with gpa less than " + gpaMax;
+          query += " with gpa less than " + gpaMax;
         } else if(gpaMin) {
-          totalQuery += " with gpa greater than " + gpaMin;
+          query += " with gpa greater than " + gpaMin;
         }
         if(professor) {
-          totalQuery += " taught by " + professor;
+          query += " taught by " + professor;
         }
 
-        if(!query) { //strip beginning space
-          totalQuery = totalQuery.substr(1);
-        }
+        query = query.trim();
         this.closeModal();
-        this.setInputValue(totalQuery);
+
+        if (query.length === 0) return;
+        this.setInputValue(query);
         $('.searchbar button:first').click();
       }
     },

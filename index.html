@@ -260,7 +260,7 @@
               <select name="subject" id="searchSubjectSelect">
                 <option value="">Any subject</option>
                 {{#each departments}}
-                  <option value="{{this.code}}">{{name}}</option>
+                  <option value="{{@key}}">{{this}}</option>
                 {{/each}}
               </select>
             </div>
