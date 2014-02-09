@@ -37,7 +37,13 @@ require.config({
 
     //Collections
     "collections/searchQuery" : "collections/searchQuery",
-    "collections/oscar" : "collections/oscar"
+    "collections/oscar" : "collections/oscar",
+
+    /*
+      Not using collections/... format as 
+      it just returns an obj which contains the list of departments
+    */
+    "departmentList" : "collections/departmentList"
 
   },
 
