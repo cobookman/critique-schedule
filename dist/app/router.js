@@ -28,7 +28,8 @@ define(function(require, exports, module) {
         e.g: calendar/gburdell3/sampleSchedule will
         meet these rules
       */
-      ':year/:semester(/)' : 'oscarDepartments',
+
+      ':year/:semester/departments' : 'departments',
       ':year/:semester/:department(/)' : 'oscarCourses',
       ':year/:semester/:department/:course(/)' : 'oscarSections'
       

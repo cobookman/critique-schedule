@@ -73,13 +73,8 @@
         <li><a href="/calendar/{{username}}/{{schedules.selected.id}}">Calendar</a></li>
 
         <li class="divider"></li>
-        <li class="has-dropdown not-click">
-          <a href="/{{schedules.selected.year}}/{{schedules.selected.semester}}/">Departments</a>
-          <ul class="dropdown">
-            {{#each departments}}
-              <li><a href="/{{../schedules.selected.year}}/{{../schedules.selected.semester}}/{{this.code}}">{{name}}</a></li>
-            {{/each}}
-          </ul>
+        <li>
+          <a href="/{{schedules.selected.year}}/{{schedules.selected.semester}}/departments">Departments</a>
         </li>
 
         <li class="active"><a href="https://login.gatech.edu/cas/login?service=https://critique.gatech.edu">Login</a></li>

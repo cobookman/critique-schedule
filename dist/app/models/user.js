@@ -42,6 +42,10 @@ define(['backbone', 'libraries/yearSemesterSort'], function(Backbone, yearSemest
       //In case the id isn't in schedules.others, we return -1
       return -1;
     },
+    parse : function(res, xhr) {
+      res.schedules.others = yearSemesterSort.sort(res.schedules.others, 'descending');
+      return res;
+    },
     /*
       Sorts the others schedules by year - semester in descending order
     */
