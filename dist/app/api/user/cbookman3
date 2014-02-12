@@ -1,0 +1,17 @@
+{
+  "schedules" : {
+    "selected" : {
+        "semester" : "Spring",
+        "year" : "2014",
+        "name" : "Colin's Schedule",
+        "id" : "colinschedule"
+    },
+    "others" : [
+      {"name": "my spring", "year" : "2013", "semester" : "Spring", "id" : "temp"},
+      {"name" : "oldstuff", "year" : "2012", "semester" : "Fall", "id" : "temp2"},
+      {"name" : "my summer", "year" : "2013", "semester" : "Summer", "id" : "temp3"},
+      {"name" : "shweet", "year" : "2013", "semester" : "Fall", "id" : "temp4"}
+    ]
+  },
+  "username" : "cbookman3"
+}

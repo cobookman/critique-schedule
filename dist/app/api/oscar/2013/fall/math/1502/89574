@@ -1,0 +1,19 @@
+{
+  "department": "MATH",
+  "number": "1502",
+  "year": "2013",
+  "semester": "Fall",
+  "crn": "89574",
+  "name": "Calculus II",
+  "section": "A8",
+  "seats": {
+    "capacity": "30",
+    "actual": "30",
+    "remaining": "0"
+  },
+  "waitlist": {
+    "capacity": "0",
+    "actual": "0",
+    "remaining": "0"
+  }
+}
