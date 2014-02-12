@@ -123,20 +123,20 @@ span.gpa.average {
 	position: fixed;
 	top:45px;
 }
-.medium-6.fixed-top-right {
+.large-6.fixed-top-right {
 	margin-left:calc(80rem*6/12);
 	width: calc(80rem*6/12);
 }
-.medium-4.fixed-top-right {
+.large-4.fixed-top-right {
 	margin-left: calc(80rem*8/12);
 	width: calc(80rem*4/12);
 }
 @media(max-width:80rem) {
-	.medium-4.fixed-top-right {
+	.large-4.fixed-top-right {
 		margin-left:66.6666%;
 		width: 33.333%;
 	}
-	.medium-6.fixed-top-right {
+	.large-6.fixed-top-right {
 		margin-left:50%;
 		width:50%;
 	}
