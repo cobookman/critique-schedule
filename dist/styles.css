@@ -758,6 +758,6 @@ span.gpa.average {padding-left: 1.5rem;}
 .popup {margin-top: 50px; left: 0; width: 150px; display: block; visibility: visible; text-align: left; z-index: 1000;}
 .popup ul {list-style: none; line-height: 1rem; margin: 0;}
 .fixed-top-right {position: fixed; top: 45px;}
-.large-6.fixed-top-right {margin-left: calc(80rem*6/12); width: calc(80rem*6/12);}
+.medium-6.fixed-top-right {margin-left: calc(80rem*6/12); width: calc(80rem*6/12);}
 .large-4.fixed-top-right {margin-left: calc(80rem*8/12); width: calc(80rem*4/12);}
-@media (max-width:80rem) {.large-4.fixed-top-right {margin-left: 66.6666%; width: 33.333%;}.large-6.fixed-top-right {margin-left: 50%; width: 50%;}}
+@media (max-width:80rem) {.large-4.fixed-top-right {margin-left: 66.6666%; width: 33.333%;}.medium-6.fixed-top-right {margin-left: 50%; width: 50%;}}

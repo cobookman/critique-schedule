@@ -123,7 +123,7 @@ span.gpa.average {
 	position: fixed;
 	top:45px;
 }
-.large-6.fixed-top-right {
+.medium-6.fixed-top-right {
 	margin-left:calc(80rem*6/12);
 	width: calc(80rem*6/12);
 }
@@ -136,7 +136,7 @@ span.gpa.average {
 		margin-left:66.6666%;
 		width: 33.333%;
 	}
-	.large-6.fixed-top-right {
+	.medium-6.fixed-top-right {
 		margin-left:50%;
 		width:50%;
 	}
