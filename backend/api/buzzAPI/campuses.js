@@ -6,7 +6,7 @@ function campuses(params, callback) {
   }
   var url = helpers.url('campuses', {term_code : params.termCode});
   var cacheId = _genCacheId(params);
-  helpers.apiRequest({id: cacheId, url: url}, callback);
+  helpers.apiRequest({cacheId: cacheId, url: url}, callback);
 }
 
 function _genCacheId(params) {
