@@ -1,19 +1,26 @@
 var request = require('request');
 var config = require('../../config.js');
-var Cache = require('../_cache.js');
+var Cache = require('../cache.js');
 var buzzAPICache = new Cache('buzzapi_cache');
 
 var helpers = {};
 helpers._cacheMiss = function(params) {
-  request(params.url, function(error, response, body) {
+  request(params.url, function then(error, response, body) {
+
     body = JSON.parse(body);
-    if(error || !body.hasOwnProperty('api_result_data')) {
-      params.callback({error: "Could not fetch data", response : response }, null);
+    if (error || !body.hasOwnProperty('api_result_data')) {
+      var errMsg = {error: "Could not fetch data"};
+      if(body.hasOwnProperty ('api_error_info')) {
+        errMsg.details = body.api_error_info;
+      }
+      params.callback(errMsg, null);
+
     } else {
+      //send doc
       params.callback(null, body.api_result_data);
-      //set cache
-      if(params.hasOwnProperty('id')) {
-        buzzAPICache.set(params.id, body.api_result_data);
+      //then save doc in cache
+      if(params.hasOwnProperty('cacheId')) {
+        buzzAPICache.set(params.cacheId, body.api_result_data);
       }
     }
   });
