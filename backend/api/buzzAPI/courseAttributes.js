@@ -1,11 +1,9 @@
 var helpers = require('./_helpers.js');
-
 function courseAttributes(params, callback) {
   if(!params.hasOwnProperty('termCode')) {
     return callback({error: "termCode is a required parameter"});
   }
   var url = helpers.url('course_attributes', {term_code : params.termCode});
-  console.log(url);
   var cacheId = _genCacheId(params);
   helpers.apiRequest({cacheId: cacheId, url: url}, callback);
 }

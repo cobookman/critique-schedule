@@ -1,0 +1,76 @@
+<ul class="title-area">
+  <li class="name">
+    <h1><a href="/">Course Scheduler</a></h1>
+  </li>
+</ul>
+<section class="top-bar-section"> 
+  <ul class="right">
+    <li class="divider"></li>
+    <li class="has-dropdown not-click schedulePicker">
+      <a href="#" data-schedule="{{schedules.selected.id}}">{{schedules.selected.semester}} {{schedules.selected.year}}: {{schedules.selected.name}}</a>
+      <ul class="dropdown">
+        <li><a href="#newSchedule" data-schedule="" data-reveal-id="newScheduleModal">New</a></li>
+        {{#each schedules.others}}
+        <li>
+          <a class="left changeSchedule" href="#changeSchedule" data-schedule="{{id}}">{{semester}} {{year}}: {{name}}</a>
+          <a class="right deleteSchedule" href="#deleteSchedule" data-schedule="{{id}}">X</a>
+        </li>
+        {{/each}}
+      </ul>
+    </li>
+
+    <li class="divider"></li>
+    <li><a href="/watchedcourses/{{username}}">Watched Courses</a></li>
+
+    <li class="divider"></li>
+    <li><a href="/calendar/{{username}}/{{schedules.selected.id}}">Calendar</a></li>
+
+    <li class="divider"></li>
+    <li>
+      <a href="/{{schedules.selected.year}}/{{schedules.selected.semester}}/departments">Departments</a>
+    </li>
+
+    <li class="active"><a href="https://login.gatech.edu/cas/login?service=https://critique.gatech.edu">Login</a></li>
+  </ul> <!-- Left Nav Section --> 
+  <ul class="left">
+  </ul>
+</section>
+
+<div id="newScheduleModal" class="reveal-modal" data-reveal>
+  <h2>Create a new schedule</h2>
+  <form data-abide>
+    <div class="row">
+      <div class="large-12 columns">
+        <label for="newScheduleName">Name of Schedule</label>
+        <input type="text" name="name" id="newScheduleName" placeholder="gburdel's awesome schedule" required pattern="alpha_numeric">
+        <small class="error">Schedule name is a required field, and must be an alpha numeric string.</small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-6 columns">
+        <label for="newSemesterSelect">Semester</label>
+        <select name="semester" id="newSemesterSelect" required pattern="Fall|Spring|Summer">
+          <option value="Fall">Fall</option>
+          <option value="Spring">Spring</option>
+          <option value="Summer">Summer</option>
+        </select>
+        <small class="error">Please choose one of the following:</small>
+      </div>
+      <div class="large-6 columns">
+        <label for="newYearSelect">Year</label>
+        <select name="year" id="newYearSelect" required pattern="\d{4}">
+          <option value="2014">2014</option>
+          <option value="2013">2013</option>
+          <option value="2012">2012</option>
+        </select>
+        <small class="error">Please choose one of the following:</small>
+      </div>
+    </div>
+    <div class="row">
+      <div class="large-12 columns">
+        <button type="submit" name="submit" class="button createNewSchedule">Create</button>
+      </div>
+    </div>
+  </form>
+  <a class="close-reveal-modal">&#215;</a>
+</div>

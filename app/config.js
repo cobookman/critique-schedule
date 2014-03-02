@@ -26,10 +26,11 @@ require.config({
     "views/schedule" : "views/schedule",
     "views/search" : "views/search",
     "views/searchResults" : "views/searchResults",
-    "views/oscar" : "views/oscar",
+    "views/sections" : "views/sections",
     "views/scheduleSection" : "views/scheduleSection",
     "views/sectionPopup" : "views/sectionPopup",
     "views/calendar" : "views/calendar",
+    "views/error" : "views/error",
     
     //Modules
     "models/user" : "models/user",
@@ -39,6 +40,8 @@ require.config({
     "collections/searchQuery" : "collections/searchQuery",
     "collections/oscar" : "collections/oscar",
 
+    //Templates
+    "templates" : "../templates",
     /*
       Not using collections/... format as 
       it just returns an obj which contains the list of departments

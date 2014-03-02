@@ -1,0 +1,35 @@
+<!--
+  Must force the table to center, as while div is centered, the table does not take up the full width
+-->
+<table style="margin: 0 auto;">
+  <thead>
+    <tr>
+      {{#if isMultipleProfs}}
+        <th></th>
+        <th>GPA</th>
+        <th>Median</th>
+        <th>σ</th>
+        <th>A</th>
+        <th>B</th>
+        <th>C</th>
+        <th>D</th>
+        <th>F</th>
+        <th>W</th>
+      {{else}}
+        <th>Year</th>
+        <th>Semester</th>
+        <th>Section</th>
+        <td>GPA</td>
+        <td>A</td>
+        <td>B</td>
+        <td>C</td>
+        <td>D</td>
+        <td>F</td>
+        <td>W</td>
+        <td>Size</td>
+      {{/if}}
+    </tr>
+  </thead>
+  <tbody>
+  </tbody>
+</table>

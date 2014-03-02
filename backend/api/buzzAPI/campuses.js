@@ -1,5 +1,4 @@
 var helpers = require('./_helpers.js');
-
 function campuses(params, callback) {
   if(!params.hasOwnProperty('termCode')) {
     return callback({error: "termCode is a required parameter"});

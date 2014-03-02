@@ -1,0 +1,78 @@
+<div class="small-12 large-8 columns main-content">
+  <div class="row collapse">
+    <h3>What kind of class are you looking for</h3>
+    <form action="search" method="get" class="searchbar">
+      <div class="row collapse">
+        <div class="small-9 medium-10 columns">
+          <input name="query" type="text" placeholder="E.g: Differential Equations" tabindex="1" class="search" autofocus>
+        </div>
+        <div class="small-2 medium-1 columns">
+          <button type="submit" class="button postfix" style="border-right:1px solid; border-color:rgba(255,255,255,0.5);">Search</button>
+        </div>
+        <div class="small-1 medium-1 columns">
+          <button class="button postfix" style="width:25px;" data-reveal-id="advancedSearchModal">&#9660;</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="row collapse searchResults">
+  </div>
+</div>
+
+<div class="large-4 columns hide-for-small-up show-for-large-up fixed-top-right">
+    <h3>Current Schedule</h3>
+    <div class="schedule">
+    </div>
+</div>
+
+<div id="advancedSearchModal" class="reveal-modal" data-reveal>
+  <h2>Advanced Search</h2>
+    <form action="search" method="get" class="advancedsearch" data-abide>
+      <div class="row">
+        <div class="large-12 columns">
+          <input name="query" id="advancedSearchQuery" type="text" placeholder="E.g: Differential Equations" class="search">
+        </div>
+      </div>
+      <h5>Optional settings</h5>
+      <div class="row">
+        <div class="large-2 columns">
+         <label for="searchLevelSelect">Level</label>
+         <input name="level" id="searchLevelSelect" type="text" placeholder="E.g: 45XX, 3XXX" pattern="^(?=^.{4}$)[1-5]\d*[xX]+$">
+         <small class="error">Please enter a four digit code such as: 5XXX, 45XX, 3XXX, etc.</small>
+        </div>
+        <div class="large-3 columns">
+          <label for="searchSubjectSelect">Subject</label>
+          <select name="subject" id="searchSubjectSelect">
+            <option value="">Any subject</option>
+            {{#each departments}}
+              <option value="{{@key}}">{{this}}</option>
+            {{/each}}
+          </select>
+        </div>
+        <div class="large-4 columns">
+          <div class="row">
+            <div class="small-6 columns">
+              <label for="searchGPAMin">GPA &ge;</label>
+              <input name="gpaMin" id="searchGPAMin" type="text" placeholder="E.g: 2.0" pattern="^[0-3](\.?\d+)?|4(\.0+)?$">
+              <small class="error">Please enter a gpa &ge; 0 and &le; 4.0.</small>
+            </div>
+            <div class="small-6 columns">
+              <label for="searchGPAMax">GPA &le;</label>
+              <input name="gpaMax" id="searchGPAMax" type="text" placeholder="E.g: 4.0" pattern="^[0-3](\.\d+)?|4(\.0+)?$">
+              <small class="error">Please enter a gpa &ge; 0 and &le; 4.0.</small>
+            </div>
+          </div>
+        </div>
+        <div class="large-3 columns">
+          <label for="searchProfessor">Professor</label>
+          <input name="professor" id="searchProfessor" type="text" placeholder="E.g: Morley">
+        </div>
+      </div>
+      <div class="row">
+        <div class="large-12 columns">
+          <button type="submit" name="submit" class="button">Search</button>
+        </div>
+      </div>
+    </form>
+  <a class="close-reveal-modal">&#215;</a>
+</div>

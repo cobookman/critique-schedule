@@ -11,6 +11,7 @@ exports.get = function(req, res) {
       '/buzzAPI/partsOfTerm/:termCode',
       '/buzzAPI/instructors/:termCode',
       '/buzzAPI/courseAttributes/:termCode',
+      '/buzzAPI/classes',
       '/buzzAPI/classes/:termCode',
       '/buzzAPI/classes/:termCode/:subject',
       '/buzzAPI/classes/:termCode/:subject/:courseNumber',

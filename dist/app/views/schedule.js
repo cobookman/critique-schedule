@@ -1,5 +1,5 @@
-define(['jquery', 'backbone', 'handlebars', 'collections/oscar', 'views/scheduleSection', 'views/sectionPopup'],
-function($,   Backbone, Handlebars, OscarCollection, ScheduleSection, SectionPopup) {
+define(['jquery', 'backbone', 'templates', 'collections/oscar', 'views/scheduleSection', 'views/sectionPopup'],
+function($      ,  Backbone ,  templates ,  OscarCollection   ,  ScheduleSection       ,  SectionPopup       ) {
   var ScheduleView = Backbone.View.extend({
     el : '.schedule',
     events : {
@@ -28,13 +28,7 @@ function($,   Backbone, Handlebars, OscarCollection, ScheduleSection, SectionPop
       return this;
     },
     render : function() {
-        if(typeof templates.schedule === 'undefined') {
-            templates.schedule = document.getElementById('template/schedule').innerHTML;
-        }
-        if(typeof templates.sectionBox === 'undefined') {
-          templates.sectionBox = Handlebars.compile(document.getElementById('template/sectionBox').innerHTML);
-        }
-        this.$el.html(templates.schedule);
+        this.$el.html(templates['schedule/table']());
     },
     renderedSections : [],
     addSection : function(targetEl) {

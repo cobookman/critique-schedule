@@ -5,8 +5,8 @@
     -the top bar (for bigger screens)
     -The mobile slide out menu (For smaller screens)
 */
-define(['jquery', 'handlebars', 'foundation', 'backbone'],
-function($,   Handlebars,   foundation, Backbone) {
+define(['jquery', 'foundation', 'templates', 'backbone'],
+function($      ,  foundation ,  templates ,  Backbone ) {
   var NavView = Backbone.View.extend({
     className : 'NavView',
     initialize: function(models, params) {
@@ -57,16 +57,9 @@ function($,   Handlebars,   foundation, Backbone) {
        $('.reveal-modal').foundation('reveal','close');
     },
     render : function() {
-      //TODO - Should be done on page load as the templates would 
-      //be pre-compiled with handlebars
-      var topBarHTML = document.getElementById('template/top-bar').innerHTML;
-      var leftOffCanvasMenuHTML = document.getElementById('template/left-off-canvas-menu').innerHTML;
-      templates.topBar = Handlebars.compile(topBarHTML);
-      templates.leftOffCanvasMenu = Handlebars.compile(leftOffCanvasMenuHTML);
-  
       var data = this.user.toJSON();
-      $('.top-bar').html(templates.topBar(data));
-      $('.left-off-canvas-menu').html(templates.leftOffCanvasMenu(data));
+      $('.top-bar').html(templates['nav/topbar'](data));
+      $('.left-off-canvas-menu').html(templates['nav/leftOffCanvas'](data));
       this.bindEvents();
       $(document).foundation();
     },

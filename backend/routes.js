@@ -16,6 +16,8 @@ module.exports = function(app) {
   app.get('/getusername', routes.user.getUsername);
   app.get('/login', routes.user.login);
   app.get('/logout', routes.user.logout);
+
+  app.get('/buzzAPI/help', routes.helpPage.get);
   app.get('/buzzAPI/terms', routes.buzzAPI('terms'));
   app.get('/buzzAPI/subjects/:termCode', routes.buzzAPI('subjects'));
   app.get('/buzzAPI/sections/:termCode', routes.buzzAPI('sections'));
@@ -23,11 +25,12 @@ module.exports = function(app) {
   app.get('/buzzAPI/partsOfTerm/:termCode', routes.buzzAPI('partsOfTerm'));
   app.get('/buzzAPI/instructors/:termCode', routes.buzzAPI('instructors'));
   app.get('/buzzAPI/courseAttributes/:termCode', routes.buzzAPI('courseAttributes'));
-
-  app.get('/buzzAPI/classes/:termCode', routes.buzzAPI('classList'));
-  app.get('/buzzAPI/classes/:termCode/:subject', routes.buzzAPI('classList'));
-  app.get('/buzzAPI/classes/:termCode/:subject/:courseNumber', routes.buzzAPI('classList'));
-  app.get('/buzzAPI/classes/:termCode/:subject/:courseNumber/:crn', routes.buzzAPI('classList'));
+  
+  app.get('/buzzAPI/classes', routes.buzzAPI('terms'));
+  app.get('/buzzAPI/classes/:termCode', routes.buzzAPI('subjects'));
+  app.get('/buzzAPI/classes/:termCode/:subject', routes.buzzAPI('classes'));
+  app.get('/buzzAPI/classes/:termCode/:subject/:courseNumber', routes.buzzAPI('classes'));
+  app.get('/buzzAPI/classes/:termCode/:subject/:courseNumber/:crn', routes.buzzAPI('classes'));
   
   app.get('/buzzAPI/seats/:termCode/:crn', routes.buzzAPI('seatCount'));
   app.get('/buzzAPI/courseDetails/:termCode/:crn', routes.buzzAPI('courseDetails'));

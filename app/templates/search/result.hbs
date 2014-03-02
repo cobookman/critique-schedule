@@ -1,0 +1,74 @@
+<div class="row collapse">
+  <div class="row collapse">
+    <div class="small-12 large-8 columns">
+      <h5><b><a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}">{{department.code}} {{number}} - {{course}}<a/></b></h5>
+      <p>
+        {{#if description}}
+          {{description}}
+        {{else}}
+          <i>No Description for course given on Oscar</i>
+        {{/if}}
+      </p>
+      {{#each core_areas}} {{this}} {{/each}}
+    </div>
+    <div class="large-4 columns hide-for-small-up show-for-large-up">
+      <table class="table-condensed" align="right">
+      <thead>
+        <tr>
+          <th>μ</th>
+          <th>σ</th> 
+          <th>Q<sub>1</sub></th>
+          <th>Q<sub>2</sub></th>
+          <th>Q<sub>3</sub></th>
+          <th>Credits</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            {{#if grade.gpa.mean}}
+              {{grade.gpa.mean}}
+            {{else}}
+              N/A
+            {{/if}}
+          </td>
+          <td>
+            {{#if grade.gpa.stddev}}
+              {{grade.gpa.stddev}}
+            {{else}}
+              N/A
+            {{/if}}
+          </td>
+          <td>
+            {{#if grade.gpa.q1}} 
+              {{grade.gpa.q1}}
+            {{else}}
+              N/A
+            {{/if}}
+          </td>
+          <td>
+            {{#if grade.gpa.q2}} 
+              {{grade.gpa.q2}}
+            {{else}}
+              N/A
+            {{/if}}
+          </td>
+          <td>
+            {{#if grade.gpa.q3}} 
+              {{grade.gpa.q3}}
+            {{else}}
+              N/A
+            {{/if}}
+          </td>
+          <td>{{#each creditHours}} {{this}} {{/each}}</td>
+        </tr>
+      </tbody>
+      </table>
+      <div class="row collapse right hide-for-small-only">
+        <a href="/grades/{{department.code}}/{{number}}" class="small button secondary viewGrades">Grades</a>
+        <a href="/{{year}}/{{semester}}/{{department.code}}/{{number}}" class="small button secondary viewSections">Sections</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row grey-line"></div>

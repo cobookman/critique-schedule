@@ -1,5 +1,5 @@
-define(['jquery', 'backbone', 'handlebars', 'collections/oscar'],
-function($,   Backbone, Handlebars, OscarCollection) {
+define(['jquery', 'backbone', 'templates', 'collections/oscar'],
+function($      ,  Backbone ,  templates ,  OscarCollection   ) {
   var ScheduleSection = Backbone.View.extend({
     initialize : function(models, options) {
       this.courseInfo = options.courseInfo;
@@ -23,7 +23,7 @@ function($,   Backbone, Handlebars, OscarCollection) {
         //draw the 'box' for each day
         for(var d = 0, dayLen = days.length; d < dayLen; ++d) {
           var column = this.day2columnNumber(days[d]);
-          var html = templates.sectionBox({
+          var html = templates['schedule/section/box']({
             crn : this.courseInfo.crn,
             marginTop : relativeMarginTop,
             height : duration,

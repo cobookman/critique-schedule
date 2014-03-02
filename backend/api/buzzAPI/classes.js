@@ -6,8 +6,8 @@ function classes(params, callback) {
     return callback({error: "termCode is a required parameter"});
   }
   var context = _cacheIdAndURLParams(params);
-  var url = helpers.url('classes',context.urlParameters);
-  helpers.apiRequest({cacheId: context.cacheId, url: url}, callback);
+  context.url =  helpers.url('classes',context.urlParameters);
+  helpers.apiRequest(context, callback);
 }
 
 /*
@@ -19,7 +19,7 @@ function _cacheIdAndURLParams(params) {
     urlParameters : { term_code : params.termCode},
     cacheId : 'classes.' + params.termCode
   };
-  
+  output.TTL = 5 * 60 * 1000; //5 mins in miliseconds
   /*
     optional parameters
   */
@@ -32,6 +32,8 @@ function _cacheIdAndURLParams(params) {
   if (!params.hasOwnProperty('courseNumber')) {
     return output;
   }
+  //Add TTL (in ms) as data below this point can become stale
+  output.TTL = 5 * 60 * 1000; //5 mins in miliseconds
   output.urlParameters.course_number = params.courseNumber;
   output.cacheId += '.' + params.courseNumber;
 

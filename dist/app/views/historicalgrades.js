@@ -1,5 +1,5 @@
-define(['jquery', 'handlebars', 'backbone', 'models/grades', 'highcharts', 'libraries/yearSemesterSort'],
-function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  yearSemesterSort) {
+define(['jquery', 'templates', 'backbone', 'models/grades', 'highcharts', 'libraries/yearSemesterSort', 'views/error'],
+function($,        templates,   Backbone,   GradesModel,     Highcharts ,  yearSemesterSort           ,  ErrorView) {
   var HistoricalGradesView = Backbone.View.extend({
     el : '.site-content',
     graphEl : '.graphs-content',
@@ -8,7 +8,7 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  year
     },
     initialize : function(models, options) {
       if(typeof models.user === 'undefined' || typeof options.department === 'undefined') {
-        throw new Error('user and department are required params');
+        (new ErrorView()).render('user and department are required params');
       }
       this.user = models.user;
       this.department = options.department;
@@ -21,25 +21,11 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  year
         this.profId = options.profId;
       }
       this.grades = new GradesModel([], options);
-      this.loadTemplates();
     },
     remove : function() {
       this.$el.empty();
       this.stopListening();
       return this;
-    },
-    loadTemplates : function() {
-      if(typeof templates.grades) {
-        templates.grades = {};
-      }
-      if(typeof templates.grades.wrapper === 'undefined') {
-        templates.grades.wrapper = Handlebars.compile(document.getElementById('template/grades/wrapper').innerHTML);
-      }
-      if(typeof templates.grades.profTable === 'undefined') {
-        templates.grades.profTable = Handlebars.compile(document.getElementById('template/grades/profTable').text);
-      }
-      if(typeof templates.grades.profTableEntry === 'undefined')
-        templates.grades.profTableEntry = Handlebars.compile(document.getElementById('template/grades/profTable-entry').text);
     },
     render : function() {
       var that = this;
@@ -55,13 +41,12 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  year
           if(that.grades.attributes.hasOwnProperty('name')) {
             context.prof = that.grades.get('name');
           }
-          var output = templates.grades.wrapper(context);
+          var output = templates["grades/wrapper"](context);
           that.$el.html(output);
           that.showData();
         },
         failure : function(r,s) {
-          alert('404: Could not find grade data');
-          throw new Error("No Grade Data found for: " + this.grades.url());
+          (new ErrorView()).render("No Grade Data found for: " + this.grades.url());
         }
       });
     },
@@ -79,7 +64,7 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  year
       }
     },
     showCourseData : function() {
-      $('.grade-tables').append(templates.grades.profTable({isMultipleProfs : true}));
+      $('.grade-tables').append(templates["grades/table/wrapper"]({isMultipleProfs : true}));
       var profGrades = this.grades.get('profs');
       var context = {};
       var profIds = [];
@@ -100,13 +85,13 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  year
           name : profGrades[profId].name,
           statistics : profGrades[profId].statistics
         };
-        outputHTML += templates.grades.profTableEntry(context);
+        outputHTML += templates["grades/table/row"](context);
       }
       $('.grade-tables table > tbody').append(outputHTML);
       this.renderGraph(this.grades.get('statistics'));
     },
     showProfData : function() {
-      $('.grade-tables').append(templates.grades.profTable({isMultipleProfs : false}));
+      $('.grade-tables').append(templates["grades/table/wrapper"]({isMultipleProfs : false}));
       var context = {};
       //Generate each row's html
       var outputHTML = '';
@@ -129,7 +114,7 @@ function($,        Handlebars,   Backbone,   GradesModel,     Highcharts ,  year
               W : sections[section].W,
               size : sections[section].size.toCapital()
             };
-            outputHTML += templates.grades.profTableEntry(context);
+            outputHTML += templates["grades/table/row"](context);
           }
         }
       }

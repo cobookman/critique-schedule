@@ -6,7 +6,6 @@ var buzzAPICache = new Cache('buzzapi_cache');
 var helpers = {};
 helpers._cacheMiss = function(params) {
   request(params.url, function then(error, response, body) {
-
     body = JSON.parse(body);
     if (error || !body.hasOwnProperty('api_result_data')) {
       var errMsg = {error: "Could not fetch data"};
@@ -47,15 +46,7 @@ helpers.apiRequest = function(params, callback) {
 };
 
 helpers._cacheHit = function(params, doc) {
-  //Send doc only if it hasn't expired, or has no expiration
-  var timeLived = (new Date()) - (new Date(doc.create_time));
-  if (!params.hasOwnProperty('ttl')) {
-    params.callback(null, doc);
-  } else if(timeLived < params.ttl) {
-    params.callback(null, doc);
-  } else {
-    this._cacheMiss(params, callback);
-  }
+  params.callback(null, doc);
 };
 
 module.exports = helpers;

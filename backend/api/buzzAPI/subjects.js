@@ -4,8 +4,10 @@ function subjects(params, callback) {
     return callback({error: "termCode is a required parameter"});
   }
   var url = helpers.url('subjects', {term_code : params.termCode});
+  console.log(url);
   var cacheId = _genCacheId(params);
   helpers.apiRequest({cacheId: cacheId, url: url}, callback);
+
 }
 
 function _genCacheId(params) {

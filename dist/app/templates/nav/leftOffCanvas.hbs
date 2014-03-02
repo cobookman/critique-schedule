@@ -1,0 +1,24 @@
+<ul class="off-canvas-list">
+  <li><label>{{schedules.selected.name}}</label></li>
+  <li class="has-form">
+  <form action="search" method="get" class="searchbar">
+    <div class="row collapse">
+      <div class="small-9 columns">
+        <input type="text" placeholder="Search" class="search" name="query"></input>
+      </div>
+      <div class="small-3 columns">
+        <button type="submit" class="button postfix">Search</button>
+      </div>
+    </div>
+  </form>
+  </li>
+  <li><a href="/watchedcourses/{{username}}">Watched Courses</a></li>
+  <li><a href="/calendar/{{username}}/{{schedules.selected.id}}">Calendar</a></li>
+  <li><a href="/{{schedules.selected.year}}/{{schedules.selected.semester}}">Course List</a></li>
+
+  <li><label>Settings</label></li>
+  <li><a href="https://login.gatech.edu/cas/login?service=https://critique.gatech.edu">Login</a></li>
+  <li><a href="#changeSchedule">Change Schedule</a></li>
+  <li><a href="/contact">Contact Us</a></li>
+  <li><a href="/about">About Us</a></li>
+</ul>

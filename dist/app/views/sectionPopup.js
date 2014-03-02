@@ -1,16 +1,11 @@
-define(['jquery', 'backbone', 'handlebars'],
-function($,   Backbone,  Handlebars) {
+define(['jquery', 'backbone', 'templates'],
+function($      ,  Backbone ,  templates) {
   var SectionPopup = Backbone.View.extend({
     initialize : function(models, options) {
       this.user = models.user;
       this.crn = options.crn;
       this.el = options.el;
       this.bindEvents();
-      this.loadTemplate();
-    },
-    //TODO - TEMPORARY METHOD
-    loadTemplate: function() {
-      templates.sectionPopup = Handlebars.compile(document.getElementById('template/sectionPopup').innerHTML);
     },
     bindEvents : function() {
       var that = this;
@@ -20,7 +15,8 @@ function($,   Backbone,  Handlebars) {
       $(this.el).off('mouseleave');
     },
     render : function() {
-      this.el.innerHTML += templates.sectionPopup();
+      var context = {};
+      this.el.innerHTML += templates['schedule/section/popup'](context);
     },
     remove : function() {
       $(this.el).find('.popup').remove();

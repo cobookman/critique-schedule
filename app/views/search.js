@@ -1,12 +1,11 @@
-define(['jquery', 'handlebars', 'backbone', 'foundation', 'queryString', 'views/schedule', 'views/searchResults', 'departmentList'],
-function($,   Handlebars,   Backbone,   foundation,   queryString,   ScheduleView,     SearchResults,   DepartmentList) {
+define(['jquery', 'backbone', 'foundation', 'queryString', 'views/schedule', 'views/searchResults', "templates", "departmentList"],
+function($      ,  Backbone ,  foundation,   queryString ,  ScheduleView   ,  SearchResults       ,  templates , DepartmentList) {
   var SearchView = Backbone.View.extend({
     el : '.site-content',
     events : {
     },
     initialize : function(models, options) {
       this.user = models.user;
-      this.loadTemplates();
       this.user.bind('change', this.render, this);
     },
     remove : function() {
@@ -22,16 +21,9 @@ function($,   Handlebars,   Backbone,   foundation,   queryString,   ScheduleVie
       this.user.unbind("change", this.render);
       return this;
     },
-    //TODO - Remove this once pre-cache of templates done
-    loadTemplates : function() {
-       if(typeof templates.search === 'undefined') {
-        var searchHTML = document.getElementById('template/search').innerHTML;
-        templates.search = Handlebars.compile(searchHTML);
-      }
-    },
     render : function() {
       //Load Search Template (schedule view attached on left hand side)
-      this.$el.html(templates.search({'departments': DepartmentList}));
+      this.$el.html(templates["search/wrapper"]({'departments': DepartmentList}));
       this.scheduleView = new ScheduleView();
       this.scheduleView.render();
       this.bindEvents();

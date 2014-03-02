@@ -30,8 +30,8 @@ define(function(require, exports, module) {
       */
 
       ':year/:semester/departments' : 'departments',
-      ':year/:semester/:department(/)' : 'oscarCourses',
-      ':year/:semester/:department/:course(/)' : 'oscarSections'
+      ':year/:semester/departments/:department' : 'courses',
+      ':year/:semester/:department/:course' : 'sections'
       
     },
   });

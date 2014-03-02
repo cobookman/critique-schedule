@@ -1,5 +1,5 @@
-define(['jquery', 'backbone', 'handlebars', 'collections/searchQuery'],
-function($,   Backbone,  Handlebars,    SearchQuery) {
+define(['jquery', 'backbone', 'templates', 'collections/searchQuery', "views/error"],
+function($      ,  Backbone ,  templates ,  SearchQuery             ,  ErrorView) {
   var SearchResults = Backbone.View.extend({
     el : '.searchResults',
     events : {
@@ -25,9 +25,6 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
     },
     render : function() {
       this.loadResults();
-      //TODO - PRE COMPILE TEMPLATE
-      this.resultTemplate = document.getElementById('template/searchResult').text;
-      this.resultTemplate = Handlebars.compile(this.resultTemplate);
     },
     loadResults : function() {
       var that = this;
@@ -49,7 +46,6 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
               html = "0 Results found";
             }
           }
-          
 
           //Generate templates
           for(var i = 0; i < results.length; ++i) {
@@ -61,7 +57,7 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
             currModel.department.code = currModel.department.code.toCapital();
             currModel.course = currModel.name;
             //render template
-            html += that.resultTemplate(currModel);
+            html += templates["search/result"](currModel);
           }
           $(that.el).append(html); //add rendered templates to dom
           that.isLoading = false;
@@ -70,7 +66,7 @@ function($,   Backbone,  Handlebars,    SearchQuery) {
           TODO - Better Error Handling
         */
         error : function() {
-          alert("404, could not run your query of: " + that.query);
+          (new ErrorView()).render("could not run your query of: " + that.query);
         }
       });
     },

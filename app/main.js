@@ -2,8 +2,8 @@
 // assist with testing.
 require(["config"], function() {
   // Kick off the application.
-  require(["app", "router", 'views/nav', 'views/search', 'views/oscar', 'views/historicalgrades', 'views/calendar', 'models/user', 'libraries/validate', 'handlebars'],
-  function(app,    Router,   NavView,    SearchView,      OscarView,     HistoricalGradeView,      CalendarView,     User        ,  validate,             handlebars) {
+  require(["app", "router", "views/error", 'views/nav', 'views/search', 'views/sections', 'views/historicalgrades', 'views/calendar', 'models/user', 'libraries/validate'],
+  function(app,    Router,  ErrorView    ,  NavView   ,  SearchView   ,  SectionsView   ,  HistoricalGradeView    ,  CalendarView   ,  User        ,  validate           ) {
     //Get User Login Credentials
     var user = new User();
     user.fetch({
@@ -57,7 +57,7 @@ require(["config"], function() {
         app.router.on('route:login', function(username, password) {
             window.location.href = 'https://login.gatech.edu/cas/login?service=https://critique.gatech.edu';
         });
-        app.router.on('route:oscarSections', function(year, semester, department, course) {
+        app.router.on('route:sections', function(year, semester, department, course) {
             /*  Check that required parameters are given and valid */
             if(!validate.year(year) || !validate.semester(semester) || department.length < 1 || course.length < 1) {
                 //TODO - Better error handling
@@ -67,7 +67,7 @@ require(["config"], function() {
                 Build options for View
             */
             var options = { year : year, semester: semester, department: department, course : course };
-            app.views.current = new OscarView([], options);
+            app.views.current = new SectionsView([], options);
             app.views.current.render();
         });
         app.router.on('route:grades', function(department, course, profId) {

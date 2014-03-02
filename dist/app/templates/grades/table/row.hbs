@@ -1,0 +1,26 @@
+<tr>
+  {{#if statistics}}
+    <td><a href="/grades/{{department}}/{{course}}/{{profId}}">{{name}}</a></td>
+    <td>{{statistics.gpa.mean}}</td>
+    <td>{{statistics.gpa.q2}}</td>
+    <td>{{statistics.gpa.stddev}}</td>
+    <td>{{statistics.A}}%</td>
+    <td>{{statistics.B}}%</td>
+    <td>{{statistics.C}}%</td>
+    <td>{{statistics.D}}%</td>
+    <td>{{statistics.F}}%</td>
+    <td>{{statistics.W}}%</td>
+  {{else}}
+    <td>{{year}}</td>
+    <td>{{semester}}</td>
+    <td>{{section}}</td>
+    <td>{{gpa}}</td>
+    <td>{{A}}%</td>
+    <td>{{B}}%</td>
+    <td>{{C}}%</td>
+    <td>{{D}}%</td>
+    <td>{{F}}%</td>
+    <td>{{W}}%</td>
+    <td>{{size}}</td>
+  {{/if}}
+</tr>
