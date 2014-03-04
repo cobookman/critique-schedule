@@ -16,7 +16,23 @@ module.exports = function(app) {
   app.get('/getusername', routes.user.getUsername);
   app.get('/login', routes.user.login);
   app.get('/logout', routes.user.logout);
+  /* Oscar Webscraper */
+  var coreCurriculum = require('./api/courseCatalog/coreCurriculum.js');
+  (function() {
+    var a = new coreCurriculum('corec');
+    a.get(function(err, doc) {
+      // console.log("HI WORLD");
+      // console.log("Error: " + JSON.stringify(err));
+      // console.log("Doc: " + doc);
+    });
+  })();
+  // app.get(/^\/api\/core\/(c|humanities)\/?$/i, new coreCurriculum('areaC'));
+  // app.get(/^\/api\/core\/(e|socialsciences)\/?$/i, coreCurriculumController.areaE);
+  // app.get(/^\/api\/core\/(gp|globalperspectives)\/?$/i, coreCurriculumController.globalPerspectives);
+  // app.get(/^\/api\/core\/(usp|usPerspectives)\/?$/i, coreCurriculumController.usPerspectives);
+  // app.get('/api/core/ethics', coreCurriculumController.ethics);
 
+  /* BuzzAPI */
   app.get('/buzzAPI/help', routes.helpPage.get);
   app.get('/buzzAPI/terms', routes.buzzAPI('terms'));
   app.get('/buzzAPI/subjects/:termCode', routes.buzzAPI('subjects'));

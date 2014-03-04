@@ -42,7 +42,7 @@ helpers.url = function(resource, params) {
 */
 helpers.apiRequest = function(params, callback) {
   params.callback = callback;
-  buzzAPICache.get(params, this._cacheMiss, this._cacheHit);
+  buzzAPICache.get(params, this._cacheHit, this._cacheMiss);
 };
 
 helpers._cacheHit = function(params, doc) {

@@ -2,7 +2,7 @@ var cradle = require('cradle');
 function Cache(dbName) {
   this.db = new(cradle.Connection)().database(dbName);
 }
-Cache.prototype.get = function(params, cacheMiss, cacheHit) {
+Cache.prototype.get = function(params, cacheHit, cacheMiss) {
   if (typeof params.cacheId === 'undefined') {
     return cacheMiss(params);
   }
@@ -39,6 +39,7 @@ Cache.prototype.retrieveDoc = function(cacheId, callback) {
   }
   this.db.get(cacheId, function(err, doc) {
     if (err || !doc.hasOwnProperty('cachedData')) {
+      console.log("Could not retrieve Doc: " + JSON.stringify(err));
       callback(err, null);
     } else {
       callback(null, doc);
